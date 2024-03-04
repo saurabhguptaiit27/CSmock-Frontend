@@ -43,7 +43,7 @@ const Footer = () => {
 
             <a
               href="#"
-              class="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-blue-500 "
+              class="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500 "
               aria-label="Reddit"
             >
               {" "}
@@ -71,7 +71,7 @@ const Footer = () => {
           <div class="flex -mx-2">
             <a
               href="#"
-              class="mx-2 text-gray-200 transition-colors duration-300  hover:text-red-500 "
+              class="mx-2 text-gray-200 transition-colors duration-300  hover:text-red-400 "
               aria-label="Reddit"
             >
               <svg
@@ -86,7 +86,7 @@ const Footer = () => {
 
             <a
               href="#"
-              class="mx-2 text-gray-200 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+              class="mx-2 text-gray-200 transition-colors duration-300  hover:text-blue-500 "
               aria-label="Facebook"
             >
               <svg
@@ -101,7 +101,7 @@ const Footer = () => {
 
             <a
               href="#"
-              class="mx-2 text-gray-200 transition-colors duration-300  hover:text-green-500 "
+              class="mx-2 text-gray-200 transition-colors duration-300  hover:text-green-400 "
               aria-label="Github"
             >
               <svg

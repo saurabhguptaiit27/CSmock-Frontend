@@ -19,10 +19,14 @@ const Register = () => {
     }
   }, [location]);
 
+  const handleForm = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <section className="bg-gray-900">
       <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
-        <form className="w-full max-w-md">
+        <form onSubmit={handleForm} className="w-full max-w-md">
           <div className="flex justify-center mx-auto">
             <img className="w-auto h-7 sm:h-8" src="/CSmocklogo.png" alt="" />
           </div>

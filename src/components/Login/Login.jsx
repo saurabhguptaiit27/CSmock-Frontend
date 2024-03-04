@@ -19,6 +19,10 @@ const Login = () => {
     }
   }, [location]);
 
+  const handleForm = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="mx-auto max-screen-xl px-4 pt-20 pb-12 mt-5 sm:px-6 lg:px-8 bg-gray-900">
       <div className="mx-auto max-w-lg">
@@ -57,7 +61,7 @@ const Login = () => {
         </div>
 
         <form
-          action="#"
+          onSubmit={handleForm}
           className="mb-0 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
         >
           <p className="text-center text-lg font-medium text-gray-300 pb-2">
