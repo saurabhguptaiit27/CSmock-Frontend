@@ -11,7 +11,7 @@ import Register from "./components/Register/Register.jsx";
 import Login from "./components/Login/Login.jsx";
 import IntExperiences from "./components/IntExperiences/IntExperiences.jsx";
 import OurExperts from "./components/OurExperts/OurExperts.jsx";
-import User from "./components/User/User.jsx";
+
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,7 +28,6 @@ const App = () => {
           { path: "ourexperts", element: <OurExperts /> },
           { path: "interviewexperiences", element: <IntExperiences /> },
           { path: "FAQs", element: <Faqs /> },
-          { path: "User", element: <User /> },
         ],
       },
     ];

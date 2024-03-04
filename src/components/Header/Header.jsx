@@ -1,16 +1,14 @@
 import { useState } from "react";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import ToggleMenu from "../ToggleMenu/ToggleMenu";
 
-const Header = ({ handleButtonClick, isloggedIn, setIsLoggedIn }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // Function to toggle the menu
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); // Toggle the state to show/hide the menu
-  };
-
+const Header = ({
+  handleButtonClick,
+  handleToggleProfile,
+  handleLogoutButton,
+  isloggedIn,
+  setIsLoggedIn,
+}) => {
   return (
     <header className="bg-black fixed top-0 left-0 w-full z-20">
       <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
@@ -86,20 +84,42 @@ const Header = ({ handleButtonClick, isloggedIn, setIsLoggedIn }) => {
                   FAQs
                 </NavLink>
               </li>
+
+              <li>
+                <NavLink
+                  onClick={() => handleLogoutButton()}
+                  className={({ isActive }) =>
+                    `${
+                      isActive ? "text-green-300" : "text-gray-300"
+                    } transition text-base hover:text-green-100/75`
+                  }
+                >
+                  Login/Logout
+                </NavLink>
+              </li>
             </ul>
           </nav>
 
           {isloggedIn ? (
-            <NavLink
+            <button
+              onClick={() => handleToggleProfile()}
               className={({ isActive }) =>
                 `${
                   isActive ? "text-green-300" : "text-gray-300"
                 } transition text-base hover:text-green-100/75`
               }
-              to="User"
             >
-              User
-            </NavLink>
+              <div class="flex items-center gap-x-6">
+                <div class="relative">
+                  <img
+                    class="object-cover w-7 h-7 rounded-full ring ring-gray-300 "
+                    src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=4&w=880&h=880&q=100"
+                    alt=""
+                  />
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 absolute right-0 ring-1 ring-white -bottom-0.5"></span>
+                </div>
+              </div>
+            </button>
           ) : (
             <div className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
@@ -121,10 +141,7 @@ const Header = ({ handleButtonClick, isloggedIn, setIsLoggedIn }) => {
                 </Link>
               </div>
 
-              <button
-                className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden"
-                onClick={toggleMenu}
-              >
+              <button className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
                 <span className="sr-only">Toggle menu</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +158,6 @@ const Header = ({ handleButtonClick, isloggedIn, setIsLoggedIn }) => {
                   />
                 </svg>
               </button>
-              {isMenuOpen && <ToggleMenu />}
             </div>
           )}
         </div>

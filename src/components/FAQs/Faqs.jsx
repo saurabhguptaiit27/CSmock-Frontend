@@ -2,8 +2,8 @@ import React from "react";
 
 const Faqs = () => {
   return (
-    <div className="bg-gray-900 text-white">
-      <div className="container mx-auto space-y-16 px-4 py-10 lg:px-8 lg:py-32 xl:max-w-7xl">
+    <div className="bg-gray-900 text-white mt-10">
+      <div className="container mx-auto space-y-16 px-6 py-10 lg:px-8 lg:py-25 xl:max-w-7xl">
         <div className="text-center">
           <div className="mb-1 text-sm font-bold uppercase tracking-wider text-green-600 ">
             We Answer
