@@ -4,7 +4,7 @@ const User = ({ handleLogoutButton }) => {
   return (
     <div class="float-right mt-8">
       <div
-        class="bg-white absolute end-0 z-10  w-55 rounded-md border border-black shadow-lg mr-5 text-left"
+        class="bg-white end-0 z-10  w-55 rounded-md border border-black shadow-lg mr-5 text-left fixed"
         role="menu"
       >
         <div class="p-2">
