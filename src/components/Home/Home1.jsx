@@ -1,11 +1,12 @@
 import React from "react";
+import { useEffect } from "react";
 
 const Home1 = () => {
   return (
     <section className="bg-gradient-to-b from-gray-950 to-gray-950 via-gray-800 text-white">
       <div className="mx-auto max-w-screen-xl px-4 mt-10 py-20 lg:flex lg:h-screen lg:items-center">
         <div className="mx-auto max-w-3xl text-center">
-          <h1 className="bg-gradient-to-r from-yellow-400 via-green-600 to-yellow-400 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+          <h1 className="bg-gradient-to-r from-yellow-400 via-green-600 to-yellow-400 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl animate__animated animate-pulse animate__slow animate__infinite">
             Welcome To CSmock
             {/* <span className="sm:block"> Increase Conversion. </span> */}
           </h1>

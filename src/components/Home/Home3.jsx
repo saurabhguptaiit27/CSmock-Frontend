@@ -5,8 +5,8 @@ const Home3 = () => {
     <section className="bg-gradient-to-b from-gray-950 to-gray-950 via-gray-800  text-white">
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
         <div className="mx-auto max-w-lg text-center">
-          <h2 className="text-3xl font-bold sm:text-4xl text-yellow-300">
-            Kickstart your marketing
+          <h2 className="text-3xl font-bold sm:text-4xl text-green-400 ">
+            Empower Others
           </h2>
 
           <p className="mt-4 text-gray-300">
@@ -23,7 +23,7 @@ const Home3 = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="size-10 text-green-500"
+              className="size-10 text-blue-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -48,14 +48,13 @@ const Home3 = () => {
               laudantium.
             </p>
           </a>
-
           <a
             className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-green-500/10 hover:shadow-green-500/10"
             href="#"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="size-10 text-green-500"
+              className="size-10 text-blue-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -80,14 +79,13 @@ const Home3 = () => {
               laudantium.
             </p>
           </a>
-
           <a
             className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-green-500/10 hover:shadow-green-500/10"
             href="#"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="size-10 text-green-500"
+              className="size-10 text-blue-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -117,9 +115,9 @@ const Home3 = () => {
         <div className="mt-12 text-center">
           <a
             href="#"
-            className="inline-block rounded bg-green-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-green-700 focus:outline-none focus:ring focus:ring-yellow-200"
+            className="inline-block rounded bg-yellow-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-green-700 focus:outline-none focus:ring focus:ring-yellow-200"
           >
-            Get Started Today
+            Start Mentoring
           </a>
         </div>
       </div>

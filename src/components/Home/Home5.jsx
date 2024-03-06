@@ -7,7 +7,7 @@ export default function Home5() {
       <div className="bg-gradient-to-b from-gray-950 to-gray-950 via-gray-800 ">
         <div className="container mx-auto px-4 py-16 lg:px-8 lg:py-32 xl:max-w-7xl">
           <div className="relative">
-            <div className="absolute right-0 top-0 -mt-5 font-serif text-9xl text-white">
+            <div className="absolute right-0 top-0 -mt-5 font-serif text-9xl text-green-400">
               “
             </div>
             <div className="relative text-center">
@@ -86,7 +86,7 @@ export default function Home5() {
                   consistently high-quality and pleasant to work with, so I
                   highly recommended them.
                 </p>
-                <footer className="space-y-4 p-5 shadow-2xl">
+                <footer className="space-y-4 p-5 shadow-xl hover:shadow-yellow-400/20">
                   <a
                     href="#"
                     className="mx-auto block size-20 overflow-hidden rounded-full border-2
