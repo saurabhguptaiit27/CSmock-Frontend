@@ -8,7 +8,7 @@ export default function Home5() {
         <div className="container mx-auto px-4 py-16 lg:px-8 lg:py-32 xl:max-w-7xl">
           <div className="relative">
             <div className="absolute right-0 top-0 -mt-5 font-serif text-9xl text-green-400">
-              “
+            &#10078;
             </div>
             <div className="relative text-center">
               <div className="mb-3">
