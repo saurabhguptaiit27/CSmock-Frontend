@@ -2,7 +2,7 @@ import React from "react";
 
 const User = ({ handleLogoutButton }) => {
   return (
-    <div class="float-right mt-8">
+    <div class="float-right mt-10">
       <div
         class="bg-white end-0 z-10  w-55 rounded-md border border-black shadow-lg mr-5 text-left fixed"
         role="menu"
