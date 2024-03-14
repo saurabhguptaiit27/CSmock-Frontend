@@ -1,30 +1,111 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useOutletContext } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { SelectedButtonContext } from "../Context/SelectedButtonProvider.jsx";
+import { AuthContext } from "../Context/AuthProvider.jsx";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const location = useLocation();
-  const [selectedButton, setSelectedButton, handleButtonClick] =
-    useOutletContext();
+  const { selectedButton, setSelectedButton, handleButtonClick } = useContext(
+    SelectedButtonContext
+  );
+  const { isLoggedIn, setIsLoggedIn, userType, setUserType } =
+    useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const pathnameParts = location.pathname.split("/");
     const lastPart = pathnameParts[pathnameParts.length - 1];
     {
-      lastPart === "Expert"
+      lastPart === "Expert" && !isLoggedIn
         ? setSelectedButton("Expert")
         : setSelectedButton("User");
     }
+    console.log("selectedbutton:", selectedButton);
+    console.log("userType is---", userType);
   }, [location]);
 
-  const handleForm = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    try {
+      const response = await fetch(
+        selectedButton === "User"
+          ? "http://localhost:8000/api/v1/users/login"
+          : "http://localhost:8000/api/v1/experts/login",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            // Add any other headers as needed
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to login");
+      }
+
+      //the server returns a JSON object with a token upon successful login
+      const data = await response.json();
+
+      const accessTokenExpiry = new Date(Date.now() + 1 * 24 * 60 * 60 * 1000);
+      const refreshTokenExpiry = new Date(
+        Date.now() + 10 * 24 * 60 * 60 * 1000
+      );
+
+      // Check if the response contains an access token in data["data"]["details"]
+      if (data["data"]["accessToken"]) {
+        document.cookie = `accessToken=${
+          data["data"]["accessToken"]
+        };expires=${accessTokenExpiry.toUTCString()};path=/`;
+        document.cookie = `refreshToken=${
+          data["data"]["refreshToken"]
+        };expires=${refreshTokenExpiry.toUTCString()};path=/`;
+        document.cookie = `userType=${
+          data["data"]["details"]["userType"]
+        };expires=${refreshTokenExpiry.toUTCString()};path=/`;
+
+        setUserType(data["data"]["details"]["userType"]);
+        setSelectedButton(data["data"]["details"]["userType"]);
+        setIsLoggedIn(true);
+
+        // Navigate to the Home route
+        navigate("/");
+      } else {
+        throw new Error("Access token not found in response");
+      }
+
+      console.log("Login successful:", data);
+      // Clear form after successful login
+      setFormData({ email: "", password: "" });
+    } catch (error) {
+      navigate("/Login/User");
+      console.error("Login error : ", error.message);
+    }
+  };
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   return (
-    <div className="mx-auto max-screen-xl px-4 pt-20 pb-12 mt-5 sm:px-6 lg:px-8 bg-gray-900">
+    <div className="mx-auto max-screen-xl px-4 pt-20 pb-12 mt-5 sm:px-6 lg:px-8 bg-gray-950">
       <div className="mx-auto max-w-lg">
         <h1 className="text-center text-2xl font-bold text-green-600 sm:text-3xl">
           Get started today
@@ -36,7 +117,7 @@ const Login = () => {
         </p>
 
         <div className="flex items-center justify-center pt-10">
-          <div className="flex items-center p-1 border bg-gray-200 bg-opacity-95 rounded-2xl border-blue-600 gap-3">
+          <div className="flex items-center p-1 border bg-gray-200 bg-opacity-95 rounded-2xl border-yellow-600 gap-3">
             <Link to="/Login/User">
               <button
                 className={`px-4 py-2 text-sm font-medium ${
@@ -61,7 +142,7 @@ const Login = () => {
         </div>
 
         <form
-          onSubmit={handleForm}
+          onSubmit={handleSubmit}
           className="mb-0 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
         >
           <p className="text-center text-lg font-medium text-gray-300 pb-2">
@@ -79,6 +160,10 @@ const Login = () => {
                 type="email"
                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
               />
 
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -110,6 +195,10 @@ const Login = () => {
                 type="password"
                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                required
               />
 
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -142,7 +231,7 @@ const Login = () => {
           </button>
 
           <p className="text-center text-sm text-gray-400">
-            No account?
+            No account ?{" "}
             <Link
               to="/Register/User"
               className="underline hover:text-yellow-300"
