@@ -10,9 +10,27 @@ export const AuthProvider = ({ children }) => {
   const [userType, setUserType] = useState("User");
 
   useEffect(() => {
-    const checkLoggedInStatus = () => {
-      const authCookie = document.cookie;
-      if (authCookie) {
+    const checkLoggedInStatus = async () => {
+      const accessTokenCookie = document.cookie
+        .split(";")
+        .map((cookie) => cookie.trim().split("="))
+        .find(([name, value]) => name === "accessToken");
+      const refreshTokenCookie = document.cookie
+        .split(";")
+        .map((cookie) => cookie.trim().split("="))
+        .find(([name, value]) => name === "refreshToken");
+      if (accessTokenCookie) {
+        setIsLoggedIn(true);
+      } else if (!accessTokenCookie && refreshTokenCookie) {
+        await fetch(
+          userType === "User"
+            ? "http://localhost:8000/api/v1/users/refresh-token"
+            : "http://localhost:8000/api/v1/experts/refresh-token",
+          {
+            method: "POST",
+            credentials: "include",
+          }
+        );
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
