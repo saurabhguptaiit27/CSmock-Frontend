@@ -1,29 +1,8 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { AllExpertsContext } from "../Context/AllExpertsProvider";
 
 const OurExperts = () => {
-  const [experts, setExperts] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:8000/api/v1/experts/allexperts"
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch experts");
-        }
-        const data = await response.json();
-        setExperts(data["data"]); // API returns an object with data of experts
-      } catch (error) {
-        console.error("Error fetching experts:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  console.log(experts);
+  const { allExperts } = useContext(AllExpertsContext);
 
   return (
     <section class="bg-gray-950/95 mt-10">
@@ -38,11 +17,11 @@ const OurExperts = () => {
           omnis eligendi optio eos harum.
         </p>
 
-        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-3">
-          {experts.map((e, index) => (
+        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-2">
+          {allExperts.map((e, index) => (
             <div
               key={index}
-              class="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-green-700"
+              class="bg-gray-500/30 px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-green-700"
             >
               <div class="flex flex-col sm:-mx-4 sm:flex-row">
                 <img
@@ -51,8 +30,8 @@ const OurExperts = () => {
                   alt=""
                 />
 
-                <div class="mt-4 sm:mx-4 sm:mt-0">
-                  <h1 class="text-xl font-semibold text-yellow-500 capitalize md:text-2xl group-hover:text-white">
+                <div class="sm:mx-4 sm:mt-0">
+                  <h1 class="mt-4 text-xl font-semibold text-yellow-500 capitalize md:text-2xl group-hover:text-white">
                     {e.fullname}
                   </h1>
 

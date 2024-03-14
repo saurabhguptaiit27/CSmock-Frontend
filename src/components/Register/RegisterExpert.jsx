@@ -2,16 +2,17 @@ import React from "react";
 import { FiUser, FiUpload, FiLock, FiBriefcase, FiPhone } from "react-icons/fi";
 import { TfiEmail } from "react-icons/tfi";
 import { SlBadge } from "react-icons/sl";
-import { PiRocketLight } from "react-icons/pi";
+import { CgOrganisation } from "react-icons/cg";
 import { IoBodyOutline } from "react-icons/io5";
 import { GrDocumentUser } from "react-icons/gr";
+import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { SelectedButtonContext } from "../Context/SelectedButtonProvider.jsx";
 import { AuthContext } from "../Context/AuthProvider.jsx";
 
-const Register = () => {
+const RegisterExpert = () => {
   const location = useLocation();
   const { selectedButton, setSelectedButton, handleButtonClick } = useContext(
     SelectedButtonContext
@@ -23,12 +24,13 @@ const Register = () => {
     const pathnameParts = location.pathname.split("/");
     const lastPart = pathnameParts[pathnameParts.length - 1];
     {
-      lastPart === "User"
-        ? setSelectedButton("User")
-        : setSelectedButton("Expert");
+      lastPart === "Expert"
+        ? setSelectedButton("Expert")
+        : setSelectedButton("User");
     }
-    console.log("selectedbutton from register user page:", selectedButton);
-    console.log("userType from register user page:", userType);
+
+    console.log("selectedbutton from register expert page:", selectedButton);
+    console.log("userType from register expert page:", userType);
   }, [location]);
 
   const [formData, setFormData] = useState({
@@ -36,10 +38,10 @@ const Register = () => {
     fullname: "",
     email: "",
     password: "",
-    phone: "",
     gender: "",
-    proficiency: "",
-    expectedRole: [],
+    phone: "",
+    previousCompanies: [],
+    expertise: [],
     experience: "",
     avatar: null, // Add avatar field to store the uploaded file
   });
@@ -58,11 +60,23 @@ const Register = () => {
       avatar: file,
     });
   };
-  const handleRoleChange = (event) => {
+  const handlePreviousCompaniesChange = (event) => {
     const { name, value } = event.target;
 
     // For expectedRole, split the input value by commas and store as an array
-    const newValue = name === "expectedRole" ? value.split(",") : value;
+    const newValue = name === "previousCompanies" ? value.split(",") : value;
+
+    setFormData({
+      ...formData,
+      [name]: newValue,
+    });
+  };
+
+  const handleExpertiseChange = (event) => {
+    const { name, value } = event.target;
+
+    // For expectedRole, split the input value by commas and store as an array
+    const newValue = name === "expertise" ? value.split(",") : value;
 
     setFormData({
       ...formData,
@@ -156,7 +170,7 @@ const Register = () => {
               type="file"
               className="block w-2/3 gap-5  text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               name="avatar"
-              // value={formData.avatar}
+              //   value={formData.avatar}
               onChange={handleFileChange}
               required
             />
@@ -232,17 +246,17 @@ const Register = () => {
 
           <div className="relative flex items-center mt-4">
             <span style={{ color: "gray" }} className=" absolute py-2 px-3">
-              <PiRocketLight />
+              <CgOrganisation />
             </span>
 
             <input
               type="text"
               className="block w-full px-10 py-1 text-gray-400 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              placeholder="Expected role(s) (seperated with commas)"
-              id="expectedRole"
-              name="expectedRole"
-              onChange={handleRoleChange}
-              value={formData.expectedRole}
+              placeholder="Previous Companies(s) (seperated with commas)"
+              id="previousCompanies"
+              name="previousCompanies"
+              onChange={handlePreviousCompaniesChange}
+              value={formData.previousCompanies}
               multiple
               required
             />
@@ -253,22 +267,17 @@ const Register = () => {
               <SlBadge />
             </span>
 
-            <select
-              id="proficiency"
+            <input
+              type="text"
               className="block w-full px-10 py-1 text-gray-400 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              placeholder="Proficiency"
-              name="proficiency"
-              value={formData.proficiency}
-              onChange={handleInputChange}
+              placeholder="Enter Your Expertise (Skills seperated with commas)"
+              id="expertise"
+              name="expertise"
+              onChange={handleExpertiseChange}
+              value={formData.expertise}
+              multiple
               required
-            >
-              <option value="">
-                Select Your Proficiency For The Expected Role
-              </option>
-              <option value="beginner">Beginner</option>
-              <option value="intermediate">Intermediate</option>
-              <option value="expert">Expert</option>
-            </select>
+            />
           </div>
 
           <div className="relative flex items-center mt-4">
@@ -292,6 +301,22 @@ const Register = () => {
             </select>
           </div>
 
+          <div className="relative flex items-center mt-4">
+            <span style={{ color: "gray" }} className=" absolute py-2 px-3">
+              <MdOutlineCurrencyRupee />
+            </span>
+
+            <input
+              type="number"
+              className="block w-full px-10 py-1 text-gray-400 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              placeholder="Session Fees"
+              name="fees"
+              value={formData.fees}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
           <div className="mt-6">
             <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
               Sign Up
@@ -312,4 +337,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterExpert;

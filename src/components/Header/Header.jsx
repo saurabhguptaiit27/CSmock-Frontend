@@ -1,20 +1,24 @@
-import { useState } from "react";
 import React from "react";
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Context/AuthProvider.jsx";
+import { SelectedButtonContext } from "../Context/SelectedButtonProvider.jsx";
+import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
 
-const Header = ({
-  handleButtonClick,
-  handleToggleProfile,
-  handleLogoutButton,
-  isloggedIn,
-  setIsLoggedIn,
-}) => {
+const Header = ({ handleToggleProfile }) => {
+  const { isLoggedIn, userType, handleAddAvailabilityButton } =
+    useContext(AuthContext);
+  const { selectedButton, handleButtonClick } = useContext(
+    SelectedButtonContext
+  );
+  const { currentUser } = useContext(CurrentUserContext);
+
   return (
-    <header className="bg-black fixed top-0 left-0 w-full z-20">
+    <header className="bg-black fixed top-0 left-0 w-full z-40">
       <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
         <Link className="block text-teal-600" to="">
           <span className="sr-only">Home</span>
-          <img src="/CSmock.png"></img>
+          <img className="rounded-3xl size-10" src="/CSmock.png"></img>
         </Link>
 
         <div className="flex flex-1 items-center justify-end md:justify-between">
@@ -24,7 +28,7 @@ const Header = ({
                 <NavLink
                   className={({ isActive }) =>
                     `${
-                      isActive ? "text-green-300" : "text-gray-300"
+                      isActive ? "text-yellow-300" : "text-gray-300"
                     } transition text-base hover:text-green-100/75`
                   }
                   to=""
@@ -35,9 +39,19 @@ const Header = ({
 
               <li>
                 <NavLink
+                  onClick={() =>
+                    console.log(
+                      "islogged in-",
+                      isLoggedIn,
+                      "------usertype is-",
+                      userType,
+                      "----selectedButton-",
+                      selectedButton
+                    )
+                  }
                   className={({ isActive }) =>
                     `${
-                      isActive ? "text-green-300" : "text-gray-300"
+                      isActive ? "text-yellow-300" : "text-gray-300"
                     } transition text-base hover:text-green-100/75`
                   }
                   to="Ourexperts"
@@ -50,7 +64,7 @@ const Header = ({
                 <NavLink
                   className={({ isActive }) =>
                     `${
-                      isActive ? "text-green-300" : "text-gray-300"
+                      isActive ? "text-yellow-300" : "text-gray-300"
                     } transition text-base hover:text-green-100/75`
                   }
                   to="Interviewexperiences"
@@ -63,7 +77,7 @@ const Header = ({
                 <NavLink
                   className={({ isActive }) =>
                     `${
-                      isActive ? "text-green-300" : "text-gray-300"
+                      isActive ? "text-yellow-300" : "text-gray-300"
                     } transition text-base hover:text-green-100/75`
                   }
                   to="About"
@@ -76,7 +90,7 @@ const Header = ({
                 <NavLink
                   className={({ isActive }) =>
                     `${
-                      isActive ? "text-green-300" : "text-gray-300"
+                      isActive ? "text-yellow-300" : "text-gray-300"
                     } transition text-base hover:text-green-100/75`
                   }
                   to="Faqs"
@@ -84,23 +98,29 @@ const Header = ({
                   FAQs
                 </NavLink>
               </li>
-
-              <li>
-                <NavLink
-                  onClick={() => handleLogoutButton()}
-                  className={({ isActive }) =>
-                    `${
-                      isActive ? "text-green-300" : "text-gray-300"
-                    } transition text-base hover:text-green-100/75`
-                  }
-                >
-                  Login/Logout
-                </NavLink>
-              </li>
             </ul>
           </nav>
 
-          {isloggedIn ? (
+          {isLoggedIn && userType === "Expert" && (
+            <Link to="">
+              <button
+                className="absolute top-3 right-24 block rounded-md bg-yellow-500 px-5 py-2.5 text-sm font-medium  hover:text-gray-100 text-black transition hover:bg-green-500/75"
+                onClick={() => handleAddAvailabilityButton()}
+              >
+                Add Availability
+              </button>
+            </Link>
+          )}
+
+          {isLoggedIn && userType === "User" && (
+            <Link to="/Booking">
+              <button className="absolute top-3 right-24 block rounded-md bg-yellow-500 px-5 py-2.5 text-sm font-medium  hover:text-gray-100 text-black transition hover:bg-green-500/75">
+                Our Experts
+              </button>
+            </Link>
+          )}
+
+          {isLoggedIn ? (
             <button
               onClick={() => handleToggleProfile()}
               className={({ isActive }) =>
@@ -110,10 +130,10 @@ const Header = ({
               }
             >
               <div class="flex items-center gap-x-6">
-                <div class="relative">
+                <div class="absolute right-10">
                   <img
                     class="object-cover w-7 h-7 rounded-full ring ring-gray-300 "
-                    src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=4&w=880&h=880&q=100"
+                    src={currentUser.avatar}
                     alt=""
                   />
                   <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 absolute right-0 ring-1 ring-white -bottom-0.5"></span>
@@ -140,24 +160,6 @@ const Header = ({
                   Register
                 </Link>
               </div>
-
-              <button className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
-                <span className="sr-only">Toggle menu</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
             </div>
           )}
         </div>

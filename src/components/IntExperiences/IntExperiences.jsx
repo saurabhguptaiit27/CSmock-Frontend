@@ -2,7 +2,7 @@ import React from "react";
 
 const IntExperiences = () => {
   return (
-    <section class="bg-black mt-10">
+    <section class="bg-gray-950/95 mt-10">
       <div class="container px-6 py-10 mx-auto">
         <h1 class="text-2xl font-semibold text-center text-gray-300 capitalize lg:text-3xl ">
           What our <span class="text-green-500 ">clients</span> say

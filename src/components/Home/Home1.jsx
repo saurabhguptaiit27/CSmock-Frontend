@@ -1,7 +1,11 @@
 import React from "react";
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthProvider";
 
 const Home1 = () => {
+  const { userType, handleAddAvailabilityButton } = useContext(AuthContext);
+
   return (
     <section className="bg-gradient-to-b from-gray-950 to-gray-950 via-gray-800 text-white">
       <div className="mx-auto max-w-screen-xl px-4 mt-10 py-20 lg:flex lg:h-screen lg:items-center">
@@ -17,19 +21,32 @@ const Home1 = () => {
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <a
-              className="block w-full rounded border border-blue-600 bg-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-green-600 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
-              href="#"
-            >
-              Schedule A Session
-            </a>
+            {userType === "User" && (
+              <Link
+                className="block w-full rounded border border-blue-600 bg-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-green-600 hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
+                to="Booking"
+              >
+                Schedule A Session
+              </Link>
+            )}
 
-            <a
+            {userType === "Expert" && (
+              <Link
+                onClick={() => handleAddAvailabilityButton()}
+                className="block w-full rounded-xl border border-green-600 bg-yellow-500 px-6 py-3 text-sm font-medium text-black hover:bg-green-500/75 hover:text-gray-100 focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
+                to=""
+              >
+                Add Availability
+              </Link>
+            )}
+
+            <Link
+              onClick={() => handleAddAvailabilityButton()}
               className="block w-full rounded border border-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto"
-              href="#"
+              to=""
             >
               Learn More
-            </a>
+            </Link>
           </div>
         </div>
       </div>
