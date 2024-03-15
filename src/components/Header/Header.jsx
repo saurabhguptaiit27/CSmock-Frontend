@@ -5,9 +5,13 @@ import { AuthContext } from "../Context/AuthProvider.jsx";
 import { SelectedButtonContext } from "../Context/SelectedButtonProvider.jsx";
 import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
 
-const Header = ({ handleToggleProfile }) => {
-  const { isLoggedIn, userType, handleAddAvailabilityButton } =
-    useContext(AuthContext);
+const Header = () => {
+  const {
+    isLoggedIn,
+    userType,
+    handleAddAvailabilityButton,
+    handleToggleProfile,
+  } = useContext(AuthContext);
   const { selectedButton, handleButtonClick } = useContext(
     SelectedButtonContext
   );

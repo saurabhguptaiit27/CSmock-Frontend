@@ -9,19 +9,12 @@ import { AuthContext } from "./components/Context/AuthProvider.jsx";
 import AvailabilityUI from "./components/AvailabilityUI/AvailabilityUI.jsx";
 
 const Layout = () => {
-  const { isLoggedIn, userType, isAvailabilityUI } =
+  const { isLoggedIn, userType, isAvailabilityUI, toggleProfile } =
     useContext(AuthContext);
-
-  const [toggleProfile, setToggleProfile] = useState(false);
-  const handleToggleProfile = () => {
-    setToggleProfile(!toggleProfile);
-  };
 
   return (
     <>
-      <Header
-        handleToggleProfile={handleToggleProfile}
-      />
+      <Header />
       {toggleProfile && isLoggedIn && <User />}
       {isLoggedIn && userType === "Expert" && isAvailabilityUI && (
         <AvailabilityUI />
