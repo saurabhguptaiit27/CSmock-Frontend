@@ -88,6 +88,11 @@ export const AuthProvider = ({ children }) => {
     setIsAvailabilityUI(false);
   };
 
+  const [toggleProfile, setToggleProfile] = useState(false);
+  const handleToggleProfile = () => {
+    setToggleProfile(!toggleProfile);
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -101,6 +106,9 @@ export const AuthProvider = ({ children }) => {
         initialPara,
         setInitialPara,
         handleCrossAvailabilityButton,
+        toggleProfile,
+        setToggleProfile,
+        handleToggleProfile,
       }}
     >
       {children}

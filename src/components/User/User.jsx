@@ -10,7 +10,8 @@ import { PiHandshake } from "react-icons/pi";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 
 const User = () => {
-  const { setIsLoggedIn, userType, setUserType } = useContext(AuthContext);
+  const { setIsLoggedIn, userType, setUserType, setToggleProfile } =
+    useContext(AuthContext);
   const { currentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
 
@@ -34,6 +35,7 @@ const User = () => {
 
       setIsLoggedIn(false);
       setUserType("User");
+      setToggleProfile(false);
       console.log("user logged out successfully");
       navigate("/");
     } catch (error) {
@@ -66,14 +68,14 @@ const User = () => {
             Profile
           </a>
 
-          <a
-            href="#"
+          <Link
+            to="/yourbookings"
             class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-black hover:bg-gray-50 hover:text-gray-700"
             role="menuitem"
           >
             <PiHandshake />
             Your Bookings
-          </a>
+          </Link>
 
           <a
             href="#"
