@@ -1,5 +1,5 @@
 import DateTimePicker from "./DateTimePicker.jsx";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import { AuthContext } from "../Context/AuthProvider.jsx";
 
@@ -8,7 +8,10 @@ const AvailabilityUI = () => {
   const { initialPara } = useContext(AuthContext);
 
   let [values, setValues] = useState([]);
-  const [paragraphContent, setParagraphContent] = useState(initialPara);
+  const [paragraphContent, setParagraphContent] = useState("");
+  useEffect(() => {
+    setParagraphContent(initialPara);
+  }, []);
 
   return (
     <section class="bg-gray-600/90 fixed top-16 right-0 z-20 sm- rounded-xl border">

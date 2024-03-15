@@ -30,9 +30,9 @@ export default function DateTimePicker({
         body: JSON.stringify(appointmentDateTime),
       }
     );
-
-    console.log(appointmentDateTime);
-    setParagraphContent("You have not saved any available dates yet");
+    setTimeout(() => {
+      setParagraphContent("You have not saved any available dates yet");
+    }, 10);
   };
 
   const handleAvailabilitySubmitButton = async () => {
@@ -55,12 +55,11 @@ export default function DateTimePicker({
           body: JSON.stringify(appointmentDateTime),
         }
       );
-
-      console.log(appointmentDateTime);
-
-      setParagraphContent(
-        "Your Availability is saved and will be shown to users"
-      );
+      setTimeout(() => {
+        setParagraphContent(
+          "Your Availability is saved and will be shown to users"
+        );
+      }, 10);
     } catch (error) {
       console.error("Error:", error); // Log any errors
     }
