@@ -1,12 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import { AllExpertsContext } from "../Context/AllExpertsProvider";
+import { useNavigate } from "react-router-dom";
+
+import { BookingConfirmationContext } from "../Context/BookingConfirmationProvider.jsx";
+import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
 
 const Booking = () => {
   const { allExperts } = useContext(AllExpertsContext);
+  const { currentExpertData, setCurrentExpertData } = useContext(
+    BookingConfirmationContext
+  );
+  const { currentUser } = useContext(CurrentUserContext);
+
+  const navigate = useNavigate();
+
+  const handleExpertBookClick = (e) => {
+    setCurrentExpertData(e);
+    setTimeout(function () {
+      navigate("/Booking/confirmation");
+    }, 10);
+  };
+
+  useEffect(() => {
+    const saveStateToLocalStorage = () => {
+      try {
+        localStorage.setItem(
+          "currentExpertData",
+          JSON.stringify(currentExpertData)
+        );
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+      } catch (error) {
+        console.error("Error saving state to local storage:", error);
+      }
+    };
+    saveStateToLocalStorage();
+  }, [currentExpertData, currentUser]);
 
   return (
-    <section class="bg-gradient-to-b from-yellow-400/70 to-yellow-400/70 via-gray-500 mt-10 ">
+    <section class="bg-gradient-to-b from-yellow-400/70 to-yellow-400/70 via-gray-500 mt-10">
       <div class="container px-6 py-10 mx-auto">
         <h1 class="text-2xl font-semibold text-center text-black capitalize lg:text-4xl ">
           Book A <span class="text-green-500 ">Session</span> With An Expert
@@ -19,37 +51,41 @@ const Booking = () => {
         </p>
 
         <section class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 lg:grid-cols-2 xl:grid-cols-3 bg-gradient-to-b from-gray-500/70 to-gray-500/70 via-gray-500/50 p-5 rounded-3xl">
-          {allExperts.map((e, index) => (
-            <div
-              key={index}
-              class="relative p-8 bg-slate-600/60 hover:bg-green-700/60 border rounded-lg"
-            >
-              <div class="flex items-center mb-5 ">
-                <img
-                  class="object-cover mx-2 rounded-full w-14 shrink-0 h-14 ring-4 ring-gray-300 "
-                  src={e.avatar}
-                  alt="Profile Picture"
-                />
+          {allExperts &&
+            allExperts.map((e, index) => (
+              <div
+                key={index}
+                class="relative p-8 bg-slate-600/60 hover:bg-green-700/60 border rounded-lg"
+              >
+                <div class="flex items-center mb-5 ">
+                  <img
+                    class="object-cover mx-2 rounded-full w-14 shrink-0 h-14 ring-4 ring-gray-300 "
+                    src={e.avatar}
+                    alt="Profile Picture"
+                  />
 
-                <div class=" mx-2">
-                  <h1 class="font-semibold text-green-500">{e.fullname}</h1>
-                  <span class="text-sm text-gray-200">
-                    CTO, Robert Consultency
-                  </span>
+                  <div class=" mx-2">
+                    <h1 class="font-semibold text-green-500">{e.fullname}</h1>
+                    <span class="text-sm text-gray-200">
+                      CTO, Robert Consultency
+                    </span>
+                  </div>
                 </div>
+
+                <ul class="leading-loose text-gray-200 ">
+                  <li>{`Prev Comp : ${e.previousCompanies}`}</li>
+                  <li>{`username : ${e.username}`}</li>
+                  <li>{`Expertise : ${e.expertise}`}</li>
+                </ul>
+
+                <button
+                  onClick={() => handleExpertBookClick(e)}
+                  className="mt-2 px-4 py-2 bg-blue-500/80 border-2 border-gray-600 rounded-lg active:bg-gray-400 transition-colors text-yellow-400 shadow-lg shadow-gray-400/30"
+                >
+                  Book @ &#8377; {e.fees}
+                </button>
               </div>
-
-              <ul class="leading-loose text-gray-200 ">
-                <li>{`Prev Comp : ${e.previousCompanies}`}</li>
-                <li>{`username : ${e.username}`}</li>
-                <li>{`Expertise : ${e.expertise}`}</li>
-              </ul>
-
-              <button className="mt-2 px-4 py-2 bg-blue-500/80 border-2 border-gray-600 rounded-lg active:bg-gray-400 transition-colors text-yellow-400 shadow-lg shadow-gray-400/30">
-                Book @ &#8377; {e.fees}
-              </button>
-            </div>
-          ))}
+            ))}
         </section>
       </div>
     </section>
