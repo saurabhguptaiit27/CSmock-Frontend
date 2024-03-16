@@ -21,6 +21,8 @@ import { SelectedButtonProvider } from "./components/Context/SelectedButtonProvi
 import { CurrentUserProvider } from "./components/Context/CurrentUserProvider.jsx";
 import { BookingConfirmationProvider } from "./components/Context/BookingConfirmationProvider.jsx";
 import UserBookings from "./components/YourBookings/UserBookings.jsx";
+import ExpertBookings from "./components/YourBookings/ExpertBookings.jsx";
+import Error from "./components/Error/Error.jsx";
 
 const App = () => {
   const { isLoggedIn, userType } = useContext(AuthContext);
@@ -38,31 +40,59 @@ const App = () => {
         { path: "InterviewExperiences", element: <IntExperiences /> },
         {
           path: "Login/User",
-          element: !isLoggedIn && <Login />,
+          element: !isLoggedIn ? <Login /> : <Error />,
         },
         {
           path: "Login/Expert",
-          element: !isLoggedIn && <Login />,
+          element: !isLoggedIn ? <Login /> : <Error />,
         },
         {
           path: "Register/User",
-          element: !isLoggedIn && <Register />,
+          element: !isLoggedIn ? <Register /> : <Error />,
         },
         {
           path: "Register/Expert",
-          element: !isLoggedIn && <RegisterExpert />,
+          element: !isLoggedIn ? <RegisterExpert /> : <Error />,
         },
         {
           path: "Booking",
-          element: userType === "User" && isLoggedIn && <Booking />,
+          element: isLoggedIn ? (
+            userType === "User" ? (
+              <Booking />
+            ) : (
+              <Error />
+            )
+          ) : (
+            <Error />
+          ),
         },
         {
           path: "Booking/confirmation",
-          element: userType === "User" && isLoggedIn && <BookingConfirmation />,
+          element: isLoggedIn ? (
+            userType === "User" ? (
+              <BookingConfirmation />
+            ) : (
+              <Error />
+            )
+          ) : (
+            <Error />
+          ),
         },
         {
           path: "yourbookings",
-          element: userType === "User" && isLoggedIn && <UserBookings />,
+          element: isLoggedIn ? (
+            userType === "User" ? (
+              <UserBookings />
+            ) : (
+              <ExpertBookings />
+            )
+          ) : (
+            <Error />
+          ),
+        },
+        {
+          path: "*",
+          element: <Error />,
         },
       ],
     },
