@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer class="bg-gray-900 ">
-      <div class="container px-6 py-5 mx-auto">
+      <div class="container px-6 py-5 mx-auto ">
         <div class="flex flex-col items-center text-center">
           <a href="#">
             <img className="rounded-3xl size-10" src="/CSmock.png"></img>
