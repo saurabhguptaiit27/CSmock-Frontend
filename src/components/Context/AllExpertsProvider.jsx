@@ -1,12 +1,13 @@
 // AuthProvider.js
-import React, { createContext, useState, useEffect } from "react";
-
+import React, { createContext, useState, useEffect, useContext } from "react";
+import { AuthContext } from "./AuthProvider";
 // Create a context
 export const AllExpertsContext = createContext();
 
 // Provider component
 export const AllExpertsProvider = ({ children }) => {
   const [allExperts, setAllExperts] = useState([]);
+  const { isLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +26,7 @@ export const AllExpertsProvider = ({ children }) => {
     };
 
     fetchData();
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <AllExpertsContext.Provider
