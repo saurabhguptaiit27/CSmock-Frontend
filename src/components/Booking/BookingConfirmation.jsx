@@ -9,6 +9,7 @@ const BookingConfirmation = () => {
     expertId: "",
     appointmentDateTime: "",
     noteToExpert: "",
+    bookedAt: "",
   });
 
   useEffect(() => {
@@ -35,7 +36,11 @@ const BookingConfirmation = () => {
   };
 
   const handleTextSelection = (text) => {
-    setFormData({ ...formData, noteToExpert: text });
+    setFormData({
+      ...formData,
+      noteToExpert: text,
+      bookedAt: new Date(Date.now()).toString(),
+    });
   };
 
   const navigate = useNavigate();
