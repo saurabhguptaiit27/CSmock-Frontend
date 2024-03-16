@@ -20,6 +20,7 @@ import { AuthContext } from "./components/Context/AuthProvider.jsx";
 import { SelectedButtonProvider } from "./components/Context/SelectedButtonProvider.jsx";
 import { CurrentUserProvider } from "./components/Context/CurrentUserProvider.jsx";
 import { BookingConfirmationProvider } from "./components/Context/BookingConfirmationProvider.jsx";
+import UserBookings from "./components/YourBookings/UserBookings.jsx";
 
 const App = () => {
   const { isLoggedIn, userType } = useContext(AuthContext);
@@ -61,7 +62,7 @@ const App = () => {
         },
         {
           path: "yourbookings",
-          element: isLoggedIn && <About />,
+          element: userType === "User" && isLoggedIn && <UserBookings />,
         },
       ],
     },

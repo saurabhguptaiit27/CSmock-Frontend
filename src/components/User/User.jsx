@@ -89,7 +89,7 @@ const User = () => {
             <Link
               to=""
               onClick={() => handleLogoutButton()}
-              class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-red-500/70 hover:bg-red-400
+              class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-red-700 hover:bg-red-400
               hover:text-black"
               role="menuitem"
             >

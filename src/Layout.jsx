@@ -4,7 +4,6 @@ import User from "./components/User/User.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import { Outlet } from "react-router-dom";
 import Divider from "./components/Divider/Divider.jsx";
-import { useState } from "react";
 import { AuthContext } from "./components/Context/AuthProvider.jsx";
 import AvailabilityUI from "./components/AvailabilityUI/AvailabilityUI.jsx";
 
