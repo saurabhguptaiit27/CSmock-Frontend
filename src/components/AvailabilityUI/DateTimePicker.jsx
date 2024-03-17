@@ -37,7 +37,6 @@ export default function DateTimePicker({
 
   const handleAvailabilitySubmitButton = async () => {
     try {
-      console.log("......on submit");
       const appointmentDateTime = values.map(
         (e) => (e = `${e.day}/${e.month.name}/${e.year} ${e.hour}:${e.minute}`)
       );
@@ -86,6 +85,16 @@ export default function DateTimePicker({
           format="DD/MM/YYYY HH:mm A"
           multiple
           sort
+          mapDays={({ date }) => {
+            const currentDate = Date.now();
+            const isBeforeCurrentDate = date < currentDate;
+        
+            if (isBeforeCurrentDate) {
+              return {
+                disabled: true,
+              }
+            }
+          }}
           plugins={[
             <TimePicker position="bottom" hideSeconds />,
             <DatePanel markFocused />,
