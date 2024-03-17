@@ -45,11 +45,7 @@ const Error = () => {
         </div>
 
         <div class="relative w-full mt-12 lg:w-1/2 lg:mt-0">
-          <img
-            class="w-full max-w-lg lg:mx-auto"
-            src="../../../public/error 404.svg"
-            alt=""
-          />
+          <img class="w-full max-w-lg lg:mx-auto" src="/error 404.svg" alt="" />
         </div>
       </div>
     </section>
