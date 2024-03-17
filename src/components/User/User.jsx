@@ -27,8 +27,6 @@ const User = () => {
         }
       );
 
-      console.log("response is-------:", response);
-
       if (!response.ok) {
         throw new Error("Failed to logout---///");
       }
@@ -69,6 +67,7 @@ const User = () => {
           </a>
 
           <Link
+            onClick={() => setToggleProfile(false)}
             to="/yourbookings"
             class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-black hover:bg-gray-50 hover:text-gray-700"
             role="menuitem"
