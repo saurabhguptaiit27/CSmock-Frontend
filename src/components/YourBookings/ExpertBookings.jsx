@@ -1,27 +1,30 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthProvider.jsx";
 
-const UserBookings = ({ setFeedbackUI, setCurrentBookingId }) => {
-  const [currentUserB, setCurrentUserB] = useState([]);
+const ExpertBookings = () => {
+  const [currentExpertB, setCurrentExpertB] = useState([]);
   const { userType, isLoggedIn } = useContext(AuthContext);
   const fetchData = async () => {
     try {
       const response = await fetch(
-        userType === "User" &&
+        userType === "Expert" &&
           isLoggedIn &&
-          "http://localhost:8000/api/v1/users/current-user",
+          "http://localhost:8000/api/v1/experts/current-expert",
         {
           method: "GET",
           credentials: "include",
         }
       );
       if (!response.ok) {
-        throw new Error("Failed to fetch current user///");
+        throw new Error("Failed to fetch current expert///");
       }
       const data = await response.json();
-      setCurrentUserB(data["data"]);
+      setCurrentExpertB(data["data"]);
     } catch (error) {
-      console.error("Error fetching current user in your bookings:----", error);
+      console.error(
+        "Error fetching current expert in your bookings:----",
+        error
+      );
     }
   };
 
@@ -96,13 +99,12 @@ const UserBookings = ({ setFeedbackUI, setCurrentBookingId }) => {
   const [bookingDetails, setBookingDetails] = useState([]);
 
   const fetchBookingDetails = async () => {
-    if (!currentUserB || !currentUserB.bookingHistory) return;
+    if (!currentExpertB || !currentExpertB.bookingHistory) return;
 
-    const promises = currentUserB.bookingHistory.map(async (bookingId) => {
+    const promises = currentExpertB.bookingHistory.map(async (bookingId) => {
       const booking = await fetchBookingById(bookingId);
       const user = await fetchUserById(booking.user);
       const expert = await fetchExpertById(booking.expert);
-      // const report = await fetchUserById(booking.report);
 
       return {
         booking,
@@ -117,12 +119,12 @@ const UserBookings = ({ setFeedbackUI, setCurrentBookingId }) => {
 
   useEffect(() => {
     fetchBookingDetails();
-  }, [currentUserB]);
+  }, [currentExpertB]);
 
   ////////////////////////////////////////////
-  const handleCancelClick = async (bookingId) => {
+  const handleConcludeClick = async (bookingId) => {
     const response = await fetch(
-      `http://localhost:8000/api/v1/users-experts/cancelbooking?string=${encodeURIComponent(
+      `http://localhost:8000/api/v1/users-experts/concludebooking?string=${encodeURIComponent(
         bookingId
       )}`,
       {
@@ -133,17 +135,12 @@ const UserBookings = ({ setFeedbackUI, setCurrentBookingId }) => {
       }
     );
     if (!response.ok) {
-      throw new Error("Failed to cancel the booking");
+      throw new Error("Failed to conclude the booking");
     }
     fetchBookingDetails();
   };
-  ///////////////////
 
-  const handleGiveFeedbackButton = (bookingId) => {
-    setFeedbackUI(true);
-    setCurrentBookingId(bookingId);
-  };
-  /////////////////////////////////////
+  ////////////////////////////////////////////
   return (
     <section className="h-auto w-auto min-h-screen bg-gray-950/90 py-16">
       <div class=" md:px-60 mx-10 py-32 mt-16 bg-gray-900/50 rounded-lg shadow-md items-center">
@@ -164,21 +161,17 @@ const UserBookings = ({ setFeedbackUI, setCurrentBookingId }) => {
           >
             <div className="flex items-center justify-between ">
               <p className="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-300 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-800">
-                {bookingData.booking.status === "pending"
-                  ? "PENDING"
-                  : bookingData.booking.status === "completed"
-                  ? "COMPLETED"
-                  : "CANCELLED"}
+                {bookingData.booking.status}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 ">
               <div className="mt-2 xl:ml-16">
                 <p className="text-xl font-bold text-green-400  hover:text-gray-100">
-                  You have an Appointment with our expert{" "}
+                  You have an Appointment with our user{" "}
                   <span className="text-yellow-400">
                     {" "}
-                    {bookingData.expert.fullname}{" "}
+                    {bookingData.user.fullname}{" "}
                   </span>{" "}
                   on{" "}
                   <span className="text-yellow-400">
@@ -186,31 +179,31 @@ const UserBookings = ({ setFeedbackUI, setCurrentBookingId }) => {
                     {bookingData.booking.appointmentDateTime}{" "}
                   </span>
                 </p>
-                <p className="mt-2 text-gray-200 font-bold pb-2">
-                  Expert: {bookingData.expert.fullname} <br />
-                  Paid: {bookingData.expert.fees} <br />
-                  Booked At: {bookingData.booking.bookedAt} <br />
-                  Note To Expert: {bookingData.booking.noteToExpert} <br />
+                <p className="mt-2 text-gray-200 ">
+                  User : {bookingData.user.fullname} <br />
+                  User Email : {bookingData.user.email} <br />
+                  Booked At : {bookingData.booking.bookedAt} <br />
+                  Note for you : {bookingData.booking.noteToExpert} <br />
                 </p>
                 <button
                   onClick={() =>
                     bookingData.booking.status === "pending"
-                      ? handleCancelClick(bookingData.booking._id)
+                      ? handleConcludeClick(bookingData.booking._id)
                       : bookingData.booking.status === "completed" &&
-                        handleGiveFeedbackButton(bookingData.booking._id)
+                        handleGenerateReportButton(bookingData.booking._id)
                   }
                   className={
                     bookingData.booking.status === "pending"
                       ? "text-black bg-yellow-400 rounded-xl px-8 py-1 mt-3"
                       : bookingData.booking.status === "completed"
                       ? "text-black bg-green-500 rounded-xl px-8 py-1 mt-3"
-                      : "text-black bg-red-600/50 rounded-xl px-8 py-1 mt-3 cursor-not-allowed"
+                      : "text-black bg-red-500 rounded-xl px-8 py-1 mt-3 cursor-not-allowed"
                   }
                 >
                   {bookingData.booking.status === "pending"
-                    ? "Cancel"
+                    ? "Conclude"
                     : bookingData.booking.status === "completed"
-                    ? "Give Feedback"
+                    ? "Generate Report"
                     : "Cancelled"}
                 </button>
               </div>
@@ -222,7 +215,7 @@ const UserBookings = ({ setFeedbackUI, setCurrentBookingId }) => {
                       ? "/Cancelled.png"
                       : bookingData.booking.status === "completed"
                       ? "/Completed.png"
-                      : bookingData.expert.avatar
+                      : bookingData.user.avatar
                   }
                   alt=""
                 />
@@ -235,4 +228,4 @@ const UserBookings = ({ setFeedbackUI, setCurrentBookingId }) => {
   );
 };
 
-export default UserBookings;
+export default ExpertBookings;
