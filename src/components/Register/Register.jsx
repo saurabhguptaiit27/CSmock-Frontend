@@ -5,7 +5,7 @@ import { SlBadge } from "react-icons/sl";
 import { PiRocketLight } from "react-icons/pi";
 import { IoBodyOutline } from "react-icons/io5";
 import { GrDocumentUser } from "react-icons/gr";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { SelectedButtonContext } from "../Context/SelectedButtonProvider.jsx";
@@ -16,6 +16,8 @@ const Register = () => {
   const { selectedButton, setSelectedButton, handleButtonClick } = useContext(
     SelectedButtonContext
   );
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const pathnameParts = location.pathname.split("/");
@@ -50,6 +52,7 @@ const Register = () => {
   };
   const handleFileChange = (event) => {
     const file = event.target.files[0];
+    console.log("file is---->",event.target.files)
     setFormData({
       ...formData,
       avatar: file,
@@ -67,16 +70,67 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // Send formData to backend or perform form submission logic
-    console.log(formData);
+    console.log("formdata at user register is ---->", formData);
+
+    try {
+
+      const formDataToSend = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach((val) => {
+            formDataToSend.append(key, val);
+          });
+        } else {
+          formDataToSend.append(key, value);
+        }
+      });
+
+
+      const response = await fetch(
+        "http://localhost:8000/api/v1/users/register",
+        {
+          method: "POST",
+          body: formDataToSend,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to Register the User");
+      }
+
+      //the server returns a JSON object with a token upon successful login
+      const data = await response.json();
+
+      // Navigate to the Login route
+      navigate("/Login/User");
+
+      console.log("Registration successful, registered user is ----->:", data);
+      // Clear form after successful register
+      setFormData({
+        username: "",
+        fullname: "",
+        currentPosition: "",
+        email: "",
+        password: "",
+        phone: "",
+        gender: "",
+        proficiency: "",
+        expectedRole: [],
+        experience: "",
+        avatar: null, // Add avatar field to store the uploaded file
+      });
+    } catch (error) {
+      console.error("Register  error : ", error.message);
+    }
   };
 
   return (
     <section className="bg-gray-950">
-      <div className="container flex items-center justify-center min-h-screen px-6 mx-auto py-20">
-        <form onSubmit={handleSubmit} className="w-full max-w-md">
+      <div className="container grid grid-cols-1 md:grid-cols-2 items-center justify-center min-h-screen px-6 mx-auto py-20">
+        <div className="flex flex-col md:-mt-40">
           <div className="flex justify-center mx-auto">
             <img
               className="w-auto h-7 sm:h-8 rounded-3xl size-10"
@@ -86,13 +140,13 @@ const Register = () => {
           </div>
 
           <h1 className="text-center text-2xl font-bold text-green-600 sm:text-3xl">
-          Get started today
-        </h1>
+            Get started today
+          </h1>
 
-        <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
-          sunt dolores deleniti inventore quaerat mollitia?
-        </p>
+          <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
+            sunt dolores deleniti inventore quaerat mollitia?
+          </p>
 
           <div className="flex items-center justify-center pt-10">
             <div className="flex items-center p-1 border bg-gray-200 bg-opacity-95 rounded-2xl border-yellow-600 gap-3">
@@ -120,6 +174,14 @@ const Register = () => {
               </Link>
             </div>
           </div>
+
+          </div>
+
+          <form onSubmit={handleSubmit} className="w-full max-w-md">
+            
+          <p className="mx-auto mt-4 max-w-md text-center text-gray-200">
+          All fields are mandatory *
+          </p>
 
           <div className="relative flex items-center mt-6">
             <span style={{ color: "gray" }} className=" absolute py-2 px-3">
@@ -155,7 +217,7 @@ const Register = () => {
 
           <div className="relative flex items-center mt-4">
             <span style={{ color: "gray" }} className=" absolute py-2 px-3">
-            <RiProfileLine />
+              <RiProfileLine />
             </span>
 
             <input
@@ -178,7 +240,6 @@ const Register = () => {
               type="file"
               className="block w-2/3 gap-5  text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               name="avatar"
-              value={formData.avatar}
               onChange={handleFileChange}
               required
             />
@@ -251,12 +312,11 @@ const Register = () => {
               required
             >
               <option value="">Select Your Gender</option>
-              <option value="female">Female</option>
-              <option value="male">Male</option>
-              <option value="others">Others</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Others">Others</option>
             </select>
           </div>
-
 
           <div className="relative flex items-center mt-4">
             <span style={{ color: "gray" }} className=" absolute py-2 px-3">
@@ -273,9 +333,6 @@ const Register = () => {
               required
             />
           </div>
-
-        
-
 
           <div className="relative flex items-center mt-4">
             <span style={{ color: "gray" }} className=" absolute py-2 px-3">
@@ -312,16 +369,17 @@ const Register = () => {
               <option value="">
                 Select Your Proficiency For The Expected Role
               </option>
-              <option value="beginner">Beginner</option>
-              <option value="intermediate">Intermediate</option>
-              <option value="expert">Expert</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Expert">Expert</option>
             </select>
           </div>
 
-
           <div className="mt-6">
-            <button type="submit"
-            className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+            <button
+              type="submit"
+              className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+            >
               Sign Up
             </button>
 

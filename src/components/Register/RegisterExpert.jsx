@@ -18,7 +18,6 @@ const RegisterExpert = () => {
     SelectedButtonContext
   );
 
-
   useEffect(() => {
     const pathnameParts = location.pathname.split("/");
     const lastPart = pathnameParts[pathnameParts.length - 1];
@@ -40,7 +39,7 @@ const RegisterExpert = () => {
     expertise: [],
     previousCompanies: [],
     experience: "",
-    fees:"",
+    fees: "",
     avatar: null, // Add avatar field to store the uploaded file
   });
 
@@ -79,18 +78,69 @@ const RegisterExpert = () => {
       [name]: newValue,
     });
   };
-
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // Send formData to backend or perform form submission logic
-    console.log(formData);
+    console.log("formdata at expert register is ---->", formData);
+
+    try {
+      const formDataToSend = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach((val) => {
+            formDataToSend.append(key, val);
+          });
+        } else {
+          formDataToSend.append(key, value);
+        }
+      });
+
+      const response = await fetch(
+        "http://localhost:8000/api/v1/experts/register",
+        {
+          method: "POST",
+          body: formDataToSend,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to Register the Expert");
+      }
+
+      //the server returns a JSON object with a token upon successful login
+      const data = await response.json();
+
+      // Navigate to the Login route
+      // navigate("/Login/Expert");
+
+      console.log(
+        "Registration successful, registered expert is ----->:",
+        data
+      );
+      // Clear form after successful register
+      setFormData({
+        username: "",
+        fullname: "",
+        currentPosition: "",
+        email: "",
+        password: "",
+        phone: "",
+        gender: "",
+        expertise: [],
+        previousCompanies: [],
+        experience: "",
+        fees: "",
+        avatar: null, // Add avatar field to store the uploaded file
+      });
+    } catch (error) {
+      console.error("Expert Registeration error : ", error.message);
+    }
   };
 
   return (
     <section className="bg-gray-950">
-      <div className="container flex items-center justify-center min-h-screen px-6 mx-auto py-20">
-        <form onSubmit={handleSubmit} className="w-full max-w-md">
+      <div className="container grid grid-cols-1 md:grid-cols-2 items-center justify-center min-h-screen px-6 mx-auto py-20">
+        <div className="flex flex-col md:-mt-52">
           <div className="flex justify-center mx-auto">
             <img
               className="w-auto h-7 sm:h-8 rounded-3xl size-10"
@@ -100,13 +150,13 @@ const RegisterExpert = () => {
           </div>
 
           <h1 className="text-center text-2xl font-bold text-green-600 sm:text-3xl">
-          Get started today
-        </h1>
+            Get started today
+          </h1>
 
-        <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
-          sunt dolores deleniti inventore quaerat mollitia?
-        </p>
+          <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
+            sunt dolores deleniti inventore quaerat mollitia?
+          </p>
 
           <div className="flex items-center justify-center pt-10">
             <div className="flex items-center p-1 border bg-gray-200 bg-opacity-95 rounded-2xl border-yellow-600 gap-3">
@@ -134,6 +184,12 @@ const RegisterExpert = () => {
               </Link>
             </div>
           </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="w-full max-w-md">
+          <p className="mx-auto mt-4 max-w-md text-center text-gray-200">
+            All fields are mandatory *
+          </p>
 
           <div className="relative flex items-center mt-6">
             <span style={{ color: "gray" }} className=" absolute py-2 px-3">
@@ -169,7 +225,7 @@ const RegisterExpert = () => {
 
           <div className="relative flex items-center mt-4">
             <span style={{ color: "gray" }} className=" absolute py-2 px-3">
-            <RiProfileLine />
+              <RiProfileLine />
             </span>
 
             <input
@@ -192,7 +248,6 @@ const RegisterExpert = () => {
               type="file"
               className="block w-2/3 gap-5  text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               name="avatar"
-              value={formData.avatar}
               onChange={handleFileChange}
               required
             />
@@ -250,7 +305,6 @@ const RegisterExpert = () => {
             />
           </div>
 
-
           <div className="relative flex items-center mt-4">
             <span style={{ color: "gray" }} className=" absolute py-2 px-3">
               <IoBodyOutline />
@@ -266,9 +320,9 @@ const RegisterExpert = () => {
               required
             >
               <option value="">Select Your Gender</option>
-              <option value="female">Female</option>
-              <option value="male">Male</option>
-              <option value="others">Others</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Others">Others</option>
             </select>
           </div>
 
@@ -340,15 +394,15 @@ const RegisterExpert = () => {
             />
           </div>
 
-
           <div className="mt-6">
-            <button 
-            type="submit"
-            className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+            <button
+              type="submit"
+              className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+            >
               Sign Up
             </button>
 
-            <div className="mt-6 text-center ">
+            <div className="mt-5 text-center ">
               <Link
                 to="/Login/User"
                 className="text-sm text-gray-200 hover:underline hover:text-yellow-300 "
