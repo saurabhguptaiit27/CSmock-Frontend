@@ -20,9 +20,10 @@ import { AuthContext } from "./components/Context/AuthProvider.jsx";
 import { SelectedButtonProvider } from "./components/Context/SelectedButtonProvider.jsx";
 import { CurrentUserProvider } from "./components/Context/CurrentUserProvider.jsx";
 import { BookingConfirmationProvider } from "./components/Context/BookingConfirmationProvider.jsx";
-import UserBookings from "./components/YourBookings/UserBookings.jsx";
+import UserBookingsUI from "./components/YourBookings/UserBookingsUI.jsx";
 import ExpertBookings from "./components/YourBookings/ExpertBookings.jsx";
 import Error from "./components/Error/Error.jsx";
+import ContactUs from "./components/ContactUs/ContactUs.jsx";
 
 const App = () => {
   const { isLoggedIn, userType } = useContext(AuthContext);
@@ -63,7 +64,7 @@ const App = () => {
               <Error />
             )
           ) : (
-            <Error />
+            <Login />
           ),
         },
         {
@@ -82,7 +83,7 @@ const App = () => {
           path: "yourbookings",
           element: isLoggedIn ? (
             userType === "User" ? (
-              <UserBookings />
+              <UserBookingsUI />
             ) : (
               <ExpertBookings />
             )
@@ -93,6 +94,10 @@ const App = () => {
         {
           path: "*",
           element: <Error />,
+        },
+        {
+          path: "/contactus",
+          element: <ContactUs />,
         },
       ],
     },

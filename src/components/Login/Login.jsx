@@ -11,7 +11,7 @@ const Login = () => {
   const { selectedButton, setSelectedButton, handleButtonClick } = useContext(
     SelectedButtonContext
   );
-  const { isLoggedIn, setIsLoggedIn, userType, setUserType } =
+  const { isLoggedIn, setIsLoggedIn, setUserType } =
     useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -24,8 +24,6 @@ const Login = () => {
         ? setSelectedButton("Expert")
         : setSelectedButton("User");
     }
-    console.log("selectedbutton:", selectedButton);
-    console.log("userType is---", userType);
   }, [location]);
 
   const handleSubmit = async (event) => {
@@ -107,8 +105,8 @@ const Login = () => {
   return (
     <div className="mx-auto max-screen-xl px-4 pt-20 pb-12 mt-5 sm:px-6 lg:px-8 bg-gray-950">
       <div className="mx-auto max-w-lg">
-        <h1 className="text-center text-2xl font-bold text-green-600 sm:text-3xl">
-          Get started today
+        <h1 className="text-center text-2xl font-bold text-yellow-600 sm:text-3xl">
+          Welcome Back
         </h1>
 
         <p className="mx-auto mt-4 max-w-md text-center text-gray-500">

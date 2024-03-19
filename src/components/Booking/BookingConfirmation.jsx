@@ -47,7 +47,6 @@ const BookingConfirmation = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
 
     try {
       const response = await fetch(
@@ -66,7 +65,6 @@ const BookingConfirmation = () => {
         throw new Error("Failed to login");
       }
       const data = await response.json();
-      console.log("Booking successful:", data);
       localStorage.removeItem("currentExpertData"); // Remove item1 from localStorage
       localStorage.removeItem("currentUser");
       navigate("/yourbookings");
@@ -87,7 +85,7 @@ const BookingConfirmation = () => {
                 {currentExpertDataS.fullname}
               </span>
             </h1>
-            <p class="mb-6 text-white">
+            <p class="mb-6 text-gray-200 font-bold">
               Fullname : {currentExpertDataS.fullname} <br />
               Email : {currentExpertDataS.email}
               <br />
@@ -154,9 +152,10 @@ const BookingConfirmation = () => {
                 </button>
               </div>
             </form>
+            
           </div>
-          <div className="flex justify-center  align-middle">
-            <img src={currentExpertDataS.avatar} alt="" className="size-64" />
+          <div className="flex justify-center  align-middle ">
+            <img src={currentExpertDataS.avatar} alt="" className="size-64 rounded-xl" />
           </div>
         </div>
       </div>

@@ -33,7 +33,7 @@ const Header = () => {
                   className={({ isActive }) =>
                     `${
                       isActive ? "text-yellow-300" : "text-gray-300"
-                    } transition text-base hover:text-green-100/75`
+                    } transition text-base hover:text-green-300/75`
                   }
                   to=""
                 >
@@ -43,20 +43,10 @@ const Header = () => {
 
               <li>
                 <NavLink
-                  onClick={() =>
-                    console.log(
-                      "islogged in-",
-                      isLoggedIn,
-                      "------usertype is-",
-                      userType,
-                      "----selectedButton-",
-                      selectedButton
-                    )
-                  }
                   className={({ isActive }) =>
                     `${
                       isActive ? "text-yellow-300" : "text-gray-300"
-                    } transition text-base hover:text-green-100/75`
+                    } transition text-base hover:text-green-300/75`
                   }
                   to="Ourexperts"
                 >
@@ -69,7 +59,7 @@ const Header = () => {
                   className={({ isActive }) =>
                     `${
                       isActive ? "text-yellow-300" : "text-gray-300"
-                    } transition text-base hover:text-green-100/75`
+                    } transition text-base hover:text-green-300/75`
                   }
                   to="Interviewexperiences"
                 >
@@ -82,7 +72,7 @@ const Header = () => {
                   className={({ isActive }) =>
                     `${
                       isActive ? "text-yellow-300" : "text-gray-300"
-                    } transition text-base hover:text-green-100/75`
+                    } transition text-base hover:text-green-300/75`
                   }
                   to="About"
                 >
@@ -90,18 +80,18 @@ const Header = () => {
                 </NavLink>
               </li>
 
-              <li>
+              {/* <li>
                 <NavLink
                   className={({ isActive }) =>
                     `${
                       isActive ? "text-yellow-300" : "text-gray-300"
-                    } transition text-base hover:text-green-100/75`
+                    } transition text-base hover:text-green-300/75`
                   }
                   to="Faqs"
                 >
                   FAQs
                 </NavLink>
-              </li>
+              </li> */}
             </ul>
           </nav>
 
