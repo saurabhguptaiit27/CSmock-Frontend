@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -10,50 +11,50 @@ const Footer = () => {
           </a>
 
           <div class="flex flex-wrap justify-center mt-6 -mx-4">
-            <a
-              href="#"
+            <Link
+              to=""
               class="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500  "
               aria-label="Reddit"
             >
               {" "}
               Home{" "}
-            </a>
+            </Link>
 
-            <a
-              href="#"
+            <Link
+              to="About"
               class="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500 "
               aria-label="Reddit"
             >
               {" "}
               About{" "}
-            </a>
+            </Link>
 
-            <a
-              href="#"
+            <Link
+              to="Faqs"
               class="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500 "
               aria-label="Reddit"
             >
               {" "}
-              Teams{" "}
-            </a>
+              FAQs{" "}
+            </Link>
 
-            <a
-              href="#"
+            <Link
+              to="/privacy"
               class="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500 "
               aria-label="Reddit"
             >
               {" "}
               Privacy{" "}
-            </a>
+            </Link>
 
-            <a
-              href="#"
+            <Link
+              to="/contactus"
               class="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500 "
               aria-label="Reddit"
             >
               {" "}
-              Cookies{" "}
-            </a>
+              Contact Us{" "}
+            </Link>
           </div>
         </div>
 
