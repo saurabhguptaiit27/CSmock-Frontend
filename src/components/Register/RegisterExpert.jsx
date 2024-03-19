@@ -2,47 +2,45 @@ import React from "react";
 import { FiUser, FiUpload, FiLock, FiBriefcase, FiPhone } from "react-icons/fi";
 import { TfiEmail } from "react-icons/tfi";
 import { SlBadge } from "react-icons/sl";
-import { CgOrganisation } from "react-icons/cg";
 import { IoBodyOutline } from "react-icons/io5";
 import { GrDocumentUser } from "react-icons/gr";
+import { CgOrganisation } from "react-icons/cg";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { SelectedButtonContext } from "../Context/SelectedButtonProvider.jsx";
-import { AuthContext } from "../Context/AuthProvider.jsx";
+import { RiProfileLine } from "react-icons/ri";
 
 const RegisterExpert = () => {
   const location = useLocation();
   const { selectedButton, setSelectedButton, handleButtonClick } = useContext(
     SelectedButtonContext
   );
-  const { isLoggedIn, setIsLoggedIn, userType, setUserType } =
-    useContext(AuthContext);
+
 
   useEffect(() => {
     const pathnameParts = location.pathname.split("/");
     const lastPart = pathnameParts[pathnameParts.length - 1];
     {
-      lastPart === "Expert"
-        ? setSelectedButton("Expert")
-        : setSelectedButton("User");
+      lastPart === "User"
+        ? setSelectedButton("User")
+        : setSelectedButton("Expert");
     }
-
-    console.log("selectedbutton from register expert page:", selectedButton);
-    console.log("userType from register expert page:", userType);
   }, [location]);
 
   const [formData, setFormData] = useState({
     username: "",
     fullname: "",
+    currentPosition: "",
     email: "",
     password: "",
-    gender: "",
     phone: "",
-    previousCompanies: [],
+    gender: "",
     expertise: [],
+    previousCompanies: [],
     experience: "",
+    fees:"",
     avatar: null, // Add avatar field to store the uploaded file
   });
 
@@ -63,7 +61,6 @@ const RegisterExpert = () => {
   const handlePreviousCompaniesChange = (event) => {
     const { name, value } = event.target;
 
-    // For expectedRole, split the input value by commas and store as an array
     const newValue = name === "previousCompanies" ? value.split(",") : value;
 
     setFormData({
@@ -75,7 +72,6 @@ const RegisterExpert = () => {
   const handleExpertiseChange = (event) => {
     const { name, value } = event.target;
 
-    // For expectedRole, split the input value by commas and store as an array
     const newValue = name === "expertise" ? value.split(",") : value;
 
     setFormData({
@@ -83,6 +79,7 @@ const RegisterExpert = () => {
       [name]: newValue,
     });
   };
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -101,6 +98,15 @@ const RegisterExpert = () => {
               alt=""
             />
           </div>
+
+          <h1 className="text-center text-2xl font-bold text-green-600 sm:text-3xl">
+          Get started today
+        </h1>
+
+        <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
+          sunt dolores deleniti inventore quaerat mollitia?
+        </p>
 
           <div className="flex items-center justify-center pt-10">
             <div className="flex items-center p-1 border bg-gray-200 bg-opacity-95 rounded-2xl border-yellow-600 gap-3">
@@ -136,7 +142,7 @@ const RegisterExpert = () => {
 
             <input
               type="text"
-              className="block w-full py-1 text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full py-1 text-black bg-white border rounded-lg px-11  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Username"
               name="username"
               value={formData.username}
@@ -152,10 +158,26 @@ const RegisterExpert = () => {
 
             <input
               type="text"
-              className="block w-full py-1 text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full py-1 text-black bg-white border rounded-lg px-11  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Fullname"
               name="fullname"
               value={formData.fullname}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          <div className="relative flex items-center mt-4">
+            <span style={{ color: "gray" }} className=" absolute py-2 px-3">
+            <RiProfileLine />
+            </span>
+
+            <input
+              type="text"
+              className="block w-full py-1 text-black bg-white border rounded-lg px-11  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              placeholder="Current Job Description"
+              name="currentPosition"
+              value={formData.currentPosition}
               onChange={handleInputChange}
               required
             />
@@ -170,7 +192,7 @@ const RegisterExpert = () => {
               type="file"
               className="block w-2/3 gap-5  text-gray-400 bg-white border rounded-lg px-11  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               name="avatar"
-              //   value={formData.avatar}
+              value={formData.avatar}
               onChange={handleFileChange}
               required
             />
@@ -187,7 +209,7 @@ const RegisterExpert = () => {
 
             <input
               type="email"
-              className="block w-full py-1 text-gray-400 bg-white border rounded-lg px-11 focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full py-1 text-black bg-white border rounded-lg px-11 focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Email address"
               name="email"
               value={formData.email}
@@ -203,7 +225,7 @@ const RegisterExpert = () => {
 
             <input
               type="password"
-              className="block w-full px-10 py-1 text-gray-400 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full px-10 py-1 text-black bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Password"
               name="password"
               value={formData.password}
@@ -219,13 +241,35 @@ const RegisterExpert = () => {
 
             <input
               type="text"
-              className="block w-full px-10 py-1 text-gray-400 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full px-10 py-1 text-black bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Phone Number"
               name="phone"
               value={formData.phone}
               onChange={handleInputChange}
               required
             />
+          </div>
+
+
+          <div className="relative flex items-center mt-4">
+            <span style={{ color: "gray" }} className=" absolute py-2 px-3">
+              <IoBodyOutline />
+            </span>
+
+            <select
+              id="gender"
+              className="block w-full px-10 py-1 text-gray-400 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              placeholder="Gender"
+              name="gender"
+              value={formData.gender}
+              onChange={handleInputChange}
+              required
+            >
+              <option value="">Select Your Gender</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="others">Others</option>
+            </select>
           </div>
 
           <div className="relative flex items-center mt-4">
@@ -235,7 +279,7 @@ const RegisterExpert = () => {
 
             <input
               type="number"
-              className="block w-full px-10 py-1 text-gray-400 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full px-10 py-1 text-black bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Total Experience (in years)"
               name="experience"
               value={formData.experience}
@@ -282,27 +326,6 @@ const RegisterExpert = () => {
 
           <div className="relative flex items-center mt-4">
             <span style={{ color: "gray" }} className=" absolute py-2 px-3">
-              <IoBodyOutline />
-            </span>
-
-            <select
-              id="gender"
-              className="block w-full px-10 py-1 text-gray-400 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              placeholder="Gender"
-              name="gender"
-              value={formData.gender}
-              onChange={handleInputChange}
-              required
-            >
-              <option value="">Select Your Gender</option>
-              <option value="female">Female</option>
-              <option value="male">Male</option>
-              <option value="others">Others</option>
-            </select>
-          </div>
-
-          <div className="relative flex items-center mt-4">
-            <span style={{ color: "gray" }} className=" absolute py-2 px-3">
               <MdOutlineCurrencyRupee />
             </span>
 
@@ -317,8 +340,11 @@ const RegisterExpert = () => {
             />
           </div>
 
+
           <div className="mt-6">
-            <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+            <button 
+            type="submit"
+            className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
               Sign Up
             </button>
 
