@@ -4,7 +4,7 @@ export default function Home5() {
   return (
     <>
       {/* Testimonials Section: Simple */}
-      <div className="bg-gradient-to-b from-gray-950 to-gray-950 via-gray-800 ">
+      <div className="bg-gradient-to-b from-gray-900/90 to-gray-950/90 via-gray-950 ">
         <div className="container mx-auto px-4 py-16 lg:px-8 lg:py-32 xl:max-w-7xl">
           <div className="relative">
             <div className="absolute right-0 top-0 -mt-5 font-serif text-9xl text-green-400">

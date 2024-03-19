@@ -2,28 +2,28 @@ import React from "react";
 
 const Home4 = () => {
   return (
-    <section class="bg-gray-950">
+    <section class="bg-gray-950/95">
       <div class="relative flex">
         <div class="min-h-screen lg:w-1/3"></div>
-        <div class="hidden w-3/4 min-h-screen bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 h-screen  lg:block"></div>
+        <div class="hidden w-3/4 min-h-screen bg-gradient-to-r from-gray-900 via-gray-800/90 to-gray-700/90 h-screen  lg:block"></div>
 
         <div class="container flex flex-col justify-center w-full min-h-screen px-6 py-10 mx-auto lg:absolute lg:inset-x-0">
           <h1 class="text-2xl font-semibold text-gray-300 capitalize lg:text-3xl dark:text-white">
             What our <span class="text-yellow-500"> Users </span> are saying ...
           </h1>
-          <div className="absolute right-10 top-10 font-serif text-9xl text-green-500">
+          <div className="flex font-serif text-9xl text-green-500">
             &#10077;
           </div>
 
-          <div class="mt-10 lg:mt-20 lg:flex lg:items-center">
+          <div class="-mt-10 mb-5 lg:mt-0 lg:flex lg:items-center">
             <img
               class="object-cover object-center w-full lg:w-[32rem] rounded-lg h-96"
               src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
               alt=""
             />
 
-            <div class="mt-8 lg:px-10 lg:mt-0">
-              <h1 class="text-2xl font-semibold text-gray-300 lg:w-72">
+            <div class=" lg:px-10 lg:mt-0">
+              <h1 class="text-2xl font-semibold text-yellow-500 lg:w-auto">
                 Help us improve our productivity
               </h1>
 

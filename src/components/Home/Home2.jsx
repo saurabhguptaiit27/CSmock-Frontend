@@ -2,13 +2,13 @@ import React from "react";
 
 const Home2 = () => {
   return (
-    <section class="bg-gradient-to-r from-gray-950 via-gray-900 to-gray-700 w-full h-full">
+    <section class="bg-gradient-to-r from-gray-950/90 via-gray-950/80 to-gray-700/50 w-full h-full">
       <div class="container px-6 py-5 mx-auto">
         <h1 class="text-2xl font-semibold text-green-400 capitalize lg:text-3xl ">
           Why To Choose Us <span className="text-yellow-400">?</span>
         </h1>
 
-        <div class="mt-2 -mb-10">
+        <div class="mt-2 -mb-5">
           <span class="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
           <span class="inline-block w-10 h-1 ml-1 bg-blue-500 rounded-full"></span>
           <span class="inline-block w-8 h-1 ml-1 bg-blue-500 rounded-full"></span>
@@ -145,7 +145,7 @@ const Home2 = () => {
 
           <div class="hidden lg:flex lg:w-1/2 lg:justify-center pl-14 pb-14 ">
             <img
-              class="w-[28rem] h-[28rem] flex-shrink-0 object-cover xl:w-[34rem] xl:h-[34rem] rounded-full shadow-2xl shadow-gray-500 animate__animated animate__swing animate__infinite animate__slower"
+              class="w-[24rem] h-[24rem] flex-shrink-0 object-cover xl:w-[28rem] xl:h-[28rem] rounded-full shadow-2xl shadow-gray-200 animate__animated animate__swing animate__infinite animate__slower"
               src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
               alt=""
             />

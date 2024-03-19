@@ -2,7 +2,7 @@ import React from "react";
 
 const Home3 = () => {
   return (
-    <section className="bg-gradient-to-b from-gray-950 to-gray-950 via-gray-800  text-white">
+    <section className="bg-gradient-to-b from-gray-950/90 to-gray-950/80 via-gray-900  text-white">
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
         <div className="mx-auto max-w-lg text-center">
           <h2 className="text-3xl font-bold sm:text-4xl text-green-400 ">
