@@ -62,8 +62,8 @@ const Discussions = () => {
         throw new Error("Failed to create post");
       }
       const responseData = await response.json();
-      setData(responseData); //this is done to make fetchData call    when data comes back..as to show post without refresh
-      console.log("post created successfully---->", data);
+      setData(responseData["data"]); //this is done to make fetchData call    when data comes back..as to show post without refresh
+      console.log("post created successfully---->", responseData);
 
       // Clear form after successful post
       setFormData({
@@ -100,7 +100,6 @@ const Discussions = () => {
       console.error("Error fetching all posts:", error);
     }
   };
-
   // Function to fetch creator details based on createrId and createrType
   const fetchCreator = async (createrId, createrType) => {
     try {
@@ -130,6 +129,34 @@ const Discussions = () => {
     }
   };
 
+  const handleDeleteButton = async (postId, createrId, createrType) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8000/api/v1/creaters/deletepost?postId=${encodeURIComponent(
+          postId
+        )}&createrId=${encodeURIComponent(
+          createrId
+        )}&createrType=${encodeURIComponent(createrType)}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to delete post");
+      }
+      const responseData = await response.json();
+      setData(responseData["data"]);
+      console.log("post deleted.....->");
+    } catch (error) {
+      console.error("Failed to Delete post", data);
+    }
+  };
+
+
+  
   return (
     <section class="bg-gray-900/90 mt-16 min-h-screen">
       <div class="flex flex-col mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
@@ -142,37 +169,39 @@ const Discussions = () => {
           sunt dolores deleniti inventore quaerat mollitia?
         </p>
 
-        <div className=" w-full flex justify-center">
-          <form
-            onSubmit={handleSubmit}
-            class="overflow-hidden md:w-1/2 items-center"
-          >
-            <textarea
-              id="createPost"
-              class="w-full bg-gray-900 text-white mt-4 rounded-lg px-4 py-2 align-middle sm:text-sm"
-              rows="4"
-              wrap="soft"
-              maxLength={256}
-              required
-              value={formData.content}
-              placeholder="Create Your Post Here..."
-              onChange={(event) => handleTextSelection(event.target.value)}
-            ></textarea>
+        {isLoggedIn && (
+          <div className=" w-full flex justify-center">
+            <form
+              onSubmit={handleSubmit}
+              class="overflow-hidden md:w-1/2 items-center"
+            >
+              <textarea
+                id="createPost"
+                class="w-full bg-gray-900 text-white mt-4 rounded-lg px-4 py-2 align-middle sm:text-sm"
+                rows="4"
+                wrap="soft"
+                maxLength={256}
+                required
+                value={formData.content}
+                placeholder="Create Your Post Here..."
+                onChange={(event) => handleTextSelection(event.target.value)}
+              ></textarea>
 
-            <div class="flex items-center justify-end gap-2 py-3">
-              <button
-                type="submit"
-                class="rounded bg-blue-700 px-3 py-1.5 text-md  font-medium text-white hover:bg-green-700"
-              >
-                Post
-              </button>
-            </div>
-          </form>
-        </div>
+              <div class="flex items-center justify-end gap-2 py-3">
+                <button
+                  type="submit"
+                  class="rounded bg-blue-700 px-3 py-1.5 text-md  font-medium text-white hover:bg-green-700"
+                >
+                  Post
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
 
-        <div class="mt-10 mb-5 grid grid-cols-1 gap-x-8 gap-y-0 sm:grid-cols-2 lg:grid-cols-3 ">
+        <div class="mt-10 mb-16 grid grid-cols-1 gap-x-4 sm:grid-cols-2 lg:grid-cols-3 ">
           {allPosts.map((post, index) => (
-            <div key={index} class="mb-8 sm:break-inside-avoid">
+            <div key={index} class="mb-4 sm:break-inside-avoid">
               <blockquote class="rounded-lg bg-yellow-300/70 hover:bg-yellow-300/95 p-6 shadow-lg hover:shadow-green-400/60 sm:p-8">
                 <div class="flex flex-row items-center gap-4">
                   <img
@@ -188,14 +217,28 @@ const Discussions = () => {
                       {post.creator.currentPosition}
                     </p>
                   </div>
-                  <div className="float-right -mt-6 flex flex-row gap-2">
-                    <button className="text-lg hover:text-red-600 ">
-                      <MdEdit />
-                    </button>
-                    <button className="text-2xl hover:text-red-600 ">
-                      <MdDeleteForever />
-                    </button>
-                  </div>
+                  {currentUser._id === post.createrId && (
+                    <div className="float-right -mt-6 flex flex-row gap-2">
+                      <button
+                        onClick={() => handleEditButton()}
+                        className="text-lg hover:text-green-600 "
+                      >
+                        <MdEdit />
+                      </button>
+                      <button
+                        onClick={() =>
+                          handleDeleteButton(
+                            post._id,
+                            post.createrId,
+                            post.createrType
+                          )
+                        }
+                        className="text-2xl hover:text-red-600 "
+                      >
+                        <MdDeleteForever />
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 <p class="mt-4 text-gray-700 text-justify">{post.content}</p>
