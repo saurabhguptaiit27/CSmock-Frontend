@@ -146,7 +146,7 @@ const Home2 = () => {
           <div class="hidden lg:flex lg:w-1/2 lg:justify-center pl-14 pb-14 ">
             <img
               class="w-[24rem] h-[24rem] flex-shrink-0 object-cover xl:w-[28rem] xl:h-[28rem] rounded-full shadow-2xl shadow-gray-200 "
-              src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              src="/youarehired.jpg"
               alt=""
             />
           </div>
