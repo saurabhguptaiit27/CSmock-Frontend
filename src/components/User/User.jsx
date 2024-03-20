@@ -2,17 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthProvider.jsx";
-import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
 import { useNavigate } from "react-router-dom";
 import { LiaPowerOffSolid } from "react-icons/lia";
 import { CiSettings } from "react-icons/ci";
 import { PiHandshake } from "react-icons/pi";
 import { HiOutlineUserCircle } from "react-icons/hi2";
+import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
 
 const User = () => {
   const { setIsLoggedIn, userType, setUserType, setToggleProfile } =
     useContext(AuthContext);
+
   const { currentUser } = useContext(CurrentUserContext);
+
   const navigate = useNavigate();
 
   const handleLogoutButton = async () => {
@@ -34,6 +36,8 @@ const User = () => {
       setIsLoggedIn(false);
       setUserType("User");
       setToggleProfile(false);
+      localStorage.removeItem("currentExpertData"); // Remove items from localStorage
+      localStorage.removeItem("currentUser");
       console.log("user logged out successfully");
       navigate("/");
     } catch (error) {

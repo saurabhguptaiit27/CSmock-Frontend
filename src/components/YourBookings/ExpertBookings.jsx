@@ -1,38 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../Context/AuthProvider.jsx";
+import React, { useEffect,useLayoutEffect, useState, useContext } from "react";
+import { CurrentUserContext } from "../Context/CurrentUserProvider";
 
 const ExpertBookings = () => {
-  const [currentExpertB, setCurrentExpertB] = useState([]);
-  const { userType, isLoggedIn } = useContext(AuthContext);
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        userType === "Expert" &&
-          isLoggedIn &&
-          "http://localhost:8000/api/v1/experts/current-expert",
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch current expert///");
-      }
-      const data = await response.json();
-      setCurrentExpertB(data["data"]);
-    } catch (error) {
-      console.error(
-        "Error fetching current expert in your bookings:----",
-        error
-      );
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
+  const { fetchCurrentUser, currentUser } = useContext(CurrentUserContext);
+  useLayoutEffect(() => {
+    fetchCurrentUser();
   }, []);
 
-  ///////////////////////////////////////
+  /////////////////////////
 
   // Fetch a single booking by ID
   const fetchBookingById = async (bookingId) => {
@@ -99,9 +74,9 @@ const ExpertBookings = () => {
   const [bookingDetails, setBookingDetails] = useState([]);
 
   const fetchBookingDetails = async () => {
-    if (!currentExpertB || !currentExpertB.bookingHistory) return;
+    if (!currentUser || !currentUser.bookingHistory) return;
 
-    const promises = currentExpertB.bookingHistory.map(async (bookingId) => {
+    const promises = currentUser.bookingHistory.map(async (bookingId) => {
       const booking = await fetchBookingById(bookingId);
       const user = await fetchUserById(booking.user);
       const expert = await fetchExpertById(booking.expert);
@@ -119,7 +94,7 @@ const ExpertBookings = () => {
 
   useEffect(() => {
     fetchBookingDetails();
-  }, [currentExpertB]);
+  }, [currentUser]);
 
   ////////////////////////////////////////////
   const handleConcludeClick = async (bookingId) => {

@@ -24,6 +24,7 @@ import UserBookingsUI from "./components/YourBookings/UserBookingsUI.jsx";
 import ExpertBookings from "./components/YourBookings/ExpertBookings.jsx";
 import Error from "./components/Error/Error.jsx";
 import ContactUs from "./components/ContactUs/ContactUs.jsx";
+import Discussions from "./components/Discussions/Discussions.jsx";
 
 const App = () => {
   const { isLoggedIn, userType } = useContext(AuthContext);
@@ -54,6 +55,10 @@ const App = () => {
         {
           path: "Register/Expert",
           element: !isLoggedIn ? <RegisterExpert /> : <Error />,
+        },
+        {
+          path: "Discussions",
+          element: isLoggedIn ? <Discussions /> : <Login />,
         },
         {
           path: "Booking",
@@ -115,15 +120,15 @@ const App = () => {
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <AuthProvider>
-      <AllExpertsProvider>
-        <SelectedButtonProvider>
-          <CurrentUserProvider>
+      <CurrentUserProvider>
+        <AllExpertsProvider>
+          <SelectedButtonProvider>
             <BookingConfirmationProvider>
               <App />
             </BookingConfirmationProvider>
-          </CurrentUserProvider>
-        </SelectedButtonProvider>
-      </AllExpertsProvider>
+          </SelectedButtonProvider>
+        </AllExpertsProvider>
+      </CurrentUserProvider>
     </AuthProvider>
   </>
 );

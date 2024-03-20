@@ -1,41 +1,42 @@
 // AuthProvider.js
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthProvider";
-
 // Create a context
 export const CurrentUserContext = createContext();
 
 // Provider component
 export const CurrentUserProvider = ({ children }) => {
+  const { isLoggedIn, userType } = useContext(AuthContext);
   const [currentUser, setCurrentUser] = useState([]);
 
-  const { userType } = useContext(AuthContext);
-  const { isLoggedIn } = useContext(AuthContext);
-
-  const fetchData = async () => {
+  const fetchCurrentUser = async () => {
     try {
       const response = await fetch(
-        userType === "User" && isLoggedIn
-          ? "http://localhost:8000/api/v1/users/current-user"
-          : "http://localhost:8000/api/v1/experts/current-expert",
+        isLoggedIn &&
+          (userType === "User"
+            ? "http://localhost:8000/api/v1/users/current-user"
+            : "http://localhost:8000/api/v1/experts/current-expert"),
         {
           method: "GET",
           credentials: "include",
         }
       );
       if (!response.ok) {
-        throw new Error("Failed to fetch current user///");
+        throw new Error("Failed to fetch current user");
       }
       const data = await response.json();
+      console.log(data["data"]);
       setCurrentUser(data["data"]);
-      console.log("currentUser in context--->", currentUser);
     } catch (error) {
-      console.error("Error fetching current user:----", error);
+      console.error(
+        "Error while fetching current user in context ---->",
+        error
+      );
     }
   };
 
   useEffect(() => {
-    fetchData();
+    fetchCurrentUser();
   }, [isLoggedIn, userType]);
 
   return (
@@ -43,6 +44,7 @@ export const CurrentUserProvider = ({ children }) => {
       value={{
         currentUser,
         setCurrentUser,
+        fetchCurrentUser,
       }}
     >
       {children}

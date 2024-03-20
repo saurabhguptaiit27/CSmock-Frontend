@@ -1,37 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../Context/AuthProvider.jsx";
+import React, { useContext, useLayoutEffect, useEffect, useState } from "react";
+import { CurrentUserContext } from "../Context/CurrentUserProvider";
 
 const UserBookings = ({ setFeedbackUI, setCurrentBookingId }) => {
-  const [currentUserB, setCurrentUserB] = useState([]);
-  const { userType, isLoggedIn } = useContext(AuthContext);
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        userType === "User" &&
-          isLoggedIn &&
-          "http://localhost:8000/api/v1/users/current-user",
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch current user///");
-      }
-      const data = await response.json();
-      setCurrentUserB(data["data"]);
-    } catch (error) {
-      console.error("Error fetching current user in your bookings:----", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
+  const { fetchCurrentUser, currentUser } = useContext(CurrentUserContext);
+  useLayoutEffect(() => {
+    fetchCurrentUser();
   }, []);
 
-  ///////////////////////////////////////
+  /////////////////////////////
 
   // Fetch a single booking by ID
+
   const fetchBookingById = async (bookingId) => {
     const response = await fetch(
       `http://localhost:8000/api/v1/users-experts/getbookingbyid?string=${encodeURIComponent(
@@ -94,15 +73,13 @@ const UserBookings = ({ setFeedbackUI, setCurrentBookingId }) => {
 
   ///////////////////////////////////////
   const [bookingDetails, setBookingDetails] = useState([]);
-
   const fetchBookingDetails = async () => {
-    if (!currentUserB || !currentUserB.bookingHistory) return;
+    if (!currentUser || !currentUser.bookingHistory) return;
 
-    const promises = currentUserB.bookingHistory.map(async (bookingId) => {
+    const promises = currentUser.bookingHistory.map(async (bookingId) => {
       const booking = await fetchBookingById(bookingId);
       const user = await fetchUserById(booking.user);
       const expert = await fetchExpertById(booking.expert);
-      // const report = await fetchUserById(booking.report);
 
       return {
         booking,
@@ -117,7 +94,7 @@ const UserBookings = ({ setFeedbackUI, setCurrentBookingId }) => {
 
   useEffect(() => {
     fetchBookingDetails();
-  }, [currentUserB]);
+  }, [currentUser]);
 
   ////////////////////////////////////////////
   const handleCancelClick = async (bookingId) => {
@@ -210,7 +187,7 @@ const UserBookings = ({ setFeedbackUI, setCurrentBookingId }) => {
                   {bookingData.booking.status === "pending"
                     ? "Cancel"
                     : bookingData.booking.status === "completed"
-                    ? "Give Feedback"
+                    ? !bookingData.booking.feedback && "Give Feedback"
                     : "Cancelled"}
                 </button>
               </div>

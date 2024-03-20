@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect, useEffect } from "react";
 import { useContext } from "react";
 import { AllExpertsContext } from "../Context/AllExpertsProvider";
 import { useNavigate } from "react-router-dom";
 
 import { BookingConfirmationContext } from "../Context/BookingConfirmationProvider.jsx";
-import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
 
 const Booking = () => {
   const { allExperts } = useContext(AllExpertsContext);
+
   const { currentExpertData, setCurrentExpertData } = useContext(
     BookingConfirmationContext
   );
-  const { currentUser } = useContext(CurrentUserContext);
 
   const navigate = useNavigate();
 
@@ -29,16 +28,15 @@ const Booking = () => {
           "currentExpertData",
           JSON.stringify(currentExpertData)
         );
-        localStorage.setItem("currentUser", JSON.stringify(currentUser));
       } catch (error) {
         console.error("Error saving state to local storage:", error);
       }
     };
     saveStateToLocalStorage();
-  }, [currentExpertData, currentUser]);
+  }, [currentExpertData]);
 
   return (
-    <section class="bg-gradient-to-b from-yellow-400/70 to-yellow-400/70 via-gray-500 mt-10">
+    <section class="bg-gradient-to-b from-yellow-400/70 to-yellow-400/70 via-gray-500 mt-10 min-h-screen">
       <div class="container px-6 py-10 mx-auto">
         <h1 class="text-2xl font-semibold text-center text-black capitalize lg:text-4xl ">
           Book A <span class="text-green-500 ">Session</span> With An Expert

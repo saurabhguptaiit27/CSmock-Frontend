@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { AllExpertsContext } from "../Context/AllExpertsProvider";
 
 const OurExperts = () => {
   const { allExperts } = useContext(AllExpertsContext);
 
   return (
-    <section class="bg-gray-950/95 mt-10">
+    <section class="bg-gray-950/95 mt-10 min-h-screen">
       <div class="container px-6 py-10 mx-auto">
         <h1 class="text-2xl font-semibold text-center text-gray-300 capitalize lg:text-3xl">
           Our <span class="text-green-600">Executive Team</span>

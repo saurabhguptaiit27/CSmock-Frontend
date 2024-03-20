@@ -5,15 +5,15 @@ import { useState, useEffect, useContext } from "react";
 import { SelectedButtonContext } from "../Context/SelectedButtonProvider.jsx";
 import { AuthContext } from "../Context/AuthProvider.jsx";
 import { useNavigate } from "react-router-dom";
+import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
 
 const Login = () => {
   const location = useLocation();
   const { selectedButton, setSelectedButton, handleButtonClick } = useContext(
     SelectedButtonContext
   );
-  const { isLoggedIn, setIsLoggedIn, setUserType } =
-    useContext(AuthContext);
-
+  const { isLoggedIn, setIsLoggedIn, setUserType } = useContext(AuthContext);
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,6 +25,11 @@ const Login = () => {
         : setSelectedButton("User");
     }
   }, [location]);
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -73,6 +78,11 @@ const Login = () => {
         setUserType(data["data"]["details"]["userType"]);
         setSelectedButton(data["data"]["details"]["userType"]);
         setIsLoggedIn(true);
+        setCurrentUser(data["data"]["details"]);
+        localStorage.setItem(
+          "currentUser",
+          JSON.stringify(data["data"]["details"])
+        );
 
         // Navigate to the Home route
         navigate("/");
@@ -88,11 +98,6 @@ const Login = () => {
       console.error("Login error : ", error.message);
     }
   };
-
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

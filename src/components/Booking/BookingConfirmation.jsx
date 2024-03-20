@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { CurrentUserContext } from "../Context/CurrentUserProvider";
 
 const BookingConfirmation = () => {
   const [currentUserS, setCurrentUserS] = useState([]);
@@ -62,11 +63,12 @@ const BookingConfirmation = () => {
         }
       );
       if (!response.ok) {
-        throw new Error("Failed to login");
+        throw new Error("Failed to book appointment");
       }
       const data = await response.json();
-      localStorage.removeItem("currentExpertData"); // Remove item1 from localStorage
+      localStorage.removeItem("currentExpertData");
       localStorage.removeItem("currentUser");
+      // Remove items from localStorage
       navigate("/yourbookings");
     } catch (error) {
       navigate("/Booking");
@@ -82,10 +84,13 @@ const BookingConfirmation = () => {
             <h1 class="mb-2 text-3xl font-bold text-white">
               <span class="text-gray-100">Hi, </span> I am{" "}
               <span className="text-yellow-400">
-                {currentExpertDataS.fullname}
+                {currentExpertDataS.fullname}{" "}
+              </span>
+              <span className="font-light">
+                ({currentExpertDataS.currentPosition})
               </span>
             </h1>
-            <p class="mb-6 text-gray-200 font-bold">
+            <p class="mb-6 text-gray-400 font-bold font-serif font">
               Fullname : {currentExpertDataS.fullname} <br />
               Email : {currentExpertDataS.email}
               <br />
@@ -93,11 +98,11 @@ const BookingConfirmation = () => {
               <br />
               Contact No. : {currentExpertDataS.phone}
               <br />
-              Worked In : {currentExpertDataS.previousCompanies}
+              {`Worked In : ${currentExpertDataS.previousCompanies}`}
               <br />
-              Total Experience : {currentExpertDataS.experience}
+              Total Experience : {currentExpertDataS.experience} years
               <br />
-              Expertise In : {currentExpertDataS.expertise}
+              {`Expertise In : ${currentExpertDataS.expertise}`}
               <br />
               Fees : &#8377; {currentExpertDataS.fees}
             </p>
@@ -152,10 +157,13 @@ const BookingConfirmation = () => {
                 </button>
               </div>
             </form>
-            
           </div>
           <div className="flex justify-center  align-middle ">
-            <img src={currentExpertDataS.avatar} alt="" className="size-64 rounded-xl" />
+            <img
+              src={currentExpertDataS.avatar}
+              alt=""
+              className="size-64 rounded-xl"
+            />
           </div>
         </div>
       </div>

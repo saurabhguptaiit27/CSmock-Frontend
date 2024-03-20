@@ -12,9 +12,7 @@ const Header = () => {
     handleAddAvailabilityButton,
     handleToggleProfile,
   } = useContext(AuthContext);
-  const { selectedButton, handleButtonClick } = useContext(
-    SelectedButtonContext
-  );
+  const { handleButtonClick } = useContext(SelectedButtonContext);
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
@@ -74,24 +72,24 @@ const Header = () => {
                       isActive ? "text-yellow-300" : "text-gray-300"
                     } transition text-base hover:text-green-300/75`
                   }
-                  to="About"
+                  to="Discussions"
                 >
-                  About
+                  Discussions
                 </NavLink>
               </li>
 
-              {/* <li>
+              <li>
                 <NavLink
                   className={({ isActive }) =>
                     `${
                       isActive ? "text-yellow-300" : "text-gray-300"
                     } transition text-base hover:text-green-300/75`
                   }
-                  to="Faqs"
+                  to="About"
                 >
-                  FAQs
+                  About
                 </NavLink>
-              </li> */}
+              </li>
             </ul>
           </nav>
 
