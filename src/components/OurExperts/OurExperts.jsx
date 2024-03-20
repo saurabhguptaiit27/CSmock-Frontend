@@ -17,7 +17,7 @@ const OurExperts = () => {
           omnis eligendi optio eos harum.
         </p>
 
-        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-2">
+        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-3">
           {allExperts.map((e, index) => (
             <div
               key={index}

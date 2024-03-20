@@ -135,7 +135,7 @@ const ContactUs = () => {
             <form>
               <div class="-mx-2 md:items-center md:flex">
                 <div class="flex-1 px-2">
-                  <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                  <label class="block mb-2 text-sm text-gray-600 ">
                     First Name
                   </label>
                   <input
@@ -146,7 +146,7 @@ const ContactUs = () => {
                 </div>
 
                 <div class="flex-1 px-2 mt-4 md:mt-0">
-                  <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                  <label class="block mb-2 text-sm text-gray-600 ">
                     Last Name
                   </label>
                   <input
@@ -158,7 +158,7 @@ const ContactUs = () => {
               </div>
 
               <div class="mt-4">
-                <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                <label class="block mb-2 text-sm text-gray-600 ">
                   Email address
                 </label>
                 <input
@@ -169,7 +169,7 @@ const ContactUs = () => {
               </div>
 
               <div class="w-full mt-4">
-                <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                <label class="block mb-2 text-sm text-gray-600 ">
                   Message
                 </label>
                 <textarea

@@ -28,7 +28,6 @@ import Discussions from "./components/Discussions/Discussions.jsx";
 
 const App = () => {
   const { isLoggedIn, userType } = useContext(AuthContext);
-
   // Define routes based on authentication status
   const routes = [
     {
@@ -58,7 +57,7 @@ const App = () => {
         },
         {
           path: "Discussions",
-          element: isLoggedIn ? <Discussions /> : <Login />,
+          element: isLoggedIn ? <Discussions /> : <Error />,
         },
         {
           path: "Booking",
