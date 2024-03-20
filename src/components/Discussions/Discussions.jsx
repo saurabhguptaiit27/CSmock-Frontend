@@ -4,6 +4,7 @@ import { AuthContext } from "../Context/AuthProvider";
 import { MdDeleteForever } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import { CurrentUserContext } from "../Context/CurrentUserProvider";
+import { FaAward } from "react-icons/fa";
 
 const Discussions = () => {
   const { currentUser } = useContext(CurrentUserContext);
@@ -155,8 +156,6 @@ const Discussions = () => {
     }
   };
 
-
-  
   return (
     <section class="bg-gray-900/90 mt-16 min-h-screen">
       <div class="flex flex-col mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
@@ -210,9 +209,11 @@ const Discussions = () => {
                     class="size-14 rounded-full object-cover"
                   />
                   <div className="flex flex-col w-2/3">
-                    <p class="-mb-1 text-lg font-medium text-gray-950">
-                      {post.creator.fullname}
+                    <p class="-mb-1 text-lg font-medium text-gray-950 flex items-center">
+                      <span className="mr-2">{post.creator.fullname}</span>
+                      {post.createrType === "Expert" && <FaAward className="text-sm"/>}
                     </p>
+
                     <p class=" mt-1 text-sm text-gray-900 ">
                       {post.creator.currentPosition}
                     </p>

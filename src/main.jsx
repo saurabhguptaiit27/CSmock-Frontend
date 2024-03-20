@@ -11,7 +11,6 @@ import Faqs from "./components/FAQs/Faqs.jsx";
 import Register from "./components/Register/Register.jsx";
 import RegisterExpert from "./components/Register/RegisterExpert.jsx";
 import Login from "./components/Login/Login.jsx";
-import IntExperiences from "./components/IntExperiences/IntExperiences.jsx";
 import OurExperts from "./components/OurExperts/OurExperts.jsx";
 import Booking from "./components/Booking/Booking.jsx";
 import BookingConfirmation from "./components/Booking/BookingConfirmation.jsx";
@@ -38,7 +37,6 @@ const App = () => {
         { path: "Ourexperts", element: <OurExperts /> },
         { path: "About", element: <About /> },
         { path: "Faqs", element: <Faqs /> },
-        { path: "InterviewExperiences", element: <IntExperiences /> },
         {
           path: "Login/User",
           element: !isLoggedIn ? <Login /> : <Error />,
