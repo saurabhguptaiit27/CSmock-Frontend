@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "fullname": "Saurabh Gupta",
+    "currentPosition": "MTech. @ IIT Kharagpur",
+    "contentTitle": "Ullamco eu ut ipsum voluptate.",
+    "content": "Tempor aliquip laboris cillum excepteur esse consequat esse qui aute. Ipsum eiusmod consequat commodo exercitation ut ea culpa officia excepteur dolor nostrud. Nostrud pariatur culpa Lorem dolore consequat ad culpa. Exercitation occaecat ullamco est et tempor cupidatat in officia magna exercitation exercitation. Fugiat elit ad labore qui sit ipsum et dolore minim elit pariatur.",
+    "postedOn": "October 2023",
+    "avatar": "/saurabhgupta.png"
+  },
+  {
+    "id": 2,
+    "fullname": "Shubham Gupta",
+    "currentPosition": "BTech. @ IIT Roorkie",
+    "contentTitle": "Laboris adipisicing amet non.",
+    "content": "Sint ad nisi fugiat ex dolore. Elit occaecat sit nostrud exercitation consequat ea cupidatat ipsum exercitation est. Ex veniam minim consequat sit duis laborum laboris veniam.",
+    "postedOn": "November 2023",
+    "avatar": "/shubhamgupta.jpg"
+  },
+  {
+    "id": 3,
+    "fullname": "Neha Gupta",
+    "currentPosition": "Software Developer @ IBM",
+    "contentTitle": "Dolore fugiat excepteur aliquip.",
+    "content": "Ex ut incididunt excepteur nisi amet proident excepteur anim quis do. Veniam enim fugiat magna do fugiat. Enim ea anim dolor aliquip voluptate consectetur eiusmod sint cupidatat aliqua est irure. In cillum ea mollit incididunt eiusmod mollit enim magna qui. Adipisicing consequat officia ipsum dolore labore id proident veniam sit officia Lorem velit consequat culpa.",
+    "postedOn": "December 2023",
+    "avatar": "/nehagupta.jpg"
+  },
+  {
+    "id": 4,
+    "fullname": "John Doe",
+    "currentPosition": "Data Analyst @ HSBC",
+    "contentTitle": "Aliqua ut sunt in tempor consequa.",
+    "content": "Ad laborum velit minim elit do elit Lorem eiusmod. Proident et qui laborum reprehenderit in aliquip ullamco enim incididunt veniam occaecat quis. Enim duis ad tempor veniam tempor proident minim mollit ipsum. Exercitation et occaecat ad magna nisi sit ad fugiat nisi sint.",
+    "postedOn": "January 2024",
+    "avatar": "/johndoe.jpg"
+  },
+  {
+    "id": 5,
+    "fullname": "Joseph Mclaren",
+    "currentPosition": "Software Engineer @ Infosys",
+    "contentTitle": "Consequat ipsum incididunt aliqui.",
+    "content": "Amet sunt nostrud enim laborum quis sit sit fugiat nostrud sint id pariatur. Minim incididunt do voluptate cupidatat exercitation amet consectetur ad proident deserunt consequat. Cupidatat pariatur eu sint labore. Cupidatat sint exercitation aliqua ex. Aute commodo ut amet proident officia cupidatat. Elit dolor ut aliqua nulla eiusmod. Veniam elit ut labore cupidatat nisi nisi labore fugiat excepteur enim nulla irure.",
+    "postedOn": "February 2024",
+    "avatar": "/josephmclaren.jpg"
+  }
+]

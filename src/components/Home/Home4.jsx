@@ -1,6 +1,20 @@
 import React from "react";
+import { useState } from "react";
+import data from "../../data/UserFeedbackHomepage.json";
 
 const Home4 = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNextClick = () => {
+    // Increment the index, wrapping around to the beginning if at the end
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
+  };
+
+  const handlePreviousClick = () => {
+    // Decrement the index, wrapping around to the end if at the beginning
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length);
+  };
+
   return (
     <section class="bg-gray-950/95">
       <div class="relative flex">
@@ -17,32 +31,32 @@ const Home4 = () => {
 
           <div class="-mt-10 mb-5 lg:mt-0 lg:flex lg:items-center">
             <img
-              class="object-cover object-center w-full lg:w-[32rem] rounded-lg h-96"
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+              class="lg:w-[24rem] md:ml-16 rounded-lg h-96"
+              src={data[currentIndex].avatar}
               alt=""
             />
 
             <div class=" lg:px-10 lg:mt-0">
               <h1 class="text-2xl font-semibold text-yellow-500 lg:w-auto">
-                Help us improve our productivity
+                {data[currentIndex].contentTitle}
               </h1>
 
-              <p class="max-w-lg mt-6 text-gray-400 dark:text-gray-400">
-                “ Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Tempore quibusdam ducimus libero ad tempora doloribus expedita
-                laborum saepe voluptas perferendis delectus assumenda rerum,
-                culpa aperiam dolorum, obcaecati corrupti aspernatur a. ”
+              <p class="max-w-lg mt-6 text-gray-400 text-justify">
+                {data[currentIndex].content}
               </p>
 
               <h3 class="mt-6 text-lg font-medium text-green-500">
-                Ronik Ederson
+                {data[currentIndex].fullname}
               </h3>
-              <p class="text-gray-400">Marketing Manager at Stech</p>
+              <p class="text-gray-400">{data[currentIndex].currentPosition}</p>
             </div>
           </div>
 
           <div class="flex items-center justify-between mt-12 lg:justify-start">
             <button
+              onClick={() => {
+                handlePreviousClick();
+              }}
               title="left arrow"
               class="p-2 text-white transition-colors duration-300 border rounded-full rtl:-scale-x-100 hover:bg-yellow-400 hover:text-black"
             >
@@ -63,6 +77,9 @@ const Home4 = () => {
             </button>
 
             <button
+              onClick={() => {
+                handleNextClick();
+              }}
               title="right arrow"
               class="p-2 text-white transition-colors duration-300 border rounded-full rtl:-scale-x-100  lg:mx-6 hover:bg-yellow-400 hover:text-black"
             >
