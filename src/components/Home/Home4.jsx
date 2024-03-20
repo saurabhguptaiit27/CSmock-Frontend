@@ -31,13 +31,13 @@ const Home4 = () => {
 
           <div class="-mt-10 mb-5 lg:mt-0 lg:flex lg:items-center">
             <img
-              class="lg:w-[24rem] md:ml-16 rounded-lg h-96"
+              class="lg:w-[20rem] md:ml-24 rounded-lg h-96"
               src={data[currentIndex].avatar}
               alt=""
             />
 
-            <div class=" lg:px-10 lg:mt-0">
-              <h1 class="text-2xl font-semibold text-yellow-500 lg:w-auto">
+            <div class="lg:px-10 md:mt-0">
+              <h1 class="text-2xl font-semibold text-yellow-500 lg:w-auto mt-5">
                 {data[currentIndex].contentTitle}
               </h1>
 
@@ -48,7 +48,7 @@ const Home4 = () => {
               <h3 class="mt-6 text-lg font-medium text-green-500">
                 {data[currentIndex].fullname}
               </h3>
-              <p class="text-gray-400">{data[currentIndex].currentPosition}</p>
+              <p class="text-gray-400 mb-5">{data[currentIndex].currentPosition}</p>
             </div>
           </div>
 
