@@ -19,6 +19,7 @@ import { AuthContext } from "./components/Context/AuthProvider.jsx";
 import { SelectedButtonProvider } from "./components/Context/SelectedButtonProvider.jsx";
 import { CurrentUserProvider } from "./components/Context/CurrentUserProvider.jsx";
 import { BookingConfirmationProvider } from "./components/Context/BookingConfirmationProvider.jsx";
+import { ToggleUIProvider } from "./components/Context/ToggleUiProvider.jsx";
 import UserBookingsUI from "./components/YourBookings/UserBookingsUI.jsx";
 import ExpertBookings from "./components/YourBookings/ExpertBookings.jsx";
 import Error from "./components/Error/Error.jsx";
@@ -117,15 +118,17 @@ const App = () => {
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <AuthProvider>
-      <CurrentUserProvider>
-        <AllExpertsProvider>
-          <SelectedButtonProvider>
-            <BookingConfirmationProvider>
-              <App />
-            </BookingConfirmationProvider>
-          </SelectedButtonProvider>
-        </AllExpertsProvider>
-      </CurrentUserProvider>
+      <ToggleUIProvider>
+        <CurrentUserProvider>
+          <AllExpertsProvider>
+            <SelectedButtonProvider>
+              <BookingConfirmationProvider>
+                <App />
+              </BookingConfirmationProvider>
+            </SelectedButtonProvider>
+          </AllExpertsProvider>
+        </CurrentUserProvider>
+      </ToggleUIProvider>
     </AuthProvider>
   </>
 );

@@ -1,11 +1,11 @@
 import DateTimePicker from "./DateTimePicker.jsx";
 import React, { useContext, useLayoutEffect, useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
-import { AuthContext } from "../Context/AuthProvider.jsx";
+import { ToggleUIContext } from "../Context/ToggleUiProvider.jsx";
 
 const AvailabilityUI = () => {
-  const { handleCrossAvailabilityButton } = useContext(AuthContext);
-  const { initialPara } = useContext(AuthContext);
+  const { handleCrossAvailabilityButton } = useContext(ToggleUIContext);
+  const { initialPara } = useContext(ToggleUIContext);
 
   let [values, setValues] = useState([]);
   const [paragraphContent, setParagraphContent] = useState("");

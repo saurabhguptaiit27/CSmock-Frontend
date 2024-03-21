@@ -54,44 +54,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     checkLoggedInStatus();
-    console.log(
-      "documemnt.cookie is ------->>>>>",
-      document.cookie,
-      "&&&&&& userTypecookie is---->>",
-      userTypeValue
-    );
   }, []); // Empty dependency array to run only on component mount
-
-  const [isAvailabilityUI, setIsAvailabilityUI] = useState(false);
-  const [initialPara, setInitialPara] = useState(
-    "You have not saved any available dates yet"
-  );
-
-  const handleAddAvailabilityButton = async () => {
-    setIsAvailabilityUI(true);
-    const response = await fetch(
-      userType === "Expert" &&
-        "http://localhost:8000/api/v1/experts/current-expert",
-      {
-        method: "GET",
-        credentials: "include",
-      }
-    );
-    const data = await response.json();
-    if (data["data"]["availability"].length !== 0) {
-      setInitialPara("Your Availability is saved and will be shown to users");
-    } else {
-      setInitialPara("You have not saved any available dates yet");
-    }
-  };
-  const handleCrossAvailabilityButton = () => {
-    setIsAvailabilityUI(false);
-  };
-
-  const [toggleProfile, setToggleProfile] = useState(false);
-  const handleToggleProfile = () => {
-    setToggleProfile(!toggleProfile);
-  };
 
   return (
     <AuthContext.Provider
@@ -100,15 +63,6 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn,
         userType,
         setUserType,
-        isAvailabilityUI,
-        setIsAvailabilityUI,
-        handleAddAvailabilityButton,
-        initialPara,
-        setInitialPara,
-        handleCrossAvailabilityButton,
-        toggleProfile,
-        setToggleProfile,
-        handleToggleProfile,
       }}
     >
       {children}

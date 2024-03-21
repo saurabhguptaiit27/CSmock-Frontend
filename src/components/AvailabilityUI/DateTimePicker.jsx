@@ -3,7 +3,7 @@ import DatePicker, { DateObject } from "react-multi-date-picker";
 import TimePicker from "react-multi-date-picker/plugins/time_picker";
 import DatePanel from "react-multi-date-picker/plugins/date_panel";
 import "react-multi-date-picker/styles/layouts/prime.css";
-import { AuthContext } from "../Context/AuthProvider";
+import { AuthContext } from "../Context/AuthProvider.jsx";
 
 export default function DateTimePicker({
   values,
@@ -88,11 +88,11 @@ export default function DateTimePicker({
           mapDays={({ date }) => {
             const currentDate = Date.now();
             const isBeforeCurrentDate = date < currentDate;
-        
+
             if (isBeforeCurrentDate) {
               return {
                 disabled: true,
-              }
+              };
             }
           }}
           plugins={[

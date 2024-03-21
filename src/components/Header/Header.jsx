@@ -4,21 +4,32 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider.jsx";
 import { SelectedButtonContext } from "../Context/SelectedButtonProvider.jsx";
 import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
+import { AiOutlineMenuUnfold } from "react-icons/ai";
+import { AiOutlineMenuFold } from "react-icons/ai";
+import { ToggleUIContext } from "../Context/ToggleUiProvider.jsx";
 
 const Header = () => {
+  const { isLoggedIn, userType } = useContext(AuthContext);
   const {
-    isLoggedIn,
-    userType,
     handleAddAvailabilityButton,
     handleToggleProfile,
-  } = useContext(AuthContext);
+    toggleMenu,
+    handleToggleMenu,
+  } = useContext(ToggleUIContext);
   const { handleButtonClick } = useContext(SelectedButtonContext);
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
     <header className="bg-black fixed top-0 left-0 w-full z-40">
       <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
-        <Link className="block text-teal-600" to="">
+        <button onClick={() => handleToggleMenu()} className="">
+          {toggleMenu === false ? (
+            <AiOutlineMenuUnfold className=" text-white text-3xl " />
+          ) : (
+            <AiOutlineMenuFold className=" text-white text-3xl " />
+          )}
+        </button>
+        <Link to="">
           <span className="sr-only">Home</span>
           <img className="rounded-3xl size-10" src="/CSmock.png"></img>
         </Link>
@@ -51,7 +62,6 @@ const Header = () => {
                   Our Experts
                 </NavLink>
               </li>
-
 
               <li>
                 <NavLink

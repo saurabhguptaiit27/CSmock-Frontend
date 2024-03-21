@@ -8,10 +8,11 @@ import { CiSettings } from "react-icons/ci";
 import { PiHandshake } from "react-icons/pi";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
+import { ToggleUIContext } from "../Context/ToggleUiProvider.jsx";
 
 const User = () => {
-  const { setIsLoggedIn, userType, setUserType, setToggleProfile } =
-    useContext(AuthContext);
+  const { setIsLoggedIn, userType, setUserType } = useContext(AuthContext);
+  const { setToggleProfile } = useContext(ToggleUIContext);
 
   const { currentUser } = useContext(CurrentUserContext);
 
