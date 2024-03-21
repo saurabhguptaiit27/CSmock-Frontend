@@ -211,7 +211,9 @@ const Discussions = () => {
                   <div className="flex flex-col w-2/3">
                     <p class="-mb-1 text-lg font-medium text-gray-950 flex items-center">
                       <span className="mr-2">{post.creator.fullname}</span>
-                      {post.createrType === "Expert" && <FaAward className="text-sm"/>}
+                      {post.createrType === "Expert" && (
+                        <FaAward className="text-sm" />
+                      )}
                     </p>
 
                     <p class=" mt-1 text-sm text-gray-900 ">
@@ -242,7 +244,9 @@ const Discussions = () => {
                   )}
                 </div>
 
-                <p class="mt-4 text-gray-700 text-justify">{post.content}</p>
+                <p class="mt-4 text-gray-700 text-justify overflow-y-auto">
+                  {post.content}
+                </p>
               </blockquote>
             </div>
           ))}
