@@ -7,12 +7,15 @@ import { Outlet } from "react-router-dom";
 import { AuthContext } from "./components/Context/AuthProvider.jsx";
 import AvailabilityUI from "./components/AvailabilityUI/AvailabilityUI.jsx";
 import { ToggleUIContext } from "./components/Context/ToggleUiProvider.jsx";
-import ChatButton from "../src/chat/ChatButton.jsx";
+import ChatSupportButton from "./chat/ChatSupportButton.jsx";
+import ChatSupportUI from "./chat/ChatSupportUI.jsx";
+
 
 const Layout = () => {
   const { isLoggedIn, userType } = useContext(AuthContext);
-  const { isAvailabilityUI, toggleProfile, toggleMenu } =
+  const { isAvailabilityUI, toggleProfile, toggleMenu,toggleChat } =
     useContext(ToggleUIContext);
+    
 
   return (
     <>
@@ -23,7 +26,8 @@ const Layout = () => {
         <AvailabilityUI />
       )}
       <Outlet />
-      <ChatButton />
+      {toggleChat && <ChatSupportUI />}
+      <ChatSupportButton />
       <Footer />
     </>
   );
