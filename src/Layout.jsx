@@ -7,6 +7,7 @@ import { Outlet } from "react-router-dom";
 import { AuthContext } from "./components/Context/AuthProvider.jsx";
 import AvailabilityUI from "./components/AvailabilityUI/AvailabilityUI.jsx";
 import { ToggleUIContext } from "./components/Context/ToggleUiProvider.jsx";
+import ChatButton from "../src/chat/ChatButton.jsx";
 
 const Layout = () => {
   const { isLoggedIn, userType } = useContext(AuthContext);
@@ -22,6 +23,7 @@ const Layout = () => {
         <AvailabilityUI />
       )}
       <Outlet />
+      <ChatButton />
       <Footer />
     </>
   );
