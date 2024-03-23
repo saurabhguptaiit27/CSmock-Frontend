@@ -35,7 +35,7 @@ export const ToggleUIProvider = ({ children }) => {
   };
 
   const [toggleProfile, setToggleProfile] = useState(false);
-  const [toggleMenu,setToggleMenu] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
   const handleToggleProfile = () => {
     setToggleProfile(!toggleProfile);
   };
@@ -43,7 +43,10 @@ export const ToggleUIProvider = ({ children }) => {
     setToggleMenu(!toggleMenu);
   };
 
-
+  const [toggleChat, setToggleChat] = useState(false);
+  const handleToggleChat = () => {
+    setToggleChat(!toggleChat);
+  };
 
   return (
     <ToggleUIContext.Provider
@@ -60,6 +63,9 @@ export const ToggleUIProvider = ({ children }) => {
         toggleMenu,
         setToggleMenu,
         handleToggleMenu,
+        toggleChat,
+        setToggleChat,
+        handleToggleChat,
       }}
     >
       {children}
