@@ -201,7 +201,13 @@ const Discussions = () => {
         <div class="mt-10 mb-16 grid grid-cols-1 gap-x-4 sm:grid-cols-2 lg:grid-cols-3 ">
           {allPosts.map((post, index) => (
             <div key={index} class="mb-4 sm:break-inside-avoid">
-              <blockquote class="rounded-lg bg-yellow-300/70 hover:bg-yellow-300/95 p-6 shadow-lg hover:shadow-green-400/60 sm:p-8">
+              <blockquote
+                class={
+                  post.createrType === "User"
+                    ? "rounded-lg bg-yellow-300/70 hover:bg-yellow-300/95 p-6 shadow-lg hover:shadow-green-400/60 sm:p-8"
+                    : "rounded-lg bg-red-300/70 hover:bg-red-300/95 p-6 shadow-lg hover:shadow-green-400/60 sm:p-8"
+                }
+              >
                 <div class="flex flex-row items-center gap-4">
                   <img
                     alt=""

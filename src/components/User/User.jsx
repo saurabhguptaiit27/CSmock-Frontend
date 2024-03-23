@@ -60,7 +60,7 @@ const User = () => {
           >
             {currentUser["fullname"]}
           </a>
-          <hr className="border-amber-400" />
+          <hr className="border-amber-400 my-1" />
 
           <a
             href="#"

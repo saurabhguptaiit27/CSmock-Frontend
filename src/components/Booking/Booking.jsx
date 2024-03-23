@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import { AllExpertsContext } from "../Context/AllExpertsProvider";
 import { useNavigate } from "react-router-dom";
@@ -35,8 +35,9 @@ const Booking = () => {
     saveStateToLocalStorage();
   }, [currentExpertData]);
 
+  // "bg-gradient-to-b from-yellow-400/70 to-yellow-400/70 via-gray-500 mt-10 min-h-screen"
   return (
-    <section class="bg-gradient-to-b from-yellow-400/70 to-yellow-400/70 via-gray-500 mt-10 min-h-screen">
+    <section class="bg-gradient-to-r from-amber-200/90 to-yellow-300/90 mt-10 min-h-screen">
       <div class="container px-6 py-10 mx-auto">
         <h1 class="text-2xl font-semibold text-center text-black capitalize lg:text-4xl ">
           Book A <span class="text-green-500 ">Session</span> With An Expert

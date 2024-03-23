@@ -29,7 +29,7 @@ const Home4 = () => {
             &#10077;
           </div>
 
-          <div class="-mt-10 mb-5 lg:mt-0 lg:flex lg:items-center">
+          <div class="-mt-10 mb-5 lg:-mt-10 lg:flex lg:items-center">
             <img
               class="lg:w-[20rem] md:ml-24 rounded-lg h-96"
               src={data[currentIndex].avatar}
@@ -48,7 +48,9 @@ const Home4 = () => {
               <h3 class="mt-6 text-lg font-medium text-green-500">
                 {data[currentIndex].fullname}
               </h3>
-              <p class="text-gray-400 mb-5">{data[currentIndex].currentPosition}</p>
+              <p class="text-gray-400 mb-5">
+                {data[currentIndex].currentPosition}
+              </p>
             </div>
           </div>
 
