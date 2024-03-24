@@ -42,6 +42,7 @@ const ChatSupportUI = () => {
       from: currentUser.username,
       to: currentUser.username === "admin" ? "expert2" : "admin",
       text: newMessage,
+      avatar: currentUser.avatar,
     };
 
     socket.emit("message", messageData);
@@ -59,15 +60,10 @@ const ChatSupportUI = () => {
           </div>
         </div>
         <hr className="border-green-700" />
-        <div class="space-y-4 h-56 overflow-y-auto ">
-          {/* <div class="flex items-start">
-            <FcCustomerSupport className="text-2xl mt-2" />
-            <div class="ml-3 bg-gray-100 p-2 rounded-lg">
-              <p class="text-sm text-gray-800">
-                Hello! How can I help you today?
-              </p>
-            </div>
-          </div>  */}
+        <div class="space-y-4 min-h-56 max-h-60 overflow-y-auto ">
+          {!messages.length && (
+            <img className="h-56 w-full" src="../../public/chat-support.jpg" />
+          )}
 
           {messages.map((message, index) => (
             <div key={index}>
@@ -79,31 +75,29 @@ const ChatSupportUI = () => {
                     <p className="text-sm text-gray-800">{message.text}</p>
                   </div>
                   <div ref={messagesEndRef} />
-               
                 </div>
               ) : (
                 // Render incoming message
                 <div className="flex flex-col items-end justify-end my-2">
-                  <div className="bg-blue-500 p-2 rounded-lg mr-">
-                    <p className="text-sm text-white ">{message.text}</p>
+                  <div className="p-2 rounded-lg flex flex-row">
+                    <p className="text-sm text-white bg-blue-500 px-4 py-1 rounded-lg mr-2">
+                      {message.text}
+                    </p>
+
+                    <img
+                      className="h-[2rem] w-[2rem] rounded-full"
+                      src={message.avatar}
+                      alt="client image"
+                    />
                   </div>
-                  <h6 className="text-black font-serif">{message.from}</h6>
+                  <h6 className="text-green-700 text-xs italic -mt-2 mr-3">
+                    sender - {message.from}
+                  </h6>
                   <div ref={messagesEndRef} />
                 </div>
               )}
             </div>
           ))}
-
-          {/* <div class="flex items-end justify-end">
-            <div class="bg-blue-500 p-2 rounded-lg">
-              <p class="text-sm text-white">Sure, I have a question.</p>
-            </div>
-            <img
-              src="https://pbs.twimg.com/profile_images/1707101905111990272/Z66vixO-_normal.jpg"
-              alt="Other User Avatar"
-              class="w-6 h-6 rounded-full ml-3 mb-1"
-            />
-          </div>  */}
         </div>
         <hr className="border-green-700 " />
         <div class="mt-4 flex items-center">
