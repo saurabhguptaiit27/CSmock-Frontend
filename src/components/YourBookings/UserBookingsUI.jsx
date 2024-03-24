@@ -4,7 +4,7 @@ import { AuthContext } from "../Context/AuthProvider";
 import UserBookings from "./UserBookings.jsx";
 import Feedback from "../Feedback/Feedback.jsx";
 
-const Home = () => {
+const UserBookingsUI = () => {
   const { userType, isLoggedIn } = useContext(AuthContext);
   const [feedbackUI, setFeedbackUI] = useState(false);
   const [currentBookingId, setCurrentBookingId] = useState("");
@@ -13,6 +13,7 @@ const Home = () => {
     <>
       {isLoggedIn && userType === "User" && (
         <UserBookings
+          feedbackUI={feedbackUI}
           setFeedbackUI={setFeedbackUI}
           setCurrentBookingId={setCurrentBookingId}
         />
@@ -27,4 +28,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default UserBookingsUI;
