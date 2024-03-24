@@ -21,7 +21,7 @@ import { CurrentUserProvider } from "./components/Context/CurrentUserProvider.js
 import { BookingConfirmationProvider } from "./components/Context/BookingConfirmationProvider.jsx";
 import { ToggleUIProvider } from "./components/Context/ToggleUiProvider.jsx";
 import UserBookingsUI from "./components/YourBookings/UserBookingsUI.jsx";
-import ExpertBookings from "./components/YourBookings/ExpertBookings.jsx";
+import ExpertBookingsUI from "./components/YourBookings/ExpertBookingsUI.jsx";
 import Error from "./components/Error/Error.jsx";
 import ContactUs from "./components/ContactUs/ContactUs.jsx";
 import Discussions from "./components/Discussions/Discussions.jsx";
@@ -90,7 +90,7 @@ const App = () => {
             userType === "User" ? (
               <UserBookingsUI />
             ) : (
-              <ExpertBookings />
+              <ExpertBookingsUI />
             )
           ) : (
             <Error />
