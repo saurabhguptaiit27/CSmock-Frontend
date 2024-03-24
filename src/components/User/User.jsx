@@ -14,7 +14,7 @@ const User = () => {
   const { setIsLoggedIn, userType, setUserType } = useContext(AuthContext);
   const { setToggleProfile } = useContext(ToggleUIContext);
 
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
   const navigate = useNavigate();
 
@@ -36,6 +36,7 @@ const User = () => {
 
       setIsLoggedIn(false);
       setUserType("User");
+      setCurrentUser([]);
       setToggleProfile(false);
       localStorage.removeItem("currentExpertData"); // Remove items from localStorage
       localStorage.removeItem("currentUser");
