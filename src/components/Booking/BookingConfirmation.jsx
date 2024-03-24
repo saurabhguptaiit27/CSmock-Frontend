@@ -67,7 +67,6 @@ const BookingConfirmation = () => {
       }
       const data = await response.json();
       localStorage.removeItem("currentExpertData");
-      localStorage.removeItem("currentUser");
       // Remove items from localStorage
       navigate("/yourbookings");
     } catch (error) {
@@ -90,7 +89,7 @@ const BookingConfirmation = () => {
                 ({currentExpertDataS.currentPosition})
               </span>
             </h1>
-            <p class="mb-6 text-gray-400 font-bold font-serif font">
+            <p class="mb-6 text-gray-400 font-bold font-serif">
               Fullname : {currentExpertDataS.fullname} <br />
               Email : {currentExpertDataS.email}
               <br />

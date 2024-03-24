@@ -62,7 +62,7 @@ const ChatSupportUI = () => {
         <hr className="border-green-700" />
         <div class="space-y-4 min-h-56 max-h-60 overflow-y-auto ">
           {!messages.length && (
-            <img className="h-56 w-full" src="../../public/chat-support.jpg" />
+            <img className="h-56 w-full" src="/chat-support.jpg" />
           )}
 
           {messages.map((message, index) => (
