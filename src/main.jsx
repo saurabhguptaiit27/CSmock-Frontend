@@ -25,6 +25,7 @@ import ExpertBookings from "./components/YourBookings/ExpertBookings.jsx";
 import Error from "./components/Error/Error.jsx";
 import ContactUs from "./components/ContactUs/ContactUs.jsx";
 import Discussions from "./components/Discussions/Discussions.jsx";
+import TopStories from "./news/TopStories.jsx";
 
 const App = () => {
   const { isLoggedIn, userType } = useContext(AuthContext);
@@ -37,6 +38,7 @@ const App = () => {
         { path: "", element: <Home /> },
         { path: "Ourexperts", element: <OurExperts /> },
         { path: "About", element: <About /> },
+        { path: "TopStories", element: <TopStories /> },
         { path: "Faqs", element: <Faqs /> },
         {
           path: "Login/User",

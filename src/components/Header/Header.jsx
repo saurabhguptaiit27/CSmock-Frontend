@@ -83,6 +83,19 @@ const Header = () => {
                       isActive ? "text-yellow-300" : "text-gray-300"
                     } transition text-base hover:text-green-300/75`
                   }
+                  to="TopStories"
+                >
+                  Top Stories
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    `${
+                      isActive ? "text-yellow-300" : "text-gray-300"
+                    } transition text-base hover:text-green-300/75`
+                  }
                   to="About"
                 >
                   About

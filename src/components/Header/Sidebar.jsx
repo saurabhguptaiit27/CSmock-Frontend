@@ -4,10 +4,11 @@ import { FaHome } from "react-icons/fa";
 import { FaAward } from "react-icons/fa";
 import { GiDiscussion } from "react-icons/gi";
 import { ImInfo } from "react-icons/im";
+import { IoNewspaperSharp } from "react-icons/io5";
 const Sidebar = () => {
   return (
     <aside className="fixed top-10 leftt-2 z-30 mt-10 ml-2">
-      <div class="flex flex-col w-56 h-auto px-2 py-6 overflow-y-auto bg-gray-600/80 rounded-lg z=30">
+      <div class="flex flex-col w-56 h-auto px-2 py-6 overflow-y-auto bg-gray-700/90 rounded-lg z=30">
         <div class="flex flex-col justify-between flex-1 -mt-2">
           <nav>
             <Link
@@ -33,6 +34,14 @@ const Sidebar = () => {
               <GiDiscussion />
 
               <span class="mx-4 font-medium">Discussions</span>
+            </Link>
+            <Link
+              class="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100"
+              to="TopStories"
+            >
+              <IoNewspaperSharp />
+
+              <span class="mx-4 font-medium">Top Stories</span>
             </Link>
             <Link
               class="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100"
