@@ -82,9 +82,7 @@ export default function Home5() {
               </div>
               <blockquote className="mx-auto lg:w-2/3 xl:w-1/2">
                 <p className="mb-5 text-xl font-semibold leading-8 text-gray-300">
-                  I’ve been using pixelcave themes htmlFor years. The code is
-                  consistently high-quality and pleasant to work with, so I
-                  highly recommended them.
+                Sunt esse officia do non esse eu occaecat veniam voluptate duis. Ullamco anim eu magna occaecat culpa occaecat nisi magna. Pariatur officia eu amet deserunt est duis nisi elit cillum mollit consectetur aliquip anim nisi. Esse proident eiusmod dolor incididunt sint.
                 </p>
                 <footer className="space-y-4 p-5 shadow-xl hover:shadow-yellow-400/20">
                   <a
@@ -94,20 +92,20 @@ export default function Home5() {
                        transition duration-150 ease-out hover:scale-125 hover:border-white hover:shadow-md active:scale-110 active:border-gray-50 active:shadow-sm"
                   >
                     <img
-                      src="https://cdn.tailkit.com/media/placeholders/avatar-iFgRcqHznqg-160x160.jpg"
+                      src="/saurabhgupta.png"
                       alt="Avatar Photo"
                     />
                   </a>
                   <div>
                     <a
                       href="#"
-                      className="text-lg font-semibold text-red-600 hover:text-red-400"
+                      className="text-lg font-semibold text-yellow-500 hover:text-yellow-600"
                     >
-                      John Smith
+                      Saurabh Gupta
                     </a>
                     <div className="mx-auto my-1 h-1 w-10 rounded-lg bg-blue-100" />
                     <p className="font-medium text-gray-400">
-                      Founder and Lead Developer
+                      Software Developer
                     </p>
                   </div>
                 </footer>

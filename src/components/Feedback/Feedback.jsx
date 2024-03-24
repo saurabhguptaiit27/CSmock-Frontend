@@ -66,7 +66,7 @@ const Feedback = ({ setFeedbackUI, currentBookingId }) => {
   return (
     <form
       onSubmit={handleFeedbackSubmitButton}
-      class="max-w-md mx-auto p-4 bg-gray-900/90 shadow rounded fixed top-16 right-0 z-20 w-[24rem]"
+      class="max-w-md mx-auto p-4 bg-gray-600/70 shadow rounded fixed top-16 right-0 z-20 w-[24rem]"
     >
       <h2 class="text-2xl text-green-500 font-bold mb-4">Feedback Form</h2>
       <button
@@ -93,7 +93,7 @@ const Feedback = ({ setFeedbackUI, currentBookingId }) => {
         <label class="block mb-1 text-yellow-500">
           Rating <span class="text-red-500">*</span>
         </label>
-        <div class="flex items-center space-x-2 text-blue-500">
+        <div class="flex items-center space-x-2 text-blue-300">
           <input
             type="radio"
             name="rating"
@@ -159,7 +159,7 @@ const Feedback = ({ setFeedbackUI, currentBookingId }) => {
 
       <button
         type="submit"
-        class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md shadow-gray-500"
       >
         Submit
       </button>
