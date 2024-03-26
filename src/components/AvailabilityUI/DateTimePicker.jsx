@@ -18,7 +18,7 @@ export default function DateTimePicker({
     console.log(".......on clear");
     const response = await fetch(
       userType === "Expert" &&
-        "http://localhost:8000/api/v1/experts/addavailability",
+        "/api/v1/experts/addavailability",
       {
         method: "POST",
         credentials: "include",
@@ -42,7 +42,7 @@ export default function DateTimePicker({
       );
       const response = await fetch(
         userType === "Expert" &&
-          "http://localhost:8000/api/v1/experts/addavailability",
+          "/api/v1/experts/addavailability",
         {
           method: "POST",
           credentials: "include",
