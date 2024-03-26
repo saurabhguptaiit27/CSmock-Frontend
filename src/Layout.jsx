@@ -9,17 +9,17 @@ import AvailabilityUI from "./components/AvailabilityUI/AvailabilityUI.jsx";
 import { ToggleUIContext } from "./components/Context/ToggleUiProvider.jsx";
 import ChatSupportButton from "./chat/ChatSupportButton.jsx";
 import ChatSupportUI from "./chat/ChatSupportUI.jsx";
-
+import { Toaster } from "react-hot-toast";
 
 const Layout = () => {
   const { isLoggedIn, userType } = useContext(AuthContext);
-  const { isAvailabilityUI, toggleProfile, toggleMenu,toggleChat } =
+  const { isAvailabilityUI, toggleProfile, toggleMenu, toggleChat } =
     useContext(ToggleUIContext);
-    
 
   return (
     <>
       <Header />
+      <Toaster position="top-right" />
       {toggleMenu && <Sidebar />}
       {toggleProfile && isLoggedIn && <User />}
       {isLoggedIn && userType === "Expert" && isAvailabilityUI && (
