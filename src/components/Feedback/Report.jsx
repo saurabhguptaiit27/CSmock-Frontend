@@ -24,7 +24,7 @@ const Report = ({ setReportUI, currentBookingId }) => {
       const response = await fetch(
         userType === "User" &&
           isLoggedIn &&
-          "http://localhost:8000/api/v1/users-experts/generatereport",
+          "/api/v1/users-experts/generatereport",
         {
           method: "POST",
           headers: {
@@ -39,7 +39,6 @@ const Report = ({ setReportUI, currentBookingId }) => {
         throw new Error("Failed to generate report from expert");
       }
       const data = await response.json();
-      console.log("report details are----", data);
       setReportUI(false);
     } catch (error) {
       console.error("Error while generating report", error);
@@ -66,7 +65,7 @@ const Report = ({ setReportUI, currentBookingId }) => {
   return (
     <form
       onSubmit={handleReportSubmitButton}
-      class="max-w-md mx-auto p-4 bg-gray-600/70 shadow rounded fixed top-16 right-0 z-20 w-[24rem]"
+      class="max-w-md mx-auto p-4 bg-gray-600/90 shadow rounded fixed top-20 right-2 z-20 w-[22rem]"
     >
       <h2 class="text-2xl text-green-500 font-bold mb-4">Report Form</h2>
       <button

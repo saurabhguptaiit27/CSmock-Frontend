@@ -6,7 +6,12 @@ import { MdEdit } from "react-icons/md";
 import { CurrentUserContext } from "../Context/CurrentUserProvider";
 import { FaAward } from "react-icons/fa";
 
-const Discussions = () => {
+const Discussions = ({
+  editUI,
+  setEditUI,
+  setCurrentPostId,
+  setCurrentPostContent,
+}) => {
   const { currentUser } = useContext(CurrentUserContext);
 
   const [allPosts, setAllPosts] = useState([]);
@@ -47,24 +52,20 @@ const Discussions = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch(
-        "http://localhost:8000/api/v1/creaters/createpost",
-        {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch("/api/v1/creaters/createpost", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
       if (!response.ok) {
         throw new Error("Failed to create post");
       }
       const responseData = await response.json();
-      setData(responseData["data"]); //this is done to make fetchData call    when data comes back..as to show post without refresh
-      console.log("post created successfully---->", responseData);
+      setData(responseData["data"]); //this is done to make fetchData call when data comes back..as to show post without refresh
 
       // Clear form after successful post
       setFormData({
@@ -72,6 +73,7 @@ const Discussions = () => {
         content: "",
         postedOn: "",
       });
+    
     } catch (error) {
       console.error("error occured while posting----- : ", error.message);
     }
@@ -79,12 +81,12 @@ const Discussions = () => {
 
   useEffect(() => {
     fetchData();
-  }, [data]);
+  }, [data, editUI]);
 
   const fetchData = async () => {
     try {
       const response = await fetch(
-        isLoggedIn && "http://localhost:8000/api/v1/creaters/getallposts"
+        isLoggedIn && "/api/v1/creaters/getallposts"
       );
       if (!response.ok) {
         throw new Error("Failed to fetch all posts");
@@ -106,10 +108,10 @@ const Discussions = () => {
     try {
       const response = await fetch(
         createrType === "User"
-          ? `http://localhost:8000/api/v1/users/getuserbyid?string=${encodeURIComponent(
+          ? `/api/v1/users/getuserbyid?string=${encodeURIComponent(
               createrId
             )}`
-          : `http://localhost:8000/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
+          : `/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
               createrId
             )}`,
         {
@@ -133,7 +135,7 @@ const Discussions = () => {
   const handleDeleteButton = async (postId, createrId, createrType) => {
     try {
       const response = await fetch(
-        `http://localhost:8000/api/v1/creaters/deletepost?postId=${encodeURIComponent(
+        `/api/v1/creaters/deletepost?postId=${encodeURIComponent(
           postId
         )}&createrId=${encodeURIComponent(
           createrId
@@ -154,6 +156,12 @@ const Discussions = () => {
     } catch (error) {
       console.error("Failed to Delete post", data);
     }
+  };
+
+  const handleEditButton = (postId, postContent) => {
+    setEditUI(!editUI);
+    setCurrentPostId(postId);
+    setCurrentPostContent(postContent);
   };
 
   return (
@@ -211,7 +219,7 @@ const Discussions = () => {
                 <div class="flex flex-row items-center gap-4">
                   <img
                     alt=""
-                    src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                    src={post.creator.avatar}
                     class="size-14 rounded-full object-cover"
                   />
                   <div className="flex flex-col w-2/3">
@@ -229,7 +237,7 @@ const Discussions = () => {
                   {currentUser._id === post.createrId && (
                     <div className="float-right -mt-6 flex flex-row gap-2">
                       <button
-                        onClick={() => handleEditButton()}
+                        onClick={() => handleEditButton(post._id, post.content)}
                         className="text-lg hover:text-green-600 "
                       >
                         <MdEdit />

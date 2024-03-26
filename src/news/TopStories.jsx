@@ -78,7 +78,6 @@ const TopStories = () => {
     }
   };
 
-  console.log("stories tech are ----->", stories);
 
   return (
     <section>
@@ -86,7 +85,8 @@ const TopStories = () => {
         <div class="my-2 flex h-1/4 w-full flex-col bg-transparent">
           <div class="m-2 min-h-32 bg-transparent">
             <h1 class="text-2xl font-semibold text-center text-gray-100 capitalize lg:text-3xl">
-              Here are the <span class="text-green-600">Top Stories</span> for today
+              Here are the <span class="text-green-600">Top Stories</span> for
+              today
             </h1>
             <p class="max-w-2xl mx-auto my-6 text-center text-gray-100">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
@@ -123,18 +123,18 @@ const TopStories = () => {
         </div>
 
         <div class="min-h-1/4 my-4 flex h-auto w-full flex-col bg-transparent md:flex-row">
-          <div class="min-h-64 bg-gray-400/70 border-2 border-green-300 rounded-xl p-4 md:w-1/3 text-white">
+          <div class="min-h-48 bg-gray-400/70 border-2 border-yellow-300 rounded-xl p-4 md:w-1/3 text-white">
             <h1>{stories[0]["title"]}</h1>
             <p>{stories[0]["description"]}</p>
             <p>{stories[0]["content"]}</p>
           </div>
           <div class="flex min-h-64 flex-col bg-transparent md:w-2/3">
-            <div class="m-2 min-h-28 bg-gray-500/30 border-2 border-green-300 text-white rounded-xl p-4">
+            <div class="m-2 min-h-28 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4">
               <h1>{stories[1]["title"]}</h1>
               <p>{stories[1]["description"]}</p>
               <p>{stories[1]["content"]}</p>
             </div>
-            <div class="m-2 min-h-28 bg-gray-500/30 border-2 border-green-300 text-white rounded-xl p-4">
+            <div class="m-2 min-h-28 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4">
               <h1>{stories[2]["title"]}</h1>
               <p>{stories[2]["description"]}</p>
               <p>{stories[2]["content"]}</p>
@@ -144,18 +144,18 @@ const TopStories = () => {
 
         <div class="min-h-1/4 my-4 flex h-auto w-full flex-col bg-transparent md:flex-row -mt-4">
           <div class=" flex min-h-64 flex-col bg-transparent md:w-2/3">
-            <div class="m-2 min-h-28 bg-gray-500/30 border-2 border-green-300 text-white rounded-xl p-4">
+            <div class="m-2 min-h-28 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4">
               <h1>{stories[3]["title"]}</h1>
               <p>{stories[3]["description"]}</p>
               <p>{stories[3]["content"]}</p>
             </div>
-            <div class="m-2 min-h-28 bg-gray-500/30 border-2 border-green-300 text-white  rounded-xl p-4">
+            <div class="m-2 min-h-28 bg-gray-500/30 border-2 border-yellow-300 text-white  rounded-xl p-4">
               <h1>{stories[4]["title"]}</h1>
               <p>{stories[4]["description"]}</p>
               <p>{stories[4]["content"]}</p>
             </div>
           </div>
-          <div class="m-2 min-h-64 bg-gray-500/30 border-2 border-green-300 text-white rounded-xl md:w-1/3 p-4">
+          <div class="m-2 min-h-48 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl md:w-1/3 p-4">
             <h1>{stories[5]["title"]}</h1>
             <p>{stories[5]["description"]}</p>
             <p>{stories[5]["content"]}</p>
@@ -164,23 +164,23 @@ const TopStories = () => {
 
         <div class="m-h-1/4 my-4 flex h-auto w-full flex-col bg-transparent">
           <div class="-mb-2 -mt-8 flex h-2/3 min-h-64 flex-col bg-transparent lg:flex-row">
-            <div class="m-2 min-h-44 bg-gray-500/30 border-2 border-green-300 text-white rounded-xl p-4 lg:w-1/3">
+            <div class="m-2 min-h-44 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4 lg:w-1/3">
               <h1>{stories[6]["title"]}</h1>
               <p>{stories[6]["description"]}</p>
               <p>{stories[6]["content"]}</p>
             </div>
-            <div class="m-2 min-h-44 bg-gray-500/30 border-2 border-green-300 text-white rounded-xl p-4 lg:w-1/3">
+            <div class="m-2 min-h-44 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4 lg:w-1/3">
               <h1>{stories[7]["title"]}</h1>
               <p>{stories[7]["description"]}</p>
               <p>{stories[7]["content"]}</p>
             </div>
-            <div class="m-2 min-h-44 bg-gray-500/30 border-2 border-green-300 text-white rounded-xl p-4 lg:w-1/3">
+            <div class="m-2 min-h-44 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4 lg:w-1/3">
               <h1>{stories[8]["title"]}</h1>
               <p>{stories[8]["description"]}</p>
               <p>{stories[8]["content"]}</p>
             </div>
           </div>
-          <div class="m-2 h-1/3 min-h-32 rounded-xl p-4 bg-gray-500/30 border-2 border-green-300 text-white">
+          <div class="m-2 h-1/3 min-h-32 rounded-xl p-4 bg-gray-500/30 border-2 border-yellow-300 text-white">
             <h1>{stories[9]["title"]}</h1>
             <p>{stories[9]["description"]}</p>
             <p>{stories[9]["content"]}</p>

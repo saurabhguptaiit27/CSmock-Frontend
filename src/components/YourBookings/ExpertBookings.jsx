@@ -12,7 +12,7 @@ const ExpertBookings = ({ reportUI, setReportUI, setCurrentBookingId }) => {
   // Fetch a single booking by ID
   const fetchBookingById = async (bookingId) => {
     const response = await fetch(
-      `http://localhost:8000/api/v1/users-experts/getbookingbyid?string=${encodeURIComponent(
+      `/api/v1/users-experts/getbookingbyid?string=${encodeURIComponent(
         bookingId
       )}`,
       {
@@ -33,7 +33,7 @@ const ExpertBookings = ({ reportUI, setReportUI, setCurrentBookingId }) => {
   // Fetch a single user by ID
   const fetchUserById = async (userId) => {
     const response = await fetch(
-      `http://localhost:8000/api/v1/users/getuserbyid?string=${encodeURIComponent(
+      `/api/v1/users/getuserbyid?string=${encodeURIComponent(
         userId
       )}`,
       {
@@ -53,7 +53,7 @@ const ExpertBookings = ({ reportUI, setReportUI, setCurrentBookingId }) => {
   // Fetch a single expert by ID
   const fetchExpertById = async (expertId) => {
     const response = await fetch(
-      `http://localhost:8000/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
+      `/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
         expertId
       )}`,
       {
@@ -99,7 +99,7 @@ const ExpertBookings = ({ reportUI, setReportUI, setCurrentBookingId }) => {
   ////////////////////////////////////////////
   const handleConcludeClick = async (bookingId) => {
     const response = await fetch(
-      `http://localhost:8000/api/v1/users-experts/concludebooking?string=${encodeURIComponent(
+      `/api/v1/users-experts/concludebooking?string=${encodeURIComponent(
         bookingId
       )}`,
       {

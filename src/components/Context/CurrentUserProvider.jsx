@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthProvider";
 // Create a context
@@ -14,8 +13,8 @@ export const CurrentUserProvider = ({ children }) => {
       const response = await fetch(
         isLoggedIn &&
           (userType === "User"
-            ? "http://localhost:8000/api/v1/users/current-user"
-            : "http://localhost:8000/api/v1/experts/current-expert"),
+            ? "/api/v1/users/current-user"
+            : "/api/v1/experts/current-expert"),
         {
           method: "GET",
           credentials: "include",
@@ -25,7 +24,6 @@ export const CurrentUserProvider = ({ children }) => {
         throw new Error("Failed to fetch current user");
       }
       const data = await response.json();
-      console.log(data["data"]);
       setCurrentUser(data["data"]);
     } catch (error) {
       console.error(

@@ -6,6 +6,7 @@ import { SelectedButtonContext } from "../Context/SelectedButtonProvider.jsx";
 import { AuthContext } from "../Context/AuthProvider.jsx";
 import { useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const location = useLocation();
@@ -13,7 +14,7 @@ const Login = () => {
     SelectedButtonContext
   );
   const { isLoggedIn, setIsLoggedIn, setUserType } = useContext(AuthContext);
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const { setCurrentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,8 +38,8 @@ const Login = () => {
     try {
       const response = await fetch(
         selectedButton === "User"
-          ? "http://localhost:8000/api/v1/users/login"
-          : "http://localhost:8000/api/v1/experts/login",
+          ? "/api/v1/users/login"
+          : "/api/v1/experts/login",
         {
           method: "POST",
           credentials: "include",
@@ -52,7 +53,8 @@ const Login = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Failed to login");
+        toast.error("Failed to Login");
+        throw new Error("Failed to Login");
       }
 
       //the server returns a JSON object with a token upon successful login
@@ -86,6 +88,7 @@ const Login = () => {
 
         // Navigate to the Home route
         navigate("/");
+        toast.success("Successfully Logged In!");
       } else {
         throw new Error("Access token not found in response");
       }
@@ -110,8 +113,8 @@ const Login = () => {
   return (
     <div className="mx-auto max-screen-xl px-4 pt-20 pb-12 mt-5 sm:px-6 lg:px-8 bg-gray-950">
       <div className="mx-auto max-w-lg">
-        <h1 className="text-center text-2xl font-bold text-yellow-600 sm:text-3xl">
-          Welcome Back
+        <h1 className="text-center text-2xl font-bold text-yellow-400 sm:text-3xl">
+          Hey, Welcome Back !
         </h1>
 
         <p className="mx-auto mt-4 max-w-md text-center text-gray-500">

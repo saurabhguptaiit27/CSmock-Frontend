@@ -1,6 +1,5 @@
+import React, { createContext, useState, useEffect } from "react";
 
-import React, { createContext, useState, useEffect, useContext } from "react";
-import { AuthContext } from "./AuthProvider";
 // Create a context
 export const AllExpertsContext = createContext();
 
@@ -10,9 +9,7 @@ export const AllExpertsProvider = ({ children }) => {
 
   const fetchAllExperts = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:8000/api/v1/experts/allexperts"
-      );
+      const response = await fetch("/api/v1/experts/allexperts");
       if (!response.ok) {
         throw new Error("Failed to fetch experts");
       }

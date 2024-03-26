@@ -52,7 +52,6 @@ const Register = () => {
   };
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    console.log("file is---->",event.target.files)
     setFormData({
       ...formData,
       avatar: file,
@@ -73,7 +72,6 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // Send formData to backend or perform form submission logic
-    console.log("formdata at user register is ---->", formData);
 
     try {
 
@@ -90,7 +88,7 @@ const Register = () => {
 
 
       const response = await fetch(
-        "http://localhost:8000/api/v1/users/register",
+        "/api/v1/users/register",
         {
           method: "POST",
           body: formDataToSend,
@@ -107,7 +105,6 @@ const Register = () => {
       // Navigate to the Login route
       navigate("/Login/User");
 
-      console.log("Registration successful, registered user is ----->:", data);
       // Clear form after successful register
       setFormData({
         username: "",

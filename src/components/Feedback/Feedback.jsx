@@ -24,7 +24,7 @@ const Feedback = ({ setFeedbackUI, currentBookingId }) => {
       const response = await fetch(
         userType === "User" &&
           isLoggedIn &&
-          "http://localhost:8000/api/v1/users-experts/givefeedback",
+          "/api/v1/users-experts/givefeedback",
         {
           method: "POST",
           headers: {
@@ -39,7 +39,6 @@ const Feedback = ({ setFeedbackUI, currentBookingId }) => {
         throw new Error("Failed to give feedback to expert");
       }
       const data = await response.json();
-      console.log("feedback details are----", data);
       setFeedbackUI(false);
     } catch (error) {
       console.error("Error while giving feedback", error);
@@ -66,7 +65,7 @@ const Feedback = ({ setFeedbackUI, currentBookingId }) => {
   return (
     <form
       onSubmit={handleFeedbackSubmitButton}
-      class="max-w-md mx-auto p-4 bg-gray-600/70 shadow rounded fixed top-16 right-0 z-20 w-[24rem]"
+      class="max-w-md mx-auto p-4 bg-gray-600/90 shadow rounded fixed top-20 right-2 z-20 w-[22rem]"
     >
       <h2 class="text-2xl text-green-500 font-bold mb-4">Feedback Form</h2>
       <button

@@ -24,8 +24,8 @@ export const AuthProvider = ({ children }) => {
       } else if (!accessTokenCookie && refreshTokenCookie) {
         await fetch(
           userType === "User"
-            ? "http://localhost:8000/api/v1/users/refresh-token"
-            : "http://localhost:8000/api/v1/experts/refresh-token",
+            ? "/api/v1/users/refresh-token"
+            : "/api/v1/experts/refresh-token",
           {
             method: "POST",
             credentials: "include",

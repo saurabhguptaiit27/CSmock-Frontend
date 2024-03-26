@@ -9,6 +9,7 @@ import { PiHandshake } from "react-icons/pi";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
 import { ToggleUIContext } from "../Context/ToggleUiProvider.jsx";
+import toast from "react-hot-toast";
 
 const User = () => {
   const { setIsLoggedIn, userType, setUserType } = useContext(AuthContext);
@@ -22,8 +23,8 @@ const User = () => {
     try {
       const response = await fetch(
         userType === "User"
-          ? "http://localhost:8000/api/v1/users/logout"
-          : "http://localhost:8000/api/v1/experts/logout",
+          ? "/api/v1/users/logout"
+          : "/api/v1/experts/logout",
         {
           method: "POST",
           credentials: "include",
@@ -40,8 +41,8 @@ const User = () => {
       setToggleProfile(false);
       localStorage.removeItem("currentExpertData"); // Remove items from localStorage
       localStorage.removeItem("currentUser");
-      console.log("user logged out successfully");
       navigate("/");
+      toast.success("Successfully Logged Out!");
     } catch (error) {
       console.error("Logout error ====== : ", error);
     }

@@ -1,5 +1,6 @@
 import React, { useContext, useLayoutEffect, useEffect, useState } from "react";
 import { CurrentUserContext } from "../Context/CurrentUserProvider";
+import toast from "react-hot-toast";
 
 const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
   const { fetchCurrentUser, currentUser } = useContext(CurrentUserContext);
@@ -12,7 +13,7 @@ const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
 
   const fetchBookingById = async (bookingId) => {
     const response = await fetch(
-      `http://localhost:8000/api/v1/users-experts/getbookingbyid?string=${encodeURIComponent(
+      `/api/v1/users-experts/getbookingbyid?string=${encodeURIComponent(
         bookingId
       )}`,
       {
@@ -33,7 +34,7 @@ const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
   // Fetch a single user by ID
   const fetchUserById = async (userId) => {
     const response = await fetch(
-      `http://localhost:8000/api/v1/users/getuserbyid?string=${encodeURIComponent(
+      `/api/v1/users/getuserbyid?string=${encodeURIComponent(
         userId
       )}`,
       {
@@ -53,7 +54,7 @@ const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
   // Fetch a single expert by ID
   const fetchExpertById = async (expertId) => {
     const response = await fetch(
-      `http://localhost:8000/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
+      `/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
         expertId
       )}`,
       {
@@ -98,7 +99,7 @@ const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
   ////////////////////////////////////////////
   const handleCancelClick = async (bookingId) => {
     const response = await fetch(
-      `http://localhost:8000/api/v1/users-experts/cancelbooking?string=${encodeURIComponent(
+      `/api/v1/users-experts/cancelbooking?string=${encodeURIComponent(
         bookingId
       )}`,
       {
@@ -122,7 +123,6 @@ const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
   /////////////////////////////////////
   return (
     <section className="h-auto w-auto min-h-screen bg-gray-950/90 py-16 ">
-      {/* <div class=" md:px-60 mx-10 py-32 mt-16 bg-gray-900/50 rounded-lg shadow-md items-center"> */}
       <h1 class="text-2xl font-semibold text-center text-gray-300 capitalize lg:text-3xl mt-10">
         Our <span class="text-green-600">Executive Team</span>
       </h1>

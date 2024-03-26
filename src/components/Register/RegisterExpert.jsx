@@ -81,7 +81,6 @@ const RegisterExpert = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // Send formData to backend or perform form submission logic
-    console.log("formdata at expert register is ---->", formData);
 
     try {
       const formDataToSend = new FormData();
@@ -96,7 +95,7 @@ const RegisterExpert = () => {
       });
 
       const response = await fetch(
-        "http://localhost:8000/api/v1/experts/register",
+        "/api/v1/experts/register",
         {
           method: "POST",
           body: formDataToSend,
@@ -113,10 +112,6 @@ const RegisterExpert = () => {
       // Navigate to the Login route
       // navigate("/Login/Expert");
 
-      console.log(
-        "Registration successful, registered expert is ----->:",
-        data
-      );
       // Clear form after successful register
       setFormData({
         username: "",
