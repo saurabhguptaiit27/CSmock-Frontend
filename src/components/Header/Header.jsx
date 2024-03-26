@@ -132,14 +132,14 @@ const Header = () => {
                 } transition text-base hover:text-green-100/75`
               }
             >
-              <div class="flex items-center gap-x-6">
-                <div class="absolute right-10">
+              <div className="flex items-center gap-x-6">
+                <div className="absolute right-10">
                   <img
-                    class="object-cover w-7 h-7 rounded-full ring ring-gray-300 "
+                    className="object-cover w-7 h-7 rounded-full ring ring-gray-300 "
                     src={currentUser.avatar}
                     alt=""
                   />
-                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 absolute right-0 ring-1 ring-white -bottom-0.5"></span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 absolute right-0 ring-1 ring-white -bottom-0.5"></span>
                 </div>
               </div>
             </button>

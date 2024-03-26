@@ -50,18 +50,15 @@ const BookingConfirmation = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch(
-        "/api/v1/users-experts/appointmentbooking",
-        {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch("/api/v1/users-experts/appointmentbooking", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
       if (!response.ok) {
         throw new Error("Failed to book appointment");
       }
@@ -77,11 +74,11 @@ const BookingConfirmation = () => {
 
   return (
     <div>
-      <div class="flex h-auto items-center justify-center bg-gray-900 p-5 mt-16">
-        <div class="grid md:grid-cols-2 grid-cols-1 items-center gap-10 md:px-10 shadow-2xl shadow-lime-500/40 border border-green-500 p-10">
+      <div className="flex h-auto items-center justify-center bg-gray-900 p-5 mt-16">
+        <div className="grid md:grid-cols-2 grid-cols-1 items-center gap-10 md:px-10 shadow-2xl shadow-lime-500/40 border border-green-500 p-10">
           <div>
-            <h1 class="mb-2 text-3xl font-bold text-white">
-              <span class="text-gray-100">Hi, </span> I am{" "}
+            <h1 className="mb-2 text-3xl font-bold text-white">
+              <span className="text-gray-100">Hi, </span> I am{" "}
               <span className="text-yellow-400">
                 {currentExpertDataS.fullname}{" "}
               </span>
@@ -89,7 +86,7 @@ const BookingConfirmation = () => {
                 ({currentExpertDataS.currentPosition})
               </span>
             </h1>
-            <p class="mb-6 text-gray-400 font-bold font-serif">
+            <p className="mb-6 text-gray-400 font-bold font-serif">
               Fullname : {currentExpertDataS.fullname} <br />
               Email : {currentExpertDataS.email}
               <br />
@@ -147,10 +144,10 @@ const BookingConfirmation = () => {
                 ></textarea>
               </div>
 
-              <div class="flex justify-center space-x-5">
+              <div className="flex justify-center space-x-5">
                 <button
                   type="submit"
-                  class="flex w-full items-center justify-center gap-1 rounded-2xl bg-green-500 p-5 py-3 font-semibold text-white hover:bg-green-700"
+                  className="flex w-full items-center justify-center gap-1 rounded-2xl bg-green-500 p-5 py-3 font-semibold text-white hover:bg-green-700"
                 >
                   Confirm Your Appointment
                 </button>

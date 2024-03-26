@@ -34,9 +34,7 @@ const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
   // Fetch a single user by ID
   const fetchUserById = async (userId) => {
     const response = await fetch(
-      `/api/v1/users/getuserbyid?string=${encodeURIComponent(
-        userId
-      )}`,
+      `/api/v1/users/getuserbyid?string=${encodeURIComponent(userId)}`,
       {
         method: "POST",
         headers: {
@@ -54,9 +52,7 @@ const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
   // Fetch a single expert by ID
   const fetchExpertById = async (expertId) => {
     const response = await fetch(
-      `/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
-        expertId
-      )}`,
+      `/api/v1/experts/getexpertbyid?string=${encodeURIComponent(expertId)}`,
       {
         method: "POST",
         headers: {
@@ -123,11 +119,11 @@ const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
   /////////////////////////////////////
   return (
     <section className="h-auto w-auto min-h-screen bg-gray-950/90 py-16 ">
-      <h1 class="text-2xl font-semibold text-center text-gray-300 capitalize lg:text-3xl mt-10">
-        Our <span class="text-green-600">Executive Team</span>
+      <h1 className="text-2xl font-semibold text-center text-gray-300 capitalize lg:text-3xl mt-10">
+        Our <span className="text-green-600">Executive Team</span>
       </h1>
 
-      <p class="max-w-2xl mx-auto mt-6 text-center text-gray-300 mb-10">
+      <p className="max-w-2xl mx-auto mt-6 text-center text-gray-300 mb-10">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo incidunt
         ex placeat modi magni quia error alias, adipisci rem similique, at omnis
         eligendi optio eos harum.

@@ -14,8 +14,8 @@ const AvailabilityUI = () => {
   }, []);
 
   return (
-    <section class="bg-gray-600/90 fixed top-16 right-0 z-20 sm- rounded-xl border">
-      <div class=" max-w-3xl px-16 py-16 mx-auto text-center">
+    <section className="bg-gray-600/90 fixed top-16 right-0 z-20 sm- rounded-xl border">
+      <div className=" max-w-3xl px-16 py-16 mx-auto text-center">
         <button
           style={{
             backgroundColor: "#C7505B",
@@ -35,14 +35,14 @@ const AvailabilityUI = () => {
         >
           <MdOutlineCancel />
         </button>
-        <h1 class="text-3xl font-semibold text-gray-200 -mt-6">
+        <h1 className="text-3xl font-semibold text-gray-200 -mt-6">
           Please Add Availability...
         </h1>
-        <p class="max-w-md mx-auto mt-5 text-gray-100/60 ">
+        <p className="max-w-md mx-auto mt-5 text-gray-100/60 ">
           You Can Select multiple Slots
         </p>
 
-        <p class="max-w-md mx-auto mt-5 text-gray-100 ">
+        <p className="max-w-md mx-auto mt-5 text-gray-100 ">
           {values.map(
             (e) =>
               (e = `${e.day}/${e.month.name}/${e.year} ${e.hour}:${e.minute} , `)
@@ -53,7 +53,7 @@ const AvailabilityUI = () => {
           <p className="text-green-400">{paragraphContent}</p>
         )}
 
-        <div class="flex flex-col mt-8 space-y-3 sm:space-y-0 sm:flex-row sm:justify-center sm:-mx-2">
+        <div className="flex flex-col mt-8 space-y-3 sm:space-y-0 sm:flex-row sm:justify-center sm:-mx-2">
           <DateTimePicker
             values={values}
             setValues={setValues}

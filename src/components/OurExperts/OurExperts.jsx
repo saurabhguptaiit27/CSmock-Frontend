@@ -5,57 +5,57 @@ const OurExperts = () => {
   const { allExperts } = useContext(AllExpertsContext);
 
   return (
-    <section class="bg-gray-950/95 mt-10 min-h-screen">
-      <div class="container px-6 py-10 mx-auto">
-        <h1 class="text-2xl font-semibold text-center text-gray-300 capitalize lg:text-3xl">
-          Our <span class="text-green-600">Executive Team</span>
+    <section className="bg-gray-950/95 mt-10 min-h-screen">
+      <div className="container px-6 py-10 mx-auto">
+        <h1 className="text-2xl font-semibold text-center text-gray-300 capitalize lg:text-3xl">
+          Our <span className="text-green-600">Executive Team</span>
         </h1>
 
-        <p class="max-w-2xl mx-auto my-6 text-center text-gray-300">
+        <p className="max-w-2xl mx-auto my-6 text-center text-gray-300">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo incidunt
           ex placeat modi magni quia error alias, adipisci rem similique, at
           omnis eligendi optio eos harum.
         </p>
 
-        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-3">
           {allExperts.map((e, index) => (
             <div
               key={index}
-              class="bg-gray-500/30 px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-green-700"
+              className="bg-gray-500/30 px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-green-700"
             >
-              <div class="flex flex-col sm:-mx-4 sm:flex-row">
+              <div className="flex flex-col sm:-mx-4 sm:flex-row">
                 <img
-                  class="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 ring-gray-300"
+                  className="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 ring-gray-300"
                   src={e.avatar}
                   alt=""
                 />
 
-                <div class="sm:mx-4 sm:mt-0">
-                  <h1 class="mt-4 text-xl font-semibold text-yellow-500 capitalize md:text-2xl group-hover:text-white">
+                <div className="sm:mx-4 sm:mt-0">
+                  <h1 className="mt-4 text-xl font-semibold text-yellow-500 capitalize md:text-2xl group-hover:text-white">
                     {e.fullname}
                   </h1>
 
-                  <p class="mt-2 text-gray-300 capitalize group-hover:text-white">
+                  <p className="mt-2 text-gray-300 capitalize group-hover:text-white">
                     Software Developer
                   </p>
                 </div>
               </div>
 
-              <ul class="mt-4 text-gray-300 capitalize group-hover:text-white">
+              <ul className="mt-4 text-gray-300 capitalize group-hover:text-white">
                 <li>{`Prev Comp : ${e.previousCompanies}`}</li>
                 <li>{`username:${e.username}`}</li>
                 <li>{`fees:${e.fees}`}</li>
                 <li>{`gender:${e.gender}`}</li>
               </ul>
 
-              <div class="flex mt-4 -mx-2">
+              <div className="flex mt-4 -mx-2">
                 <a
                   href="#"
-                  class="mx-2 text-gray-300  hover:text-gray-500  group-hover:text-white"
+                  className="mx-2 text-gray-300  hover:text-gray-500  group-hover:text-white"
                   aria-label="Reddit"
                 >
                   <svg
-                    class="w-6 h-6 fill-current"
+                    className="w-6 h-6 fill-current"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -66,11 +66,11 @@ const OurExperts = () => {
 
                 <a
                   href="#"
-                  class="mx-2 text-gray-300  hover:text-gray-500  group-hover:text-white"
+                  className="mx-2 text-gray-300  hover:text-gray-500  group-hover:text-white"
                   aria-label="Facebook"
                 >
                   <svg
-                    class="w-6 h-6 fill-current"
+                    className="w-6 h-6 fill-current"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -81,12 +81,12 @@ const OurExperts = () => {
 
                 <a
                   href="#"
-                  class="mx-2 text-gray-300 hover:text-gray-500
+                  className="mx-2 text-gray-300 hover:text-gray-500
                     group-hover:text-white"
                   aria-label="Github"
                 >
                   <svg
-                    class="w-6 h-6 fill-current"
+                    className="w-6 h-6 fill-current"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"

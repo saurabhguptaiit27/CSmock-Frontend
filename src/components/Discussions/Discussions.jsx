@@ -73,7 +73,6 @@ const Discussions = ({
         content: "",
         postedOn: "",
       });
-    
     } catch (error) {
       console.error("error occured while posting----- : ", error.message);
     }
@@ -108,9 +107,7 @@ const Discussions = ({
     try {
       const response = await fetch(
         createrType === "User"
-          ? `/api/v1/users/getuserbyid?string=${encodeURIComponent(
-              createrId
-            )}`
+          ? `/api/v1/users/getuserbyid?string=${encodeURIComponent(createrId)}`
           : `/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
               createrId
             )}`,
@@ -165,9 +162,9 @@ const Discussions = ({
   };
 
   return (
-    <section class="bg-gray-900/90 mt-16 min-h-screen">
-      <div class="flex flex-col mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <h2 class="text-center text-4xl font-bold tracking-tight text-green-500 sm:text-5xl">
+    <section className="bg-gray-900/90 mt-16 min-h-screen">
+      <div className="flex flex-col mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <h2 className="text-center text-4xl font-bold tracking-tight text-green-500 sm:text-5xl">
           Read trusted reviews from our customers
         </h2>
 
@@ -180,11 +177,11 @@ const Discussions = ({
           <div className=" w-full flex justify-center">
             <form
               onSubmit={handleSubmit}
-              class="overflow-hidden md:w-1/2 items-center"
+              className="overflow-hidden md:w-1/2 items-center"
             >
               <textarea
                 id="createPost"
-                class="w-full bg-gray-900 text-white mt-4 rounded-lg px-4 py-2 align-middle sm:text-sm"
+                className="w-full bg-gray-900 text-white mt-4 rounded-lg px-4 py-2 align-middle sm:text-sm"
                 rows="4"
                 wrap="soft"
                 maxLength={256}
@@ -194,10 +191,10 @@ const Discussions = ({
                 onChange={(event) => handleTextSelection(event.target.value)}
               ></textarea>
 
-              <div class="flex items-center justify-end gap-2 py-3">
+              <div className="flex items-center justify-end gap-2 py-3">
                 <button
                   type="submit"
-                  class="rounded bg-blue-700 px-3 py-1.5 text-md  font-medium text-white hover:bg-green-700"
+                  className="rounded bg-blue-700 px-3 py-1.5 text-md  font-medium text-white hover:bg-green-700"
                 >
                   Post
                 </button>
@@ -206,31 +203,31 @@ const Discussions = ({
           </div>
         )}
 
-        <div class="mt-10 mb-16 grid grid-cols-1 gap-x-4 sm:grid-cols-2 lg:grid-cols-3 ">
+        <div className="mt-10 mb-16 grid grid-cols-1 gap-x-4 sm:grid-cols-2 lg:grid-cols-3 ">
           {allPosts.map((post, index) => (
-            <div key={index} class="mb-4 sm:break-inside-avoid">
+            <div key={index} className="mb-4 sm:break-inside-avoid">
               <blockquote
-                class={
+                className={
                   post.createrType === "User"
                     ? "rounded-lg bg-yellow-300/70 hover:bg-yellow-300/95 p-6 shadow-lg hover:shadow-green-400/60 sm:p-8"
                     : "rounded-lg bg-red-300/70 hover:bg-red-300/95 p-6 shadow-lg hover:shadow-green-400/60 sm:p-8"
                 }
               >
-                <div class="flex flex-row items-center gap-4">
+                <div className="flex flex-row items-center gap-4">
                   <img
                     alt=""
                     src={post.creator.avatar}
-                    class="size-14 rounded-full object-cover"
+                    className="size-14 rounded-full object-cover"
                   />
                   <div className="flex flex-col w-2/3">
-                    <p class="-mb-1 text-lg font-medium text-gray-950 flex items-center">
+                    <p className="-mb-1 text-lg font-medium text-gray-950 flex items-center">
                       <span className="mr-2">{post.creator.fullname}</span>
                       {post.createrType === "Expert" && (
                         <FaAward className="text-sm" />
                       )}
                     </p>
 
-                    <p class=" mt-1 text-sm text-gray-900 ">
+                    <p className=" mt-1 text-sm text-gray-900 ">
                       {post.creator.currentPosition}
                     </p>
                   </div>
@@ -258,7 +255,7 @@ const Discussions = ({
                   )}
                 </div>
 
-                <p class="mt-4 text-gray-700 text-justify overflow-y-auto">
+                <p className="mt-4 text-gray-700 text-justify overflow-y-auto">
                   {post.content}
                 </p>
               </blockquote>

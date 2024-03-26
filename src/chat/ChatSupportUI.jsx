@@ -51,16 +51,16 @@ const ChatSupportUI = () => {
   };
 
   return (
-    <div class="bg-gray-600/90 fixed bottom-32 right-10 z-20 sm- rounded-xl border">
-      <div class="bg-gray-100/70 rounded-lg shadow-md p-4">
-        <div class="flex items-center mb-2">
-          <div class="ml-3">
-            <p class="text-xl font-medium">Welcome To CSmock</p>
-            <p class="text-gray-500">Online</p>
+    <div className="bg-gray-600/90 fixed bottom-32 right-10 z-20 sm- rounded-xl border">
+      <div className="bg-gray-100/70 rounded-lg shadow-md p-4">
+        <div className="flex items-center mb-2">
+          <div className="ml-3">
+            <p className="text-xl font-medium">Welcome To CSmock</p>
+            <p className="text-gray-500">Online</p>
           </div>
         </div>
         <hr className="border-green-700" />
-        <div class="space-y-4 min-h-56 max-h-60 overflow-y-auto ">
+        <div className="space-y-4 min-h-56 max-h-60 overflow-y-auto ">
           {!messages.length && (
             <img className="h-56 w-full" src="/chat-support.jpg" />
           )}
@@ -100,17 +100,17 @@ const ChatSupportUI = () => {
           ))}
         </div>
         <hr className="border-green-700 " />
-        <div class="mt-4 flex items-center">
+        <div className="mt-4 flex items-center">
           <input
             type="text"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             placeholder="Type your message..."
-            class="flex-1 py-2 px-3 rounded-full bg-gray-100 focus:outline-none"
+            className="flex-1 py-2 px-3 rounded-full bg-gray-100 focus:outline-none"
           />
           <button
             onClick={() => sendMessage()}
-            class="bg-blue-500 text-white px-4 py-2 rounded-full ml-3 hover:bg-blue-600"
+            className="bg-blue-500 text-white px-4 py-2 rounded-full ml-3 hover:bg-blue-600"
           >
             Send
           </button>

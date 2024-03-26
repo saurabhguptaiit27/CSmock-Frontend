@@ -21,9 +21,7 @@ const Edit = ({ setEditUI, currentPostId, currentPostContent }) => {
     event.preventDefault();
     try {
       const response = await fetch(
-        userType === "User" &&
-          isLoggedIn &&
-          "/api/v1/creaters/editpost",
+        userType === "User" && isLoggedIn && "/api/v1/creaters/editpost",
         {
           method: "POST",
           headers: {
@@ -61,9 +59,9 @@ const Edit = ({ setEditUI, currentPostId, currentPostContent }) => {
   return (
     <form
       onSubmit={handleEditSubmitButton}
-      class="max-w-md mx-auto p-4 bg-gray-600/90 shadow rounded fixed top-20 right-2 z-20 w-[20rem]"
+      className="max-w-md mx-auto p-4 bg-gray-600/90 shadow rounded fixed top-20 right-2 z-20 w-[20rem]"
     >
-      <h2 class="text-2xl text-green-500 font-bold mb-4">
+      <h2 className="text-2xl text-green-500 font-bold mb-4">
         Edit Your Post Here ...
       </h2>
       <button
@@ -86,8 +84,8 @@ const Edit = ({ setEditUI, currentPostId, currentPostContent }) => {
         <MdOutlineCancel />
       </button>
 
-      <div class="mb-4">
-        <label for="editpost" class="block mb-1 text-yellow-500">
+      <div className="mb-4">
+        <label for="editpost" className="block mb-1 text-yellow-500">
           Edit Post
         </label>
         <textarea
@@ -98,14 +96,14 @@ const Edit = ({ setEditUI, currentPostId, currentPostContent }) => {
           wrap="soft"
           maxLength={256}
           placeholder="Edit your post here ..."
-          class="w-full py-2 px-4 bg-gray-800 text-gray-100 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full py-2 px-4 bg-gray-800 text-gray-100 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(event) => handleTextSelection(event.target.value)}
         ></textarea>
       </div>
 
       <button
         type="submit"
-        class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md shadow-gray-500"
+        className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md shadow-gray-500"
       >
         Submit
       </button>

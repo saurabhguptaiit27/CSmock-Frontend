@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer class="bg-gray-900 ">
-      <div class="container px-6 py-5 mx-auto ">
-        <div class="flex flex-col items-center text-center">
+    <footer className="bg-gray-900 ">
+      <div className="container px-6 py-5 mx-auto ">
+        <div className="flex flex-col items-center text-center">
           <a href="#">
             <img className="rounded-3xl size-10" src="/CSmock.png"></img>
           </a>
 
-          <div class="flex flex-wrap justify-center mt-6 -mx-4">
+          <div className="flex flex-wrap justify-center mt-6 -mx-4">
             <Link
               to=""
-              class="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500  "
+              className="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500  "
               aria-label="Reddit"
             >
               {" "}
@@ -22,7 +22,7 @@ const Footer = () => {
 
             <Link
               to="About"
-              class="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500 "
+              className="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500 "
               aria-label="Reddit"
             >
               {" "}
@@ -31,7 +31,7 @@ const Footer = () => {
 
             <Link
               to="Faqs"
-              class="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500 "
+              className="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500 "
               aria-label="Reddit"
             >
               {" "}
@@ -40,7 +40,7 @@ const Footer = () => {
 
             <Link
               to="/privacy"
-              class="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500 "
+              className="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500 "
               aria-label="Reddit"
             >
               {" "}
@@ -49,7 +49,7 @@ const Footer = () => {
 
             <Link
               to="/contactus"
-              class="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500 "
+              className="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500 "
               aria-label="Reddit"
             >
               {" "}
@@ -58,21 +58,21 @@ const Footer = () => {
           </div>
         </div>
 
-        <hr class="my-6 border-green-500 md:my-10 " />
+        <hr className="my-6 border-green-500 md:my-10 " />
 
-        <div class="flex flex-col items-center sm:flex-row sm:justify-between">
-          <p class="text-sm text-gray-200 ">
+        <div className="flex flex-col items-center sm:flex-row sm:justify-between">
+          <p className="text-sm text-gray-200 ">
             © Copyright 2021. All Rights Reserved.
           </p>
 
-          <div class="flex -mx-2 mt-2 md:mt-0">
+          <div className="flex -mx-2 mt-2 md:mt-0">
             <a
               href="#"
-              class="mx-2 text-gray-200 transition-colors duration-300  hover:text-red-400 "
+              className="mx-2 text-gray-200 transition-colors duration-300  hover:text-red-400 "
               aria-label="Reddit"
             >
               <svg
-                class="w-5 h-5 fill-current"
+                className="w-5 h-5 fill-current"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -83,11 +83,11 @@ const Footer = () => {
 
             <a
               href="#"
-              class="mx-2 text-gray-200 transition-colors duration-300  hover:text-blue-500 "
+              className="mx-2 text-gray-200 transition-colors duration-300  hover:text-blue-500 "
               aria-label="Facebook"
             >
               <svg
-                class="w-5 h-5 fill-current"
+                className="w-5 h-5 fill-current"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -98,11 +98,11 @@ const Footer = () => {
 
             <a
               href="#"
-              class="mx-2 text-gray-200 transition-colors duration-300  hover:text-green-400 "
+              className="mx-2 text-gray-200 transition-colors duration-300  hover:text-green-400 "
               aria-label="Github"
             >
               <svg
-                class="w-5 h-5 fill-current"
+                className="w-5 h-5 fill-current"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

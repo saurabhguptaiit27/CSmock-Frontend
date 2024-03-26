@@ -74,7 +74,6 @@ const Register = () => {
     // Send formData to backend or perform form submission logic
 
     try {
-
       const formDataToSend = new FormData();
       Object.entries(formData).forEach(([key, value]) => {
         if (Array.isArray(value)) {
@@ -86,14 +85,10 @@ const Register = () => {
         }
       });
 
-
-      const response = await fetch(
-        "/api/v1/users/register",
-        {
-          method: "POST",
-          body: formDataToSend,
-        }
-      );
+      const response = await fetch("/api/v1/users/register", {
+        method: "POST",
+        body: formDataToSend,
+      });
 
       if (!response.ok) {
         throw new Error("Failed to Register the User");
@@ -171,13 +166,11 @@ const Register = () => {
               </Link>
             </div>
           </div>
+        </div>
 
-          </div>
-
-          <form onSubmit={handleSubmit} className="w-full max-w-md">
-            
+        <form onSubmit={handleSubmit} className="w-full max-w-md">
           <p className="mx-auto mt-4 max-w-md text-center text-gray-200">
-          All fields are mandatory *
+            All fields are mandatory *
           </p>
 
           <div className="relative flex items-center mt-6">

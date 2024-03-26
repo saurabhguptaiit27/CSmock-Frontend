@@ -17,8 +17,7 @@ export default function DateTimePicker({
     const appointmentDateTime = [];
     console.log(".......on clear");
     const response = await fetch(
-      userType === "Expert" &&
-        "/api/v1/experts/addavailability",
+      userType === "Expert" && "/api/v1/experts/addavailability",
       {
         method: "POST",
         credentials: "include",
@@ -41,8 +40,7 @@ export default function DateTimePicker({
         (e) => (e = `${e.day}/${e.month.name}/${e.year} ${e.hour}:${e.minute}`)
       );
       const response = await fetch(
-        userType === "Expert" &&
-          "/api/v1/experts/addavailability",
+        userType === "Expert" && "/api/v1/experts/addavailability",
         {
           method: "POST",
           credentials: "include",

@@ -22,9 +22,7 @@ const User = () => {
   const handleLogoutButton = async () => {
     try {
       const response = await fetch(
-        userType === "User"
-          ? "/api/v1/users/logout"
-          : "/api/v1/experts/logout",
+        userType === "User" ? "/api/v1/users/logout" : "/api/v1/experts/logout",
         {
           method: "POST",
           credentials: "include",
@@ -49,15 +47,15 @@ const User = () => {
   };
 
   return (
-    <div class="fixed top-10 right-2 z-30 mt-10">
+    <div className="fixed top-10 right-2 z-30 mt-10">
       <div
-        class="bg-gray-400/95 end-0 w-52 rounded-md border border-green shadow-lg mr-5 text-left fixed"
+        className="bg-gray-400/95 end-0 w-52 rounded-md border border-green shadow-lg mr-5 text-left fixed"
         role="menu"
       >
-        <div class="p-2 ">
+        <div className="p-2 ">
           <a
             href="#"
-            class="block rounded-lg px-4 py-2 text-sm font-bold text-black hover:bg-gray-50 hover:text-gray-700"
+            className="block rounded-lg px-4 py-2 text-sm font-bold text-black hover:bg-gray-50 hover:text-gray-700"
             role="menuitem"
           >
             {currentUser["fullname"]}
@@ -66,7 +64,7 @@ const User = () => {
 
           <a
             href="#"
-            class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-black hover:bg-gray-50 hover:text-gray-700"
+            className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-black hover:bg-gray-50 hover:text-gray-700"
             role="menuitem"
           >
             <HiOutlineUserCircle />
@@ -76,7 +74,7 @@ const User = () => {
           <Link
             onClick={() => setToggleProfile(false)}
             to="/yourbookings"
-            class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-black hover:bg-gray-50 hover:text-gray-700"
+            className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-black hover:bg-gray-50 hover:text-gray-700"
             role="menuitem"
           >
             <PiHandshake />
@@ -85,7 +83,7 @@ const User = () => {
 
           <a
             href="#"
-            class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-black hover:bg-gray-50 hover:text-gray-700"
+            className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-black hover:bg-gray-50 hover:text-gray-700"
             role="menuitem"
           >
             <CiSettings /> Settings
@@ -95,7 +93,7 @@ const User = () => {
             <Link
               to=""
               onClick={() => handleLogoutButton()}
-              class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-red-700 hover:bg-red-400
+              className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-red-700 hover:bg-red-400
               hover:text-black"
               role="menuitem"
             >

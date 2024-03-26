@@ -65,9 +65,9 @@ const Report = ({ setReportUI, currentBookingId }) => {
   return (
     <form
       onSubmit={handleReportSubmitButton}
-      class="max-w-md mx-auto p-4 bg-gray-600/90 shadow rounded fixed top-20 right-2 z-20 w-[22rem]"
+      className="max-w-md mx-auto p-4 bg-gray-600/90 shadow rounded fixed top-20 right-2 z-20 w-[22rem]"
     >
-      <h2 class="text-2xl text-green-500 font-bold mb-4">Report Form</h2>
+      <h2 className="text-2xl text-green-500 font-bold mb-4">Report Form</h2>
       <button
         style={{
           backgroundColor: "#C7505B",
@@ -88,17 +88,17 @@ const Report = ({ setReportUI, currentBookingId }) => {
         <MdOutlineCancel />
       </button>
 
-      <div class="mb-4">
-        <label class="block mb-1 text-yellow-500">
-          Rating <span class="text-red-500">*</span>
+      <div className="mb-4">
+        <label className="block mb-1 text-yellow-500">
+          Rating <span className="text-red-500">*</span>
         </label>
-        <div class="flex items-center space-x-2 text-blue-300">
+        <div className="flex items-center space-x-2 text-blue-300">
           <input
             type="radio"
             name="rating"
             id="rating1"
             value="1"
-            class="focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="focus:outline-none focus:ring-2 focus:ring-blue-500"
             onChange={(event) => handleRatingSelection(event.target.value)}
           />
           <label for="rating1">1</label>
@@ -107,7 +107,7 @@ const Report = ({ setReportUI, currentBookingId }) => {
             name="rating"
             id="rating2"
             value="2"
-            class="focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="focus:outline-none focus:ring-2 focus:ring-blue-500"
             onChange={(event) => handleRatingSelection(event.target.value)}
           />
           <label for="rating2">2</label>
@@ -116,7 +116,7 @@ const Report = ({ setReportUI, currentBookingId }) => {
             name="rating"
             id="rating3"
             value="3"
-            class="focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="focus:outline-none focus:ring-2 focus:ring-blue-500"
             onChange={(event) => handleRatingSelection(event.target.value)}
           />
           <label for="rating3">3</label>
@@ -125,7 +125,7 @@ const Report = ({ setReportUI, currentBookingId }) => {
             name="rating"
             id="rating4"
             value="4"
-            class="focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="focus:outline-none focus:ring-2 focus:ring-blue-500"
             onChange={(event) => handleRatingSelection(event.target.value)}
           />
           <label for="rating4">4</label>
@@ -134,15 +134,15 @@ const Report = ({ setReportUI, currentBookingId }) => {
             name="rating"
             id="rating5"
             value="5"
-            class="focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="focus:outline-none focus:ring-2 focus:ring-blue-500"
             onChange={(event) => handleRatingSelection(event.target.value)}
           />
           <label for="rating5">5</label>
         </div>
       </div>
 
-      <div class="mb-4">
-        <label for="comment" class="block mb-1 text-yellow-500">
+      <div className="mb-4">
+        <label for="comment" className="block mb-1 text-yellow-500">
           Message
         </label>
         <textarea
@@ -151,14 +151,14 @@ const Report = ({ setReportUI, currentBookingId }) => {
           rows="3"
           maxLength={120}
           placeholder="Leave a message for our expert (optional)"
-          class="w-full py-2 px-4 bg-gray-800 text-gray-100 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full py-2 px-4 bg-gray-800 text-gray-100 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(event) => handleTextSelection(event.target.value)}
         ></textarea>
       </div>
 
       <button
         type="submit"
-        class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md shadow-gray-500"
+        className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md shadow-gray-500"
       >
         Submit
       </button>
