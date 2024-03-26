@@ -17,7 +17,7 @@ const OurExperts = () => {
           omnis eligendi optio eos harum.
         </p>
 
-        <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3">
           {allExperts.map((e, index) => (
             <div
               key={index}
@@ -25,27 +25,27 @@ const OurExperts = () => {
             >
               <div className="flex flex-col sm:-mx-4 sm:flex-row">
                 <img
-                  className="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 ring-gray-300"
+                  className="flex-shrink-0 object-cover w-14 h-14 rounded-full sm:mx-4 ring-4 ring-gray-300"
                   src={e.avatar}
-                  alt=""
+                  alt="expert profile pic"
                 />
 
                 <div className="sm:mx-4 sm:mt-0">
-                  <h1 className="mt-4 text-xl font-semibold text-yellow-500 capitalize md:text-2xl group-hover:text-white">
+                  <h1 className=" lg:-mt-1 lg:-ml-4 text-xl font-semibold text-yellow-500 capitalize md:text-2xl group-hover:text-white">
                     {e.fullname}
                   </h1>
 
-                  <p className="mt-2 text-gray-300 capitalize group-hover:text-white">
-                    Software Developer
+                  <p className="lg:-ml-4 text-gray-300 capitalize group-hover:text-white">
+                    {e.currentPosition}
                   </p>
                 </div>
               </div>
 
-              <ul className="mt-4 text-gray-300 capitalize group-hover:text-white">
+              <ul className="mt-4 text-gray-300 capitalize group-hover:text-white font-serif">
                 <li>{`Prev Comp : ${e.previousCompanies}`}</li>
-                <li>{`username:${e.username}`}</li>
-                <li>{`fees:${e.fees}`}</li>
-                <li>{`gender:${e.gender}`}</li>
+                <li>{`username : ${e.username}`}</li>
+                <li>{`fees : ${e.fees}`}</li>
+                <li>{`gender : ${e.gender}`}</li>
               </ul>
 
               <div className="flex mt-4 -mx-2">

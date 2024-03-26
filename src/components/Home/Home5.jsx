@@ -95,7 +95,7 @@ export default function Home5() {
                        border-gray-50 
                        transition duration-150 ease-out hover:scale-125 hover:border-white hover:shadow-md active:scale-110 active:border-gray-50 active:shadow-sm"
                   >
-                    <img src="/saurabhgupta.png" alt="saurabh gupta Photo" />
+                    <img src="/saurabhgupta.jpg" alt="saurabh gupta Photo" />
                   </a>
                   <div>
                     <a

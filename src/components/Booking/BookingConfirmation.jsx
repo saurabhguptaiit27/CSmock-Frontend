@@ -82,7 +82,7 @@ const BookingConfirmation = () => {
               <span className="text-yellow-400">
                 {currentExpertDataS.fullname}{" "}
               </span>
-              <span className="font-light">
+              <span className="font-light text-lg">
                 ({currentExpertDataS.currentPosition})
               </span>
             </h1>

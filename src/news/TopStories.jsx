@@ -123,18 +123,24 @@ const TopStories = () => {
 
         <div className="min-h-1/4 my-4 flex h-auto w-full flex-col bg-transparent md:flex-row">
           <div className="min-h-48 bg-gray-400/70 border-2 border-yellow-300 rounded-xl p-4 md:w-1/3 text-white">
-            <h1>{stories[0]["title"]}</h1>
+            <h1 className="text-green-400 font-extrabold">
+              {stories[0]["title"]}
+            </h1>
             <p>{stories[0]["description"]}</p>
             <p>{stories[0]["content"]}</p>
           </div>
           <div className="flex min-h-64 flex-col bg-transparent md:w-2/3">
             <div className="m-2 min-h-28 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4">
-              <h1>{stories[1]["title"]}</h1>
+              <h1 className="text-green-500 font-extrabold">
+                {stories[1]["title"]}
+              </h1>
               <p>{stories[1]["description"]}</p>
               <p>{stories[1]["content"]}</p>
             </div>
             <div className="m-2 min-h-28 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4">
-              <h1>{stories[2]["title"]}</h1>
+              <h1 className="text-green-500 font-extrabold">
+                {stories[2]["title"]}
+              </h1>
               <p>{stories[2]["description"]}</p>
               <p>{stories[2]["content"]}</p>
             </div>
@@ -144,18 +150,24 @@ const TopStories = () => {
         <div className="min-h-1/4 my-4 flex h-auto w-full flex-col bg-transparent md:flex-row -mt-4">
           <div className=" flex min-h-64 flex-col bg-transparent md:w-2/3">
             <div className="m-2 min-h-28 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4">
-              <h1>{stories[3]["title"]}</h1>
+              <h1 className="text-green-500 font-extrabold">
+                {stories[3]["title"]}
+              </h1>
               <p>{stories[3]["description"]}</p>
               <p>{stories[3]["content"]}</p>
             </div>
             <div className="m-2 min-h-28 bg-gray-500/30 border-2 border-yellow-300 text-white  rounded-xl p-4">
-              <h1>{stories[4]["title"]}</h1>
+              <h1 className="text-green-500 font-extrabold">
+                {stories[4]["title"]}
+              </h1>
               <p>{stories[4]["description"]}</p>
               <p>{stories[4]["content"]}</p>
             </div>
           </div>
           <div className="m-2 min-h-48 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl md:w-1/3 p-4">
-            <h1>{stories[5]["title"]}</h1>
+            <h1 className="text-green-500 font-extrabold">
+              {stories[5]["title"]}
+            </h1>
             <p>{stories[5]["description"]}</p>
             <p>{stories[5]["content"]}</p>
           </div>
@@ -164,23 +176,31 @@ const TopStories = () => {
         <div className="m-h-1/4 my-4 flex h-auto w-full flex-col bg-transparent">
           <div className="-mb-2 -mt-8 flex h-2/3 min-h-64 flex-col bg-transparent lg:flex-row">
             <div className="m-2 min-h-44 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4 lg:w-1/3">
-              <h1>{stories[6]["title"]}</h1>
+              <h1 className="text-green-500 font-extrabold">
+                {stories[6]["title"]}
+              </h1>
               <p>{stories[6]["description"]}</p>
               <p>{stories[6]["content"]}</p>
             </div>
             <div className="m-2 min-h-44 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4 lg:w-1/3">
-              <h1>{stories[7]["title"]}</h1>
+              <h1 className="text-green-500 font-extrabold">
+                {stories[7]["title"]}
+              </h1>
               <p>{stories[7]["description"]}</p>
               <p>{stories[7]["content"]}</p>
             </div>
             <div className="m-2 min-h-44 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4 lg:w-1/3">
-              <h1>{stories[8]["title"]}</h1>
+              <h1 className="text-green-500 font-extrabold">
+                {stories[8]["title"]}
+              </h1>
               <p>{stories[8]["description"]}</p>
               <p>{stories[8]["content"]}</p>
             </div>
           </div>
           <div className="m-2 h-1/3 min-h-32 rounded-xl p-4 bg-gray-500/30 border-2 border-yellow-300 text-white">
-            <h1>{stories[9]["title"]}</h1>
+            <h1 className="text-green-500 font-extrabold">
+              {stories[9]["title"]}
+            </h1>
             <p>{stories[9]["description"]}</p>
             <p>{stories[9]["content"]}</p>
           </div>

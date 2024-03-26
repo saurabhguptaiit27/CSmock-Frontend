@@ -36,7 +36,7 @@ const Header = () => {
 
         <div className="flex flex-1 items-center justify-end md:justify-between">
           <nav aria-label="Global" className="hidden md:block">
-            <ul className="flex items-center gap-6 text-sm">
+            <ul className="flex items-center text-sm md:gap-2 lg:gap-6">
               <li>
                 <NavLink
                   className={({ isActive }) =>
@@ -62,6 +62,21 @@ const Header = () => {
                   Our Experts
                 </NavLink>
               </li>
+
+              {isLoggedIn && (
+                <li>
+                  <NavLink
+                    className={({ isActive }) =>
+                      `${
+                        isActive ? "text-yellow-300" : "text-gray-300"
+                      } transition text-base hover:text-green-300/75`
+                    }
+                    to="yourbookings"
+                  >
+                    Bookings
+                  </NavLink>
+                </li>
+              )}
 
               <li>
                 <NavLink

@@ -64,16 +64,16 @@ const Booking = () => {
                   />
 
                   <div className=" mx-2">
-                    <h1 className="font-semibold text-green-500">
+                    <h1 className="font-semibold text-green-500 text-xl">
                       {e.fullname}
                     </h1>
                     <span className="text-sm text-gray-200">
-                      CTO, Robert Consultency
+                      {e.currentPosition}
                     </span>
                   </div>
                 </div>
 
-                <ul className="leading-loose text-gray-200 ">
+                <ul className="leading-loose text-gray-200 font-serif">
                   <li>{`Prev Comp : ${e.previousCompanies}`}</li>
                   <li>{`username : ${e.username}`}</li>
                   <li>{`Expertise : ${e.expertise}`}</li>

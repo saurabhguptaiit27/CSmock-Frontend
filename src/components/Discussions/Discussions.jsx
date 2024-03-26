@@ -61,6 +61,8 @@ const Discussions = ({
         },
         body: JSON.stringify(formData),
       });
+    
+
       if (!response.ok) {
         throw new Error("Failed to create post");
       }
@@ -247,7 +249,7 @@ const Discussions = ({
                             post.createrType
                           )
                         }
-                        className="text-2xl hover:text-red-600 "
+                        className="text-xl hover:text-gray-200 bg-red-700/90 rounded-2xl p-1"
                       >
                         <MdDeleteForever />
                       </button>
@@ -258,6 +260,7 @@ const Discussions = ({
                 <p className="mt-4 text-gray-700 text-justify overflow-y-auto">
                   {post.content}
                 </p>
+                <hr className="border-black mt-4" />
               </blockquote>
             </div>
           ))}

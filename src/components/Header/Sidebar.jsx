@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { FaAward } from "react-icons/fa";
 import { GiDiscussion } from "react-icons/gi";
 import { ImInfo } from "react-icons/im";
 import { IoNewspaperSharp } from "react-icons/io5";
+import { PiHandshake } from "react-icons/pi";
+import { AuthContext } from "../Context/AuthProvider";
 const Sidebar = () => {
+  const { isLoggedIn } = useContext(AuthContext);
   return (
     <aside className="fixed top-10 leftt-2 z-30 mt-10 ml-2">
       <div className="flex flex-col w-56 h-auto px-2 py-6 overflow-y-auto bg-gray-700/90 rounded-lg z=30">
@@ -21,15 +24,26 @@ const Sidebar = () => {
             </Link>
             <Link
               className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100"
-              to="Ourexperts"
+              to="/Ourexperts"
             >
               <FaAward />
 
               <span className="mx-4 font-medium">Our Experts</span>
             </Link>
+
+            {isLoggedIn && (
+              <Link
+                className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100"
+                to="/yourbookings"
+              >
+                <PiHandshake />
+
+                <span className="mx-4 font-medium">Bookings</span>
+              </Link>
+            )}
             <Link
               className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100"
-              to="Discussions"
+              to="/Discussions"
             >
               <GiDiscussion />
 
@@ -37,7 +51,7 @@ const Sidebar = () => {
             </Link>
             <Link
               className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100"
-              to="TopStories"
+              to="/TopStories"
             >
               <IoNewspaperSharp />
 
@@ -45,7 +59,7 @@ const Sidebar = () => {
             </Link>
             <Link
               className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100"
-              to="About"
+              to="/About"
             >
               <ImInfo />
 

@@ -23,7 +23,7 @@ const Home3 = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="size-10 text-blue-500"
+              className="size-6 text-blue-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -54,7 +54,7 @@ const Home3 = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="size-10 text-blue-500"
+              className="size-6 text-blue-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -85,7 +85,7 @@ const Home3 = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="size-10 text-blue-500"
+              className="size-6 text-blue-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
