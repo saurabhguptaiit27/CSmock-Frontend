@@ -132,7 +132,7 @@ const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
         {bookingDetails.map((bookingData, index) => (
           <div
             key={index}
-            className=" border-2  border-green-400/50 rounded-2xl px-5 py-3 mb-5 hover:bg-gray-950/50"
+            className=" border-2  border-yellow-400/80 rounded-2xl px-5 py-3 mb-5 hover:bg-gray-950/50"
           >
             <div className="flex items-center justify-between ">
               <p className="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-300 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-800">
