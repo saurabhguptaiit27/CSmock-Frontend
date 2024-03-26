@@ -53,7 +53,7 @@ const ChatSupportUI = () => {
   return (
     <div class="bg-gray-600/90 fixed bottom-32 right-10 z-20 sm- rounded-xl border">
       <div class="bg-gray-100/70 rounded-lg shadow-md p-4">
-        <div class="flex items-center mb-4">
+        <div class="flex items-center mb-2">
           <div class="ml-3">
             <p class="text-xl font-medium">Welcome To CSmock</p>
             <p class="text-gray-500">Online</p>

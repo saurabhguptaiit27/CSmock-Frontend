@@ -8,7 +8,7 @@ export default function Home5() {
         <div className="container mx-auto px-4 py-16 lg:px-8 lg:py-32 xl:max-w-7xl">
           <div className="relative">
             <div className="absolute right-0 top-0 -mt-5 font-serif text-9xl text-green-400">
-            &#10078;
+              &#10078;
             </div>
             <div className="relative text-center">
               <div className="mb-3">
@@ -82,7 +82,11 @@ export default function Home5() {
               </div>
               <blockquote className="mx-auto lg:w-2/3 xl:w-1/2">
                 <p className="mb-5 text-xl font-semibold leading-8 text-gray-300">
-                Sunt esse officia do non esse eu occaecat veniam voluptate duis. Ullamco anim eu magna occaecat culpa occaecat nisi magna. Pariatur officia eu amet deserunt est duis nisi elit cillum mollit consectetur aliquip anim nisi. Esse proident eiusmod dolor incididunt sint.
+                  Sunt esse officia do non esse eu occaecat veniam voluptate
+                  duis. Ullamco anim eu magna occaecat culpa occaecat nisi
+                  magna. Pariatur officia eu amet deserunt est duis nisi elit
+                  cillum mollit consectetur aliquip anim nisi. Esse proident
+                  eiusmod dolor incididunt sint.
                 </p>
                 <footer className="space-y-4 p-5 shadow-xl hover:shadow-yellow-400/20">
                   <a
@@ -91,10 +95,7 @@ export default function Home5() {
                        border-gray-50 
                        transition duration-150 ease-out hover:scale-125 hover:border-white hover:shadow-md active:scale-110 active:border-gray-50 active:shadow-sm"
                   >
-                    <img
-                      src="/saurabhgupta.png"
-                      alt="Avatar Photo"
-                    />
+                    <img src="/saurabhgupta.png" alt="saurabh gupta Photo" />
                   </a>
                   <div>
                     <a

@@ -24,8 +24,9 @@ import UserBookingsUI from "./components/YourBookings/UserBookingsUI.jsx";
 import ExpertBookingsUI from "./components/YourBookings/ExpertBookingsUI.jsx";
 import Error from "./components/Error/Error.jsx";
 import ContactUs from "./components/ContactUs/ContactUs.jsx";
-import Discussions from "./components/Discussions/Discussions.jsx";
+import DiscussionsUI from "./components/Discussions/DiscussionsUI.jsx";
 import TopStories from "./news/TopStories.jsx";
+
 
 const App = () => {
   const { isLoggedIn, userType } = useContext(AuthContext);
@@ -58,7 +59,7 @@ const App = () => {
         },
         {
           path: "Discussions",
-          element: isLoggedIn ? <Discussions /> : <Error />,
+          element: isLoggedIn ? <DiscussionsUI /> : <Error />,
         },
         {
           path: "Booking",
