@@ -117,6 +117,38 @@ const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
     setCurrentBookingId(bookingId);
   };
   /////////////////////////////////////
+
+  const handleAllBookingsClick = () => {
+    fetchBookingDetails();
+  };
+
+  const handlePendingSessionsClick = async () => {
+    await fetchBookingDetails();
+    setBookingDetails((bookingData) =>
+      bookingData.filter(
+        (fBookingData) => fBookingData.booking.status === "pending"
+      )
+    );
+  };
+
+  const handleCompletedSessionsClick = async () => {
+    await fetchBookingDetails();
+    setBookingDetails((bookingData) =>
+      bookingData.filter(
+        (fBookingData) => fBookingData.booking.status === "completed"
+      )
+    );
+  };
+
+  const handleCancelledSessionsClick = async () => {
+    await fetchBookingDetails();
+    setBookingDetails((bookingData) =>
+      bookingData.filter(
+        (fBookingData) => fBookingData.booking.status === "cancelled"
+      )
+    );
+  };
+
   return (
     <section className="h-auto w-auto min-h-screen bg-gray-950/90 py-16 ">
       <h1 className="text-2xl font-semibold text-center text-gray-300 capitalize lg:text-3xl mt-10">
@@ -128,6 +160,34 @@ const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
         ex placeat modi magni quia error alias, adipisci rem similique, at omnis
         eligendi optio eos harum.
       </p>
+
+      <div className="flex flex-row flex-wrap bg-gray-900/50 py-2 px-4 rounded-lg gap-4 my-8 justify-center mx-6 lg:mx-80">
+        <button
+          onClick={() => handleAllBookingsClick()}
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+        >
+          All Bookings
+        </button>
+        <button
+          onClick={() => handlePendingSessionsClick()}
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+        >
+          Pending Sessions
+        </button>
+        <button
+          onClick={() => handleCompletedSessionsClick()}
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+        >
+          Completed Sessions
+        </button>
+        <button
+          onClick={() => handleCancelledSessionsClick()}
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+        >
+          Cancelled Sessions
+        </button>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:px-16">
         {bookingDetails.map((bookingData, index) => (
           <div
@@ -144,20 +204,48 @@ const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 ">
-              <div className="mt-2 md:ml-4">
-                <p className="text-xl font-bold text-green-400  hover:text-gray-100">
-                  You have an Appointment with our expert{" "}
-                  <span className="text-yellow-400">
-                    {" "}
-                    {bookingData.expert.fullname}{" "}
-                  </span>{" "}
-                  on{" "}
-                  <span className="text-yellow-400">
-                    {" "}
-                    {bookingData.booking.appointmentDateTime}{" "}
-                  </span>
-                </p>
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="mt-2 md:ml-4 xl:w-80">
+                {bookingData.booking.status === "pending" ? (
+                  <p className="text-xl font-bold text-green-400  hover:text-gray-100">
+                    You have an appointment with our expert{" "}
+                    <span className="text-yellow-400">
+                      {" "}
+                      {bookingData.expert.fullname}{" "}
+                    </span>{" "}
+                    on{" "}
+                    <span className="text-yellow-400">
+                      {" "}
+                      {bookingData.booking.appointmentDateTime}{" "}
+                    </span>
+                  </p>
+                ) : bookingData.booking.status === "completed" ? (
+                  <p className="text-xl font-bold text-green-400  hover:text-gray-100">
+                    You have completed this session with our expert{" "}
+                    <span className="text-yellow-400">
+                      {" "}
+                      {bookingData.expert.fullname}{" "}
+                    </span>{" "}
+                    scheduled on{" "}
+                    <span className="text-yellow-400">
+                      {" "}
+                      {bookingData.booking.appointmentDateTime}{" "}
+                    </span>
+                  </p>
+                ) : (
+                  <p className="text-xl font-bold text-green-400  hover:text-gray-100">
+                    You have cancelled this appointment with our expert{" "}
+                    <span className="text-yellow-400">
+                      {" "}
+                      {bookingData.expert.fullname}{" "}
+                    </span>{" "}
+                    scheduled on{" "}
+                    <span className="text-yellow-400">
+                      {" "}
+                      {bookingData.booking.appointmentDateTime}{" "}
+                    </span>
+                  </p>
+                )}
                 <p className="mt-2 text-gray-400 pb-2 font-bold font-serif">
                   Expert: {bookingData.expert.fullname} <br />
                   Paid: {bookingData.expert.fees} <br />

@@ -36,7 +36,7 @@ const Header = () => {
 
         <div className="flex flex-1 items-center justify-end md:justify-between">
           <nav aria-label="Global" className="hidden md:block">
-            <ul className="flex items-center text-sm md:gap-2 lg:gap-6">
+            <ul className="flex items-center text-sm md:gap-2 lg:gap-6 ">
               <li>
                 <NavLink
                   className={({ isActive }) =>

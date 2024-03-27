@@ -2,9 +2,13 @@ import React from "react";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import { MdDeleteForever } from "react-icons/md";
+import { FaRegCommentDots } from "react-icons/fa6";
+import { AiOutlineLike } from "react-icons/ai";
+import { AiTwotoneLike } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
 import { CurrentUserContext } from "../Context/CurrentUserProvider";
 import { FaAward } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const Discussions = ({
   editUI,
@@ -15,6 +19,7 @@ const Discussions = ({
   const { currentUser } = useContext(CurrentUserContext);
 
   const [allPosts, setAllPosts] = useState([]);
+  const [isLiked, setIsLiked] = useState(false);
   const { isLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
@@ -61,14 +66,13 @@ const Discussions = ({
         },
         body: JSON.stringify(formData),
       });
-    
 
       if (!response.ok) {
         throw new Error("Failed to create post");
       }
       const responseData = await response.json();
       setData(responseData["data"]); //this is done to make fetchData call when data comes back..as to show post without refresh
-
+      toast.success("Posted Successfully");
       // Clear form after successful post
       setFormData({
         ...formData,
@@ -151,7 +155,7 @@ const Discussions = ({
       }
       const responseData = await response.json();
       setData(responseData["data"]);
-      console.log("post deleted.....->");
+      toast.success("Post Deleted Successfully");
     } catch (error) {
       console.error("Failed to Delete post", data);
     }
@@ -161,6 +165,23 @@ const Discussions = ({
     setEditUI(!editUI);
     setCurrentPostId(postId);
     setCurrentPostContent(postContent);
+  };
+
+  const handleYourPostsClick = async() => {
+    await fetchData()
+    setAllPosts((allPosts) =>
+      allPosts.filter((post) => currentUser._id === post.createrId)
+    );
+  };
+
+  const handleAllPostsClick = () => {
+    fetchData();
+  };
+  const handleExpertsPostsClick = async() => {
+    await fetchData()
+    setAllPosts((allPosts) =>
+      allPosts.filter((post) => post.createrType === "Expert")
+    );
   };
 
   return (
@@ -204,6 +225,27 @@ const Discussions = ({
             </form>
           </div>
         )}
+
+        <div className="flex flex-row bg-gray-900/50 py-2 px-4 rounded-lg gap-4 justify-center">
+          <button
+            onClick={() => handleAllPostsClick()}
+            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+          >
+            All Posts
+          </button>
+          <button
+            onClick={() => handleYourPostsClick()}
+            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+          >
+            Your Posts
+          </button>
+          <button
+            onClick={() => handleExpertsPostsClick()}
+            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+          >
+            Experts' Posts
+          </button>
+        </div>
 
         <div className="mt-10 mb-16 grid grid-cols-1 gap-x-4 sm:grid-cols-2 lg:grid-cols-3 ">
           {allPosts.map((post, index) => (
@@ -249,7 +291,7 @@ const Discussions = ({
                             post.createrType
                           )
                         }
-                        className="text-xl hover:text-gray-200 bg-red-700/90 rounded-2xl p-1"
+                        className="text-lg hover:text-green-700  border-2 border-red-700 rounded-xl "
                       >
                         <MdDeleteForever />
                       </button>
@@ -261,6 +303,30 @@ const Discussions = ({
                   {post.content}
                 </p>
                 <hr className="border-black mt-4" />
+                <div className="flex flex-row gap-4 mt-2 -mb-4">
+                  <div className="flex flex-row">
+                    <p className="mr-2">2</p>
+                    <button>
+                      <FaRegCommentDots />
+                    </button>
+                  </div>
+                  <div className="flex flex-row">
+                    <p className="mr-2">2</p>
+                    {isLiked ? (
+                      <button>
+                        {" "}
+                        <AiTwotoneLike />
+                      </button>
+                    ) : (
+                      <button>
+                        <AiOutlineLike />
+                      </button>
+                    )}
+                  </div>
+                  <div className="text-sm">
+                    <p>posted on - 21/3/2024</p>
+                  </div>
+                </div>
               </blockquote>
             </div>
           ))}

@@ -7,6 +7,7 @@ const Edit = ({ setEditUI, currentPostId, currentPostContent }) => {
   const { userType, isLoggedIn } = useContext(AuthContext);
   const [editData, setEditData] = useState({
     postId: "",
+    createrType: userType,
     content: currentPostContent,
   });
 
@@ -20,18 +21,15 @@ const Edit = ({ setEditUI, currentPostId, currentPostContent }) => {
   const handleEditSubmitButton = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(
-        userType === "User" && isLoggedIn && "/api/v1/creaters/editpost",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            // Add any other headers as needed
-          },
-          body: JSON.stringify(editData),
-        }
-      );
+      const response = await fetch(isLoggedIn && "/api/v1/creaters/editpost", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          // Add any other headers as needed
+        },
+        body: JSON.stringify(editData),
+      });
       if (!response.ok) {
         throw new Error("Failed to edit the post");
       }
