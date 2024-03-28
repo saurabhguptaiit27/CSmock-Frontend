@@ -3,7 +3,7 @@ import { useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import { AuthContext } from "../Context/AuthProvider";
 
-const Feedback = ({ setFeedbackUI, currentBookingId }) => {
+const Feedback = ({ setFeedbackUI, setIsFeedbackGiven, currentBookingId }) => {
   const { userType, isLoggedIn } = useContext(AuthContext);
   const [feedbackData, setFeedbackData] = useState({
     bookingId: "",
@@ -40,6 +40,7 @@ const Feedback = ({ setFeedbackUI, currentBookingId }) => {
       }
       const data = await response.json();
       setFeedbackUI(false);
+      setIsFeedbackGiven(true);
     } catch (error) {
       console.error("Error while giving feedback", error);
     }

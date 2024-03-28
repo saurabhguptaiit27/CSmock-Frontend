@@ -1,7 +1,11 @@
 import React, { useEffect, useLayoutEffect, useState, useContext } from "react";
 import { CurrentUserContext } from "../Context/CurrentUserProvider";
 
-const ExpertBookings = ({ reportUI, setReportUI, setCurrentBookingId }) => {
+const ExpertBookings = ({
+  setReportUI,
+  isReportSubmitted,
+  setCurrentBookingId,
+}) => {
   const { fetchCurrentUser, currentUser } = useContext(CurrentUserContext);
   useLayoutEffect(() => {
     fetchCurrentUser();
@@ -90,7 +94,7 @@ const ExpertBookings = ({ reportUI, setReportUI, setCurrentBookingId }) => {
 
   useEffect(() => {
     fetchBookingDetails();
-  }, [currentUser, reportUI]);
+  }, [currentUser, isReportSubmitted]);
 
   ////////////////////////////////////////////
   const handleConcludeClick = async (bookingId) => {

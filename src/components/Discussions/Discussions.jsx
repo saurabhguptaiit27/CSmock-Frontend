@@ -229,19 +229,19 @@ const Discussions = ({
         <div className="flex flex-row bg-gray-900/50 py-2 px-4 rounded-lg gap-4 justify-center">
           <button
             onClick={() => handleAllPostsClick()}
-            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black"
           >
             All Posts
           </button>
           <button
             onClick={() => handleYourPostsClick()}
-            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black"
           >
             Your Posts
           </button>
           <button
             onClick={() => handleExpertsPostsClick()}
-            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black"
           >
             Experts' Posts
           </button>

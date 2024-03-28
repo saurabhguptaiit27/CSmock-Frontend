@@ -3,7 +3,7 @@ import { useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import { AuthContext } from "../Context/AuthProvider";
 
-const Report = ({ setReportUI, currentBookingId }) => {
+const Report = ({ setReportUI,setIsReportSubmitted, currentBookingId }) => {
   const { userType, isLoggedIn } = useContext(AuthContext);
   const [reportData, setReportData] = useState({
     bookingId: "",
@@ -40,6 +40,7 @@ const Report = ({ setReportUI, currentBookingId }) => {
       }
       const data = await response.json();
       setReportUI(false);
+      setIsReportSubmitted(true);
     } catch (error) {
       console.error("Error while generating report", error);
     }

@@ -2,11 +2,16 @@ import React, { useContext, useLayoutEffect, useEffect, useState } from "react";
 import { CurrentUserContext } from "../Context/CurrentUserProvider";
 import toast from "react-hot-toast";
 
-const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
+const UserBookings = ({
+  setFeedbackUI,
+  isFeedbackGiven,
+  setCurrentBookingId,
+}) => {
   const { fetchCurrentUser, currentUser } = useContext(CurrentUserContext);
   useLayoutEffect(() => {
     fetchCurrentUser();
   }, []);
+
   /////////////////////////////
 
   // Fetch a single booking by ID
@@ -90,7 +95,7 @@ const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
 
   useEffect(() => {
     fetchBookingDetails();
-  }, [currentUser, feedbackUI]);
+  }, [currentUser, isFeedbackGiven]);
 
   ////////////////////////////////////////////
   const handleCancelClick = async (bookingId) => {
@@ -164,25 +169,25 @@ const UserBookings = ({ feedbackUI, setFeedbackUI, setCurrentBookingId }) => {
       <div className="flex flex-row flex-wrap bg-gray-900/50 py-2 px-4 rounded-lg gap-4 my-8 justify-center mx-6 lg:mx-80">
         <button
           onClick={() => handleAllBookingsClick()}
-          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black"
         >
           All Bookings
         </button>
         <button
           onClick={() => handlePendingSessionsClick()}
-          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black"
         >
           Pending Sessions
         </button>
         <button
           onClick={() => handleCompletedSessionsClick()}
-          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black"
         >
           Completed Sessions
         </button>
         <button
           onClick={() => handleCancelledSessionsClick()}
-          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black"
         >
           Cancelled Sessions
         </button>

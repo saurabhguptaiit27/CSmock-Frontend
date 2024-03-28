@@ -6,6 +6,7 @@ import Report from "../Feedback/Report.jsx";
 const ExpertBookingsUI = () => {
   const { userType, isLoggedIn } = useContext(AuthContext);
   const [reportUI, setReportUI] = useState(false);
+  const [isReportSubmitted, setIsReportSubmitted] = useState(false);
   const [currentBookingId, setCurrentBookingId] = useState("");
 
   return (
@@ -14,11 +15,17 @@ const ExpertBookingsUI = () => {
         <ExpertBookings
           reportUI={reportUI}
           setReportUI={setReportUI}
+          isReportSubmitted={isReportSubmitted}
+          setIsReportSubmitted={setIsReportSubmitted}
           setCurrentBookingId={setCurrentBookingId}
         />
       )}
       {isLoggedIn && userType === "Expert" && reportUI && (
-        <Report setReportUI={setReportUI} currentBookingId={currentBookingId} />
+        <Report
+          setReportUI={setReportUI}
+          setIsReportSubmitted={setIsReportSubmitted}
+          currentBookingId={currentBookingId}
+        />
       )}
     </>
   );
