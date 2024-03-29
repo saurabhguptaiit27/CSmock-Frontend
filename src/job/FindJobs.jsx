@@ -84,6 +84,32 @@ const FindJobs = () => {
     }
   };
 
+  const handleJobDeleteButtonClick = async (jobId) => {
+    try {
+      const response = await fetch(
+        `/api/v1/creaters/deletejob?jobId=${encodeURIComponent(
+          jobId
+        )}&createrId=${encodeURIComponent(
+          currentUser._id
+        )}&createrType=${encodeURIComponent(currentUser.userType)}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to delete the job");
+      }
+      const responseData = await response.json();
+      toast.success("Job Deleted Successfully");
+      fetchData();
+    } catch (error) {
+      console.error("Failed to Delete Job", error);
+    }
+  };
+
   const handleUnsaveJobButton = async (jobId) => {
     try {
       const response = await fetch(
@@ -267,7 +293,10 @@ const FindJobs = () => {
                     <p>{job.creator.currentPosition}</p>
                   </div>
                   {currentUser._id === job.createrId && (
-                    <button className="flex flex-row md:text-lg bg-red-700 hover:bg-red-900/60 shadow-md shadow-gray-600 h-8 px-3 rounded-lg">
+                    <button
+                      onClick={() => handleJobDeleteButtonClick(job._id)}
+                      className="flex flex-row md:text-lg bg-red-700 hover:bg-red-900/60 shadow-md shadow-gray-600 h-8 px-3 rounded-lg"
+                    >
                       <MdOutlineDeleteForever className="text-2xl my-1" />
                     </button>
                   )}
