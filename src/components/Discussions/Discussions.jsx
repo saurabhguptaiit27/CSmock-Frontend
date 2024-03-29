@@ -6,6 +6,8 @@ import { FaRegCommentDots } from "react-icons/fa6";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiTwotoneLike } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
+import { FaRegBookmark } from "react-icons/fa";
+import { FaBookmark } from "react-icons/fa";
 import { CurrentUserContext } from "../Context/CurrentUserProvider";
 import { FaAward } from "react-icons/fa";
 import toast from "react-hot-toast";
@@ -16,7 +18,7 @@ const Discussions = ({
   setCurrentPostId,
   setCurrentPostContent,
 }) => {
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, fetchCurrentUser } = useContext(CurrentUserContext);
 
   const [allPosts, setAllPosts] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
@@ -83,10 +85,6 @@ const Discussions = ({
       console.error("error occured while posting----- : ", error.message);
     }
   };
-
-  useEffect(() => {
-    fetchData();
-  }, [data, editUI]);
 
   const fetchData = async () => {
     try {
@@ -157,7 +155,7 @@ const Discussions = ({
       setData(responseData["data"]);
       toast.success("Post Deleted Successfully");
     } catch (error) {
-      console.error("Failed to Delete post", data);
+      console.error("Failed to Delete post", error);
     }
   };
 
@@ -167,8 +165,60 @@ const Discussions = ({
     setCurrentPostContent(postContent);
   };
 
-  const handleYourPostsClick = async() => {
-    await fetchData()
+  const handleUnsavePostButton = async (postId) => {
+    try {
+      const response = await fetch(
+        `/api/v1/creaters/unsavepost?postId=${encodeURIComponent(
+          postId
+        )}&createrId=${encodeURIComponent(
+          currentUser._id
+        )}&createrType=${encodeURIComponent(currentUser.userType)}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to unsave the post");
+      }
+      const responseData = await response.json();
+      toast.success("Post Unsaved Successfully");
+      fetchCurrentUser();
+    } catch (error) {
+      console.error("Failed to Unsave Post", error);
+    }
+  };
+
+  const handleSavePostButton = async (postId) => {
+    try {
+      const response = await fetch(
+        `/api/v1/creaters/savepost?postId=${encodeURIComponent(
+          postId
+        )}&createrId=${encodeURIComponent(
+          currentUser._id
+        )}&createrType=${encodeURIComponent(currentUser.userType)}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to save post");
+      }
+      const responseData = await response.json();
+      toast.success("Post Saved Successfully");
+      fetchCurrentUser();
+    } catch (error) {
+      console.error("Failed to Save Post", error);
+    }
+  };
+
+  const handleYourPostsClick = async () => {
+    await fetchData();
     setAllPosts((allPosts) =>
       allPosts.filter((post) => currentUser._id === post.createrId)
     );
@@ -177,12 +227,24 @@ const Discussions = ({
   const handleAllPostsClick = () => {
     fetchData();
   };
-  const handleExpertsPostsClick = async() => {
-    await fetchData()
+
+  const handleExpertsPostsClick = async () => {
+    await fetchData();
     setAllPosts((allPosts) =>
       allPosts.filter((post) => post.createrType === "Expert")
     );
   };
+
+  const handleSavedPostsClick = async () => {
+    await fetchData();
+    setAllPosts((allPosts) =>
+      allPosts.filter((post) => post.savedBy.includes(currentUser._id))
+    );
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [data, editUI]);
 
   return (
     <section className="bg-gray-900/90 mt-16 min-h-screen">
@@ -204,9 +266,9 @@ const Discussions = ({
             >
               <textarea
                 id="createPost"
-                className="w-full bg-gray-900 text-white mt-4 rounded-lg px-4 py-2 align-middle sm:text-sm"
+                className="w-full bg-gray-900 text-white mt-4 rounded-lg px-4 py-2 align-middle sm:text-sm "
                 rows="4"
-                wrap="soft"
+                wrap="hard"
                 maxLength={256}
                 required
                 value={formData.content}
@@ -226,7 +288,7 @@ const Discussions = ({
           </div>
         )}
 
-        <div className="flex flex-row bg-gray-900/50 py-2 px-4 rounded-lg gap-4 justify-center">
+        <div className="flex flex-row flex-wrap bg-gray-900/50 py-2 px-4 rounded-lg gap-4 justify-center mx-6 lg:mx-80">
           <button
             onClick={() => handleAllPostsClick()}
             className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black"
@@ -245,6 +307,12 @@ const Discussions = ({
           >
             Experts' Posts
           </button>
+          <button
+            onClick={() => handleSavedPostsClick()}
+            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black"
+          >
+            Saved Posts
+          </button>
         </div>
 
         <div className="mt-10 mb-16 grid grid-cols-1 gap-x-4 sm:grid-cols-2 lg:grid-cols-3 ">
@@ -257,7 +325,7 @@ const Discussions = ({
                     : "rounded-lg bg-red-300/70 hover:bg-red-300/95 p-6 shadow-lg hover:shadow-green-400/60 sm:p-8"
                 }
               >
-                <div className="flex flex-row items-center gap-4">
+                <div className="flex flex-row items-center gap-4 -mt-2">
                   <img
                     alt=""
                     src={post.creator.avatar}
@@ -324,7 +392,18 @@ const Discussions = ({
                     )}
                   </div>
                   <div className="text-sm">
-                    <p>posted on - 21/3/2024</p>
+                    <p>posted on - {post.postedOn.slice(0, 16)}</p>
+                  </div>
+                  <div className="text-md pl-4">
+                    {currentUser.savedPosts.includes(post._id) ? (
+                      <button onClick={() => handleUnsavePostButton(post._id)}>
+                        <FaBookmark />
+                      </button>
+                    ) : (
+                      <button onClick={() => handleSavePostButton(post._id)}>
+                        <FaRegBookmark />
+                      </button>
+                    )}
                   </div>
                 </div>
               </blockquote>
