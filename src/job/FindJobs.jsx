@@ -179,28 +179,28 @@ const FindJobs = () => {
         <div class="bg-transparent h-48 lg:w-1/4 w-full flex flex-col gap-6 px-16 mt-2">
           <button
             onClick={() => handleAllJobsClick()}
-            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-600/40 hover:text-green-500 focus:bg-green-600 focus:text-black"
+            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-600/40 hover:text-green-500 focus:bg-green-600 focus:text-black shadow-md shadow-gray-500"
           >
             All Jobs
           </button>
           {currentUser.userType === "User" ? (
             <button
               onClick={() => handleJobsAppliedClick()}
-              className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-600/40 hover:text-green-500 focus:bg-green-600 focus:text-black"
+              className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-600/40 hover:text-green-500 focus:bg-green-600 focus:text-black shadow-md shadow-gray-500"
             >
               Jobs Applied
             </button>
           ) : (
             <button
               onClick={() => handleJobsPostedClick()}
-              className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-600/40 hover:text-green-500 focus:bg-green-600 focus:text-black"
+              className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-600/40 hover:text-green-500 focus:bg-green-600 focus:text-black shadow-md shadow-gray-500"
             >
               Jobs Posted
             </button>
           )}
           <button
             onClick={() => handleSavedJobsClick()}
-            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-600/40 hover:text-green-500 focus:bg-green-600 focus:text-black"
+            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-600/40 hover:text-green-500 focus:bg-green-600 focus:text-black shadow-md shadow-gray-500"
           >
             Saved Jobs
           </button>

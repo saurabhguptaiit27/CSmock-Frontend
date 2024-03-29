@@ -96,25 +96,25 @@ const TopStories = () => {
           <div className="m-2 flex min-h-16 flex-col sm:flex-row bg-transparent justify-center">
             <button
               onClick={() => handleTechNewsClick()}
-              className="m-2 bg-blue-600 hover:bg-blue-700 rounded-lg sm:w-36"
+              className="m-4 bg-gray-900 hover:bg-gray-800 rounded-lg sm:w-36 text-gray-200 focus:bg-yellow-400 focus:text-black shadow-md shadow-gray-500"
             >
               Technology
             </button>
             <button
               onClick={() => handleScienceNewsClick()}
-              className="m-2 bg-green-500 hover:bg-green-700  rounded-lg sm:w-36"
+              className="m-4 bg-gray-900 hover:bg-gray-800  rounded-lg sm:w-36 text-gray-200 focus:bg-yellow-400 focus:text-black shadow-md shadow-gray-500"
             >
               Science
             </button>
             <button
               onClick={() => handleWorldNewsClick()}
-              className="m-2 bg-yellow-400 hover:bg-yellow-600  rounded-lg sm:w-36"
+              className="m-4 bg-gray-900 hover:bg-gray-800  rounded-lg sm:w-36 text-gray-200 focus:bg-yellow-400 focus:text-black shadow-md shadow-gray-500"
             >
               World
             </button>
             <button
               onClick={() => handleGeneralNewsClick()}
-              className="m-2 bg-gray-950 hover:bg-gray-900  rounded-lg sm:w-36 text-white"
+              className="m-4 bg-gray-900 hover:bg-gray-800  rounded-lg sm:w-36 text-gray-200 focus:bg-yellow-400 focus:text-black shadow-md shadow-gray-500"
             >
               General
             </button>

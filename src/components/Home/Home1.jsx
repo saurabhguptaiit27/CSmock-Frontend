@@ -64,10 +64,11 @@ const Home1 = () => {
             )}
 
             <Link
-              className="flex flex-row gap-3 w-auto rounded-xl border border-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-green-500/75 focus:outline-none focus:ring sm:w-auto"
+              className="flex flex-row gap-3 w-full justify-center rounded-xl border border-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-green-500/75 focus:outline-none focus:ring sm:w-auto"
               to="/postajob"
             >
-              <MdOutlineCreateNewFolder className="text-lg"/>Post Job
+              <MdOutlineCreateNewFolder className="text-lg" />
+              Post Job
             </Link>
           </div>
         </div>

@@ -291,25 +291,25 @@ const Discussions = ({
         <div className="flex flex-row flex-wrap bg-gray-900/50 py-2 px-4 rounded-lg gap-4 justify-center mx-6 lg:mx-80">
           <button
             onClick={() => handleAllPostsClick()}
-            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black"
+            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black shadow-md shadow-gray-600"
           >
             All Posts
           </button>
           <button
             onClick={() => handleYourPostsClick()}
-            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black"
+            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black shadow-md shadow-gray-600"
           >
             Your Posts
           </button>
           <button
             onClick={() => handleExpertsPostsClick()}
-            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black"
+            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black shadow-md shadow-gray-600"
           >
             Experts' Posts
           </button>
           <button
             onClick={() => handleSavedPostsClick()}
-            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black"
+            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black shadow-md shadow-gray-600"
           >
             Saved Posts
           </button>
