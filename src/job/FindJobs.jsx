@@ -309,8 +309,8 @@ const FindJobs = () => {
                         }}
                         class={
                           job.appliedBy.includes(currentUser._id)
-                            ? "bg-yellow-800 rounded-lg text-gray-800 font-medium text-base md:text-lg my-2 pb-1 px-4 md:px-8 hover:bg-yellow-700 transition-all duration-150 ease-in-out cursor-not-allowed"
-                            : "bg-yellow-500 rounded-lg text-gray-800 font-medium text-base md:text-lg my-2 pb-1 px-4 md:px-8 hover:bg-yellow-700 transition-all duration-150 ease-in-out"
+                            ? "bg-yellow-800 rounded-lg text-gray-800 font-medium text-base md:text-lg my-2 pb-1 px-3 md:px-6 hover:bg-yellow-700 transition-all duration-150 ease-in-out shadow-md shadow-gray-800 cursor-not-allowed"
+                            : "bg-yellow-500 rounded-lg text-gray-800 font-medium text-base md:text-lg my-2 pb-1 px-4 md:px-8 hover:bg-yellow-700 transition-all duration-150 ease-in-out shadow-md shadow-gray-800"
                         }
                       >
                         {job.appliedBy.includes(currentUser._id)
