@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthProvider";
+import { MdOutlineCreateNewFolder } from "react-icons/md";
 
 const Home1 = () => {
   const { userType, handleAddAvailabilityButton } = useContext(AuthContext);
@@ -63,10 +64,10 @@ const Home1 = () => {
             )}
 
             <Link
-              className="block w-full rounded-xl border border-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-green-500/75 focus:outline-none focus:ring sm:w-auto"
-              to="/About"
+              className="flex flex-row gap-3 w-auto rounded-xl border border-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-green-500/75 focus:outline-none focus:ring sm:w-auto"
+              to="/postajob"
             >
-              Learn More
+              <MdOutlineCreateNewFolder className="text-lg"/>Post Job
             </Link>
           </div>
         </div>

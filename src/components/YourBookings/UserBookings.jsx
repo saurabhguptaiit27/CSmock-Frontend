@@ -252,10 +252,11 @@ const UserBookings = ({
                   </p>
                 )}
                 <p className="mt-2 text-gray-400 pb-2 font-bold font-serif">
-                  Expert: {bookingData.expert.fullname} <br />
+                  Expert : {bookingData.expert.fullname} <br />
+                  Expert's Email : {bookingData.expert.email} <br />
                   Paid: {bookingData.expert.fees} <br />
-                  Booked At: {bookingData.booking.bookedAt} <br />
-                  Note To Expert: {bookingData.booking.noteToExpert} <br />
+                  Booked At : {bookingData.booking.bookedAt.slice(0, 21)} <br />
+                  Note To Expert : {bookingData.booking.noteToExpert} <br />
                 </p>
                 <button
                   onClick={() =>

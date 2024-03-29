@@ -26,7 +26,8 @@ import Error from "./components/Error/Error.jsx";
 import ContactUs from "./components/ContactUs/ContactUs.jsx";
 import DiscussionsUI from "./components/Discussions/DiscussionsUI.jsx";
 import TopStories from "./news/TopStories.jsx";
-
+import PostAJob from "./job/PostAJob.jsx";
+import FindJobs from "./job/FindJobs.jsx";
 
 const App = () => {
   const { isLoggedIn, userType } = useContext(AuthContext);
@@ -104,6 +105,22 @@ const App = () => {
         {
           path: "/contactus",
           element: <ContactUs />,
+        },
+        {
+          path: "/postajob",
+          element: isLoggedIn ? (
+            userType === "Expert" ? (
+              <PostAJob />
+            ) : (
+              <Error />
+            )
+          ) : (
+            <Error />
+          ),
+        },
+        {
+          path: "/findjobs",
+          element: <FindJobs />,
         },
       ],
     },

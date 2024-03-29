@@ -50,18 +50,20 @@ const Header = () => {
                 </NavLink>
               </li>
 
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    `${
-                      isActive ? "text-yellow-300" : "text-gray-300"
-                    } transition text-base hover:text-green-300/75`
-                  }
-                  to="Ourexperts"
-                >
-                  Our Experts
-                </NavLink>
-              </li>
+              {!isLoggedIn && (
+                <li>
+                  <NavLink
+                    className={({ isActive }) =>
+                      `${
+                        isActive ? "text-yellow-300" : "text-gray-300"
+                      } transition text-base hover:text-green-300/75`
+                    }
+                    to="Ourexperts"
+                  >
+                    Our Experts
+                  </NavLink>
+                </li>
+              )}
 
               {isLoggedIn && (
                 <li>
@@ -71,12 +73,25 @@ const Header = () => {
                         isActive ? "text-yellow-300" : "text-gray-300"
                       } transition text-base hover:text-green-300/75`
                     }
-                    to="yourbookings"
+                    to="/yourbookings"
                   >
                     Bookings
                   </NavLink>
                 </li>
               )}
+
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    `${
+                      isActive ? "text-yellow-300" : "text-gray-300"
+                    } transition text-base hover:text-green-300/75`
+                  }
+                  to="/findjobs"
+                >
+                  Find Jobs
+                </NavLink>
+              </li>
 
               <li>
                 <NavLink

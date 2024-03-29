@@ -155,7 +155,7 @@ const ExpertBookings = ({
   return (
     <section className="h-auto w-auto min-h-screen bg-gray-950/90 py-16">
       <h1 className="text-2xl font-semibold text-center text-gray-300 capitalize lg:text-3xl mt-10">
-        Our <span className="text-green-600">Executive Team</span>
+        All Your <span className="text-green-600">Bookings</span> Are Here
       </h1>
 
       <p className="max-w-2xl mx-auto mt-6 mb-10 text-center text-gray-300">
@@ -167,25 +167,25 @@ const ExpertBookings = ({
       <div className="flex flex-row flex-wrap bg-gray-900/50 py-2 px-4 rounded-lg gap-4 my-8 justify-center mx-6 lg:mx-80">
         <button
           onClick={() => handleAllBookingsClick()}
-          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black"
         >
           All Bookings
         </button>
         <button
           onClick={() => handlePendingSessionsClick()}
-          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black"
         >
           Pending Sessions
         </button>
         <button
           onClick={() => handleCompletedSessionsClick()}
-          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black"
         >
           Completed Sessions
         </button>
         <button
           onClick={() => handleCancelledSessionsClick()}
-          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 "
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black"
         >
           Cancelled Sessions
         </button>
@@ -252,7 +252,7 @@ const ExpertBookings = ({
                 <p className="mt-2 pb-2 text-gray-400 font-bold font-serif ">
                   User : {bookingData.user.fullname} <br />
                   User Email : {bookingData.user.email} <br />
-                  Booked At : {bookingData.booking.bookedAt} <br />
+                  Booked At : {bookingData.booking.bookedAt.slice(0, 21)} <br />
                   Note for you : {bookingData.booking.noteToExpert} <br />
                 </p>
                 <button
