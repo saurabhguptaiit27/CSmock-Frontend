@@ -80,7 +80,7 @@ const TopStories = () => {
 
   return (
     <section>
-      <div className="bottom-2 flex h-auto min-h-screen w-screen flex-col border-black bg-gray-950/80 p-6 pt-16">
+      <div className="bottom-2 flex h-auto min-h-screen w-screen flex-col border-black bg-gray-950/80 p-6 pt-24">
         <div className="my-2 flex h-1/4 w-full flex-col bg-transparent">
           <div className="m-2 min-h-32 bg-transparent">
             <h1 className="text-2xl font-semibold text-center text-gray-100 capitalize lg:text-3xl">
@@ -122,7 +122,7 @@ const TopStories = () => {
         </div>
 
         <div className="min-h-1/4 my-4 flex h-auto w-full flex-col bg-transparent md:flex-row">
-          <div className="min-h-48 bg-gray-400/70 border-2 border-yellow-300 rounded-xl p-4 md:w-1/3 text-white">
+          <div className="min-h-48 bg-gray-400/70 border-2 border-gray-700 rounded-xl p-4 md:w-1/3 text-white hover:bg-gray-950/50 hover:shadow-xl hover:border-transparent hover:shadow-gray-100/40 transition-colors duration-300 transform">
             <h1 className="text-green-400 font-extrabold">
               {stories[0]["title"]}
             </h1>
@@ -130,14 +130,14 @@ const TopStories = () => {
             <p>{stories[0]["content"]}</p>
           </div>
           <div className="flex min-h-64 flex-col bg-transparent md:w-2/3">
-            <div className="m-2 min-h-28 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4">
+            <div className="m-2 min-h-28 bg-gray-500/30 border-2 border-gray-700 text-white rounded-xl p-4 hover:bg-gray-950/50 hover:shadow-xl hover:border-transparent hover:shadow-gray-100/40 transition-colors duration-300 transform">
               <h1 className="text-green-500 font-extrabold">
                 {stories[1]["title"]}
               </h1>
               <p>{stories[1]["description"]}</p>
               <p>{stories[1]["content"]}</p>
             </div>
-            <div className="m-2 min-h-28 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4">
+            <div className="m-2 min-h-28 bg-gray-500/30 border-2 border-gray-700 text-white rounded-xl p-4 hover:bg-gray-950/50 hover:shadow-xl hover:border-transparent hover:shadow-gray-100/40 transition-colors duration-300 transform">
               <h1 className="text-green-500 font-extrabold">
                 {stories[2]["title"]}
               </h1>
@@ -149,14 +149,14 @@ const TopStories = () => {
 
         <div className="min-h-1/4 my-4 flex h-auto w-full flex-col bg-transparent md:flex-row -mt-4">
           <div className=" flex min-h-64 flex-col bg-transparent md:w-2/3">
-            <div className="m-2 min-h-28 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4">
+            <div className="m-2 min-h-28 bg-gray-500/30 border-2 border-gray-700 text-white rounded-xl p-4 hover:bg-gray-950/50 hover:shadow-xl hover:border-transparent hover:shadow-gray-100/40 transition-colors duration-300 transform">
               <h1 className="text-green-500 font-extrabold">
                 {stories[3]["title"]}
               </h1>
               <p>{stories[3]["description"]}</p>
               <p>{stories[3]["content"]}</p>
             </div>
-            <div className="m-2 min-h-28 bg-gray-500/30 border-2 border-yellow-300 text-white  rounded-xl p-4">
+            <div className="m-2 min-h-28 bg-gray-500/30 border-2 border-gray-700 text-white  rounded-xl p-4 hover:bg-gray-950/50 hover:shadow-xl hover:border-transparent hover:shadow-gray-100/40 transition-colors duration-300 transform">
               <h1 className="text-green-500 font-extrabold">
                 {stories[4]["title"]}
               </h1>
@@ -164,7 +164,7 @@ const TopStories = () => {
               <p>{stories[4]["content"]}</p>
             </div>
           </div>
-          <div className="m-2 min-h-48 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl md:w-1/3 p-4">
+          <div className="m-2 min-h-48 bg-gray-500/30 border-2 border-gray-700 text-white rounded-xl md:w-1/3 p-4 hover:bg-gray-950/50 hover:shadow-xl hover:border-transparent hover:shadow-gray-100/40 transition-colors duration-300 transform">
             <h1 className="text-green-500 font-extrabold">
               {stories[5]["title"]}
             </h1>
@@ -175,21 +175,21 @@ const TopStories = () => {
 
         <div className="m-h-1/4 my-4 flex h-auto w-full flex-col bg-transparent">
           <div className="-mb-2 -mt-8 flex h-2/3 min-h-64 flex-col bg-transparent lg:flex-row">
-            <div className="m-2 min-h-44 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4 lg:w-1/3">
+            <div className="m-2 min-h-44 bg-gray-500/30 border-2 border-gray-700 text-white rounded-xl p-4 lg:w-1/3 hover:bg-gray-950/50 hover:shadow-xl hover:border-transparent hover:shadow-gray-100/40 transition-colors duration-300 transform">
               <h1 className="text-green-500 font-extrabold">
                 {stories[6]["title"]}
               </h1>
               <p>{stories[6]["description"]}</p>
               <p>{stories[6]["content"]}</p>
             </div>
-            <div className="m-2 min-h-44 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4 lg:w-1/3">
+            <div className="m-2 min-h-44 bg-gray-500/30 border-2 border-gray-700 text-white rounded-xl p-4 lg:w-1/3 hover:bg-gray-950/50 hover:shadow-xl hover:border-transparent hover:shadow-gray-100/40 transition-colors duration-300 transform">
               <h1 className="text-green-500 font-extrabold">
                 {stories[7]["title"]}
               </h1>
               <p>{stories[7]["description"]}</p>
               <p>{stories[7]["content"]}</p>
             </div>
-            <div className="m-2 min-h-44 bg-gray-500/30 border-2 border-yellow-300 text-white rounded-xl p-4 lg:w-1/3">
+            <div className="m-2 min-h-44 bg-gray-500/30 border-2 border-gray-700 text-white rounded-xl p-4 lg:w-1/3 hover:bg-gray-950/50 hover:shadow-xl hover:border-transparent hover:shadow-gray-100/40 transition-colors duration-300 transform">
               <h1 className="text-green-500 font-extrabold">
                 {stories[8]["title"]}
               </h1>
@@ -197,7 +197,7 @@ const TopStories = () => {
               <p>{stories[8]["content"]}</p>
             </div>
           </div>
-          <div className="m-2 h-1/3 min-h-32 rounded-xl p-4 bg-gray-500/30 border-2 border-yellow-300 text-white">
+          <div className="m-2 h-1/3 min-h-32 rounded-xl p-4 bg-gray-500/30 border-2 border-gray-700 text-white hover:bg-gray-950/50 hover:shadow-xl hover:border-transparent hover:shadow-gray-100/40 transition-colors duration-300 transform">
             <h1 className="text-green-500 font-extrabold">
               {stories[9]["title"]}
             </h1>

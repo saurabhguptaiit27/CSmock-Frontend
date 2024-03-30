@@ -157,7 +157,7 @@ const UserBookings = ({
   return (
     <section className="h-auto w-auto min-h-screen bg-gray-950/90 py-16 ">
       <h1 className="text-2xl font-semibold text-center text-gray-300 capitalize lg:text-3xl mt-10">
-        Our <span className="text-green-600">Executive Team</span>
+        All Your <span className="text-green-600">Bookings</span> Are Here
       </h1>
 
       <p className="max-w-2xl mx-auto mt-6 text-center text-gray-300 mb-10">

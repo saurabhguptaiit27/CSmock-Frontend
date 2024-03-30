@@ -6,6 +6,7 @@ import { GiDiscussion } from "react-icons/gi";
 import { ImInfo } from "react-icons/im";
 import { IoNewspaperSharp } from "react-icons/io5";
 import { PiHandshake } from "react-icons/pi";
+import { FaSearchPlus } from "react-icons/fa";
 import { AuthContext } from "../Context/AuthProvider";
 const Sidebar = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -15,7 +16,7 @@ const Sidebar = () => {
         <div className="flex flex-col justify-between flex-1 -mt-2">
           <nav>
             <Link
-              className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100"
+              className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100 hover:shadow-md hover:shadow-gray-100/40 duration-300"
               to=""
             >
               <FaHome />
@@ -23,7 +24,7 @@ const Sidebar = () => {
               <span className="mx-4 font-medium">Home</span>
             </Link>
             <Link
-              className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100"
+              className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100 hover:shadow-md hover:shadow-gray-100/40 duration-300"
               to="/Ourexperts"
             >
               <FaAward />
@@ -33,7 +34,7 @@ const Sidebar = () => {
 
             {isLoggedIn && (
               <Link
-                className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100"
+                className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100 hover:shadow-md hover:shadow-gray-100/40 duration-300"
                 to="/yourbookings"
               >
                 <PiHandshake />
@@ -41,8 +42,18 @@ const Sidebar = () => {
                 <span className="mx-4 font-medium">Bookings</span>
               </Link>
             )}
+
             <Link
-              className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100"
+              className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100 hover:shadow-md hover:shadow-gray-100/40 duration-300"
+              to="/findjobs"
+            >
+              <FaSearchPlus />
+
+              <span className="mx-4 font-medium">Find Jobs</span>
+            </Link>
+
+            <Link
+              className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100 hover:shadow-md hover:shadow-gray-100/40 duration-300"
               to="/Discussions"
             >
               <GiDiscussion />
@@ -50,7 +61,7 @@ const Sidebar = () => {
               <span className="mx-4 font-medium">Discussions</span>
             </Link>
             <Link
-              className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100"
+              className="flex items-center px-4 py-2 text-gray-100 transition-all duration-800 transform rounded-md hover:bg-gray-900  hover:text-gray-100 hover:shadow-md hover:shadow-gray-100/40 duration-300"
               to="/TopStories"
             >
               <IoNewspaperSharp />
