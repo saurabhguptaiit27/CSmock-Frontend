@@ -197,7 +197,7 @@ const UserBookings = ({
         {bookingDetails.map((bookingData, index) => (
           <div
             key={index}
-            className=" border-2  border-yellow-400/80 rounded-2xl px-5 py-3 mb-5 hover:bg-gray-950/50 hover:shadow-xl hover:shadow-gray-100/40"
+            className=" border-2  border-gray-400/80 rounded-2xl px-5 py-3 mb-5 hover:bg-gray-950/50 hover:shadow-xl hover:border-transparent hover:shadow-gray-100/40 transition-colors duration-300 transform"
           >
             <div className="flex items-center justify-between ">
               <p className="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-300 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-800">
@@ -288,7 +288,7 @@ const UserBookings = ({
               </div>
               <div className="">
                 <img
-                  className="w-[12rem] h-[12rem] rounded-3xl mt-2 md:ml-4 xl:ml-16 md:mt-10"
+                  className="hidden xl:block w-[12rem] h-[12rem] rounded-3xl mt-2 md:ml-4 xl:ml-16"
                   src={
                     bookingData.booking.status === "cancelled"
                       ? "/Cancelled.png"

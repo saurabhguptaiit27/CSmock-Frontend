@@ -8,6 +8,7 @@ import { AiTwotoneLike } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
 import { FaRegBookmark } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa";
+import { TfiThought } from "react-icons/tfi";
 import { CurrentUserContext } from "../Context/CurrentUserProvider";
 import { FaAward } from "react-icons/fa";
 import toast from "react-hot-toast";
@@ -247,10 +248,11 @@ const Discussions = ({
   }, [data, editUI]);
 
   return (
-    <section className="bg-gray-900/90 mt-16 min-h-screen">
+    <section className="bg-gray-900/90 mt-6 min-h-screen">
       <div className="flex flex-col mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <h2 className="text-center text-4xl font-bold tracking-tight text-green-500 sm:text-5xl">
-          Read trusted reviews from our customers
+        <TfiThought className="text-white text-9xl" />
+        <h2 className="text-center text-4xl font-bold text-gray-500 sm:text-5xl mx-48 -mt-24">
+          Post Your <span className="text-yellow-400">Thoughts ...</span>
         </h2>
 
         <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
@@ -315,17 +317,17 @@ const Discussions = ({
           </button>
         </div>
 
-        <div className="mt-10 mb-16 grid grid-cols-1 gap-x-4 sm:grid-cols-2 lg:grid-cols-3 ">
+        <div className="mt-10 mb-16 grid grid-cols-1 gap-x-4 lg:grid-cols-3">
           {allPosts.map((post, index) => (
             <div key={index} className="mb-4 sm:break-inside-avoid">
               <blockquote
                 className={
                   post.createrType === "User"
-                    ? "rounded-lg bg-yellow-300/70 hover:bg-yellow-300/95 p-6 shadow-lg hover:shadow-green-400/60 sm:p-8"
-                    : "rounded-lg bg-red-300/70 hover:bg-red-300/95 p-6 shadow-lg hover:shadow-green-400/60 sm:p-8"
+                    ? "rounded-lg bg-gray-200/70 hover:bg-gray-300/70 hover:shadow-xl hover:shadow-gray-100/40 hover:border-transparent transition-colors duration-300 transform sm:p-8"
+                    : "rounded-lg bg-red-100/70 hover:bg-red-200/70 hover:shadow-xl hover:shadow-gray-100/40 hover:border-transparent transition-colors duration-300 transform sm:p-8"
                 }
               >
-                <div className="flex flex-row items-center gap-4 -mt-2">
+                <div className="flex flex-row items-center gap-4 -mt-2 relative">
                   <img
                     alt=""
                     src={post.creator.avatar}
@@ -344,7 +346,7 @@ const Discussions = ({
                     </p>
                   </div>
                   {currentUser._id === post.createrId && (
-                    <div className="float-right -mt-6 flex flex-row gap-2">
+                    <div className="float-right -mt-6 flex flex-row gap-2 absolute right-0">
                       <button
                         onClick={() => handleEditButton(post._id, post.content)}
                         className="text-lg hover:text-green-600 "
@@ -371,7 +373,7 @@ const Discussions = ({
                   {post.content}
                 </p>
                 <hr className="border-black mt-4" />
-                <div className="flex flex-row gap-4 mt-2 -mb-4">
+                <div className="flex flex-row gap-4 mt-2 -mb-4 relative">
                   <div className="flex flex-row">
                     <p className="mr-2">2</p>
                     <button>
@@ -394,7 +396,7 @@ const Discussions = ({
                   <div className="text-sm">
                     <p>posted on - {post.postedOn.slice(0, 16)}</p>
                   </div>
-                  <div className="text-md pl-4">
+                  <div className="text-md absolute right-0">
                     {currentUser.savedPosts.includes(post._id) ? (
                       <button onClick={() => handleUnsavePostButton(post._id)}>
                         <FaBookmark />

@@ -228,7 +228,7 @@ const FindJobs = () => {
             onClick={() => handleSavedJobsClick()}
             className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-600/40 hover:text-green-500 focus:bg-green-600 focus:text-black shadow-md shadow-gray-500"
           >
-            Saved Jobs
+            Jobs Saved
           </button>
         </div>
 
@@ -236,7 +236,7 @@ const FindJobs = () => {
           {allJobs.map((job, index) => (
             <div
               key={index}
-              class="bg-gray-200 rounded-2xl md:mx-auto max-w-screen-md border-2 border-gray-800 mb-4 w-full"
+              class="bg-gray-200 rounded-2xl md:mx-auto max-w-screen-md border-2 border-gray-800 mb-4 w-full  hover:bg-gray-400 hover:shadow-xl hover:shadow-gray-100/40 hover:border-transparent transition-colors duration-300 transform"
             >
               <div class="px-8 py-2 md:p-10">
                 <div class="text-md md:text-xl font-medium leading-tight text-gray-800 mb-2 flex flex-row relative">

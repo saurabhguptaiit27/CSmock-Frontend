@@ -21,7 +21,7 @@ const OurExperts = () => {
           {allExperts.map((e, index) => (
             <div
               key={index}
-              className="bg-gray-500/30 px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-green-700"
+              className="bg-gray-500/30 px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-green-700 hover:shadow-xl hover:shadow-gray-100/40"
             >
               <div className="flex flex-col sm:-mx-4 sm:flex-row">
                 <img
@@ -47,7 +47,6 @@ const OurExperts = () => {
                 <li>{`fees : ${e.fees}`}</li>
                 <li>{`gender : ${e.gender}`}</li>
               </ul>
-
 
               <div className="flex mt-4 -mx-2">
                 <a
