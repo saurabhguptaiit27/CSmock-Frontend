@@ -1,6 +1,5 @@
 import React, { useContext, useLayoutEffect, useEffect, useState } from "react";
 import { CurrentUserContext } from "../Context/CurrentUserProvider";
-import toast from "react-hot-toast";
 
 const UserBookings = ({
   setFeedbackUI,
@@ -8,11 +7,12 @@ const UserBookings = ({
   setCurrentBookingId,
 }) => {
   const { fetchCurrentUser, currentUser } = useContext(CurrentUserContext);
+
+  const [seeReport, setSeeReport] = useState(false);
+
   useLayoutEffect(() => {
     fetchCurrentUser();
   }, []);
-
-  /////////////////////////////
 
   // Fetch a single booking by ID
 
@@ -72,7 +72,6 @@ const UserBookings = ({
     return expert["data"];
   };
 
-  ///////////////////////////////////////
   const [bookingDetails, setBookingDetails] = useState([]);
   const fetchBookingDetails = async () => {
     if (!currentUser || !currentUser.bookingHistory) return;
@@ -97,7 +96,6 @@ const UserBookings = ({
     fetchBookingDetails();
   }, [currentUser, isFeedbackGiven]);
 
-  ////////////////////////////////////////////
   const handleCancelClick = async (bookingId) => {
     const response = await fetch(
       `/api/v1/users-experts/cancelbooking?string=${encodeURIComponent(
@@ -115,13 +113,11 @@ const UserBookings = ({
     }
     fetchBookingDetails();
   };
-  ///////////////////
 
   const handleGiveFeedbackButton = (bookingId) => {
     setFeedbackUI(true);
     setCurrentBookingId(bookingId);
   };
-  /////////////////////////////////////
 
   const handleAllBookingsClick = () => {
     fetchBookingDetails();
@@ -152,6 +148,29 @@ const UserBookings = ({
         (fBookingData) => fBookingData.booking.status === "cancelled"
       )
     );
+  };
+
+  const [report, setReport] = useState([]);
+
+  const handleSeeReportClick = async (bookingId) => {
+    setSeeReport(!seeReport);
+    const response = await fetch(
+      `/api/v1/users-experts/getreport?bookingId=${encodeURIComponent(
+        bookingId
+      )}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain",
+        },
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch report");
+    }
+
+    const data = await response.json();
+    setReport(data["data"]);
   };
 
   return (
@@ -212,7 +231,7 @@ const UserBookings = ({
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="mt-2 md:ml-4 xl:w-80">
                 {bookingData.booking.status === "pending" ? (
-                  <p className="text-xl font-bold text-green-400  hover:text-gray-100">
+                  <p className="text-xl font-bold text-gray-200  hover:text-gray-100">
                     You have an appointment with our expert{" "}
                     <span className="text-yellow-400">
                       {" "}
@@ -225,7 +244,7 @@ const UserBookings = ({
                     </span>
                   </p>
                 ) : bookingData.booking.status === "completed" ? (
-                  <p className="text-xl font-bold text-green-400  hover:text-gray-100">
+                  <p className="text-xl font-bold text-gray-200  hover:text-gray-100">
                     You have completed this session with our expert{" "}
                     <span className="text-yellow-400">
                       {" "}
@@ -238,7 +257,7 @@ const UserBookings = ({
                     </span>
                   </p>
                 ) : (
-                  <p className="text-xl font-bold text-green-400  hover:text-gray-100">
+                  <p className="text-xl font-bold text-gray-200  hover:text-gray-100">
                     You have cancelled this appointment with our expert{" "}
                     <span className="text-yellow-400">
                       {" "}
@@ -251,40 +270,65 @@ const UserBookings = ({
                     </span>
                   </p>
                 )}
-                <p className="mt-2 text-gray-400 pb-2 font-bold font-serif">
-                  Expert : {bookingData.expert.fullname} <br />
-                  Expert's Email : {bookingData.expert.email} <br />
-                  Paid: {bookingData.expert.fees} <br />
-                  Booked At : {bookingData.booking.bookedAt.slice(0, 21)} <br />
-                  Note To Expert : {bookingData.booking.noteToExpert} <br />
-                </p>
-                <button
-                  onClick={() =>
-                    bookingData.booking.status === "pending"
-                      ? handleCancelClick(bookingData.booking._id)
-                      : bookingData.booking.status === "completed"
-                      ? !bookingData.booking.feedback &&
-                        handleGiveFeedbackButton(bookingData.booking._id)
-                      : null
-                  }
-                  className={
-                    bookingData.booking.status === "pending"
-                      ? "text-black bg-yellow-400 rounded-xl px-8 py-1 mt-3"
+                {bookingData.booking._id === report.booking && seeReport ? (
+                  <p className="mt-2 text-gray-400 pb-2 font-bold font-serif">
+                    Round 1 Marks : {report.round1Rating} / 10 <br />
+                    Round 1 Remarks : {report.round1Comment} <br />
+                    Round 2 Marks : {report.round2Rating} / 10 <br />
+                    Round 2 Remarks : {report.round2Comment} <br />
+                    Round 3 Marks : {report.round3Rating} / 10 <br />
+                    Round 3 Remarks : {report.round3Comment} <br />
+                    Overall Remarks : {report.overallComment}
+                  </p>
+                ) : (
+                  <p className="mt-2 text-gray-400 pb-2 font-bold font-serif">
+                    Expert : {bookingData.expert.fullname} <br />
+                    Expert's Email : {bookingData.expert.email} <br />
+                    Paid: {bookingData.expert.fees} <br />
+                    Booked At : {bookingData.booking.bookedAt.slice(0, 21)}{" "}
+                    <br />
+                    Note To Expert : {bookingData.booking.noteToExpert} <br />
+                  </p>
+                )}
+                <div>
+                  <button
+                    onClick={() =>
+                      bookingData.booking.status === "pending"
+                        ? handleCancelClick(bookingData.booking._id)
+                        : bookingData.booking.status === "completed"
+                        ? !bookingData.booking.feedback &&
+                          handleGiveFeedbackButton(bookingData.booking._id)
+                        : null
+                    }
+                    className={
+                      bookingData.booking.status === "pending"
+                        ? "text-black bg-yellow-400 rounded-xl px-8 py-1 mt-3"
+                        : bookingData.booking.status === "completed"
+                        ? !bookingData.booking.feedback
+                          ? "text-black bg-green-500 rounded-xl px-8 py-1 mt-3"
+                          : "text-black bg-green-800 rounded-xl px-8 py-1 mt-3 cursor-not-allowed"
+                        : "text-black bg-red-600/50 rounded-xl px-8 py-1 mt-3 cursor-not-allowed"
+                    }
+                  >
+                    {bookingData.booking.status === "pending"
+                      ? "Cancel"
                       : bookingData.booking.status === "completed"
                       ? !bookingData.booking.feedback
-                        ? "text-black bg-green-500 rounded-xl px-8 py-1 mt-3"
-                        : "text-black bg-green-800 rounded-xl px-8 py-1 mt-3 cursor-not-allowed"
-                      : "text-black bg-red-600/50 rounded-xl px-8 py-1 mt-3 cursor-not-allowed"
-                  }
-                >
-                  {bookingData.booking.status === "pending"
-                    ? "Cancel"
-                    : bookingData.booking.status === "completed"
-                    ? !bookingData.booking.feedback
-                      ? "Give Feedback"
-                      : "Done"
-                    : "Cancelled"}
-                </button>
+                        ? "Give Feedback"
+                        : "Done"
+                      : "Cancelled"}
+                  </button>
+                  {bookingData.booking.report && (
+                    <button
+                      onClick={() =>
+                        handleSeeReportClick(bookingData.booking._id)
+                      }
+                      className="ml-4 px-4 py-1 bg-green-500/80 text-black rounded-xl mt"
+                    >
+                      See Report
+                    </button>
+                  )}
+                </div>
               </div>
               <div className="">
                 <img

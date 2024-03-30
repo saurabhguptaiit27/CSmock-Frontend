@@ -36,8 +36,10 @@ const Booking = () => {
   }, [currentExpertData]);
 
   // "bg-gradient-to-b from-yellow-400/70 to-yellow-400/70 via-gray-500 mt-10 min-h-screen"
+  //"bg-gradient-to-r from-amber-200/90 to-yellow-300/90 mt-10 min-h-screen"
+
   return (
-    <section className="bg-gradient-to-r from-amber-200/90 to-yellow-300/90 mt-10 min-h-screen">
+    <section className="bg-gradient-to-b from-yellow-400/70 to-yellow-400/70 via-gray-500 mt-10 min-h-screen">
       <div className="container px-6 py-10 mx-auto">
         <h1 className="text-2xl font-semibold text-center text-black capitalize lg:text-4xl ">
           Book A <span className="text-green-500 ">Session</span> With An Expert

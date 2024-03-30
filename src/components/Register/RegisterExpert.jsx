@@ -342,7 +342,7 @@ const RegisterExpert = () => {
             <input
               type="text"
               className="block w-full px-10 py-1 text-gray-400 bg-white border rounded-lg focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              placeholder="Previous Companies(s) (seperated with commas)"
+              placeholder="Previous Companies (seperated with commas)"
               id="previousCompanies"
               name="previousCompanies"
               onChange={handlePreviousCompaniesChange}

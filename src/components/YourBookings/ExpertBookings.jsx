@@ -211,7 +211,7 @@ const ExpertBookings = ({
             <div className="grid grid-cols-1 md:grid-cols-2 ">
               <div className="mt-2 md:ml-4 lg:w-80">
                 {bookingData.booking.status === "pending" ? (
-                  <p className="text-xl font-bold text-green-400  hover:text-gray-100">
+                  <p className="text-xl font-bold text-gray-200  hover:text-gray-100">
                     You have an appointment with our user{" "}
                     <span className="text-yellow-400">
                       {" "}
@@ -224,7 +224,7 @@ const ExpertBookings = ({
                     </span>
                   </p>
                 ) : bookingData.booking.status === "completed" ? (
-                  <p className="text-xl font-bold text-green-400  hover:text-gray-100">
+                  <p className="text-xl font-bold text-gray-200  hover:text-gray-100">
                     You have completed this session with our user{" "}
                     <span className="text-yellow-400">
                       {" "}
@@ -237,7 +237,7 @@ const ExpertBookings = ({
                     </span>
                   </p>
                 ) : (
-                  <p className="text-xl font-bold text-green-400  hover:text-gray-100">
+                  <p className="text-xl font-bold text-gray-200  hover:text-gray-100">
                     This session is cancelled by our user{" "}
                     <span className="text-yellow-400">
                       {" "}
