@@ -22,7 +22,6 @@ const Discussions = ({
   const { currentUser, fetchCurrentUser } = useContext(CurrentUserContext);
 
   const [allPosts, setAllPosts] = useState([]);
-  const [isLiked, setIsLiked] = useState(false);
   const { isLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
@@ -218,6 +217,60 @@ const Discussions = ({
     }
   };
 
+  const handleUnlikePostButton = async (postId) => {
+    try {
+      const response = await fetch(
+        `/api/v1/creaters/unlikepost?postId=${encodeURIComponent(
+          postId
+        )}&createrId=${encodeURIComponent(
+          currentUser._id
+        )}&createrType=${encodeURIComponent(currentUser.userType)}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to unlike the post");
+      }
+      const responseData = await response.json();
+      toast.success("Post Unliked Successfully");
+      fetchData();
+      fetchCurrentUser();
+    } catch (error) {
+      console.error("Failed to Unlike Post", error);
+    }
+  };
+
+  const handleLikePostButton = async (postId) => {
+    try {
+      const response = await fetch(
+        `/api/v1/creaters/likepost?postId=${encodeURIComponent(
+          postId
+        )}&createrId=${encodeURIComponent(
+          currentUser._id
+        )}&createrType=${encodeURIComponent(currentUser.userType)}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to like post");
+      }
+      const responseData = await response.json();
+      toast.success("Post liked Successfully");
+      fetchData();
+      fetchCurrentUser();
+    } catch (error) {
+      console.error("Failed to like Post", error);
+    }
+  };
+
   const handleYourPostsClick = async () => {
     await fetchData();
     setAllPosts((allPosts) =>
@@ -240,6 +293,13 @@ const Discussions = ({
     await fetchData();
     setAllPosts((allPosts) =>
       allPosts.filter((post) => post.savedBy.includes(currentUser._id))
+    );
+  };
+
+  const handleLikedPostsClick = async () => {
+    await fetchData();
+    setAllPosts((allPosts) =>
+      allPosts.filter((post) => post.likedBy.includes(currentUser._id))
     );
   };
 
@@ -290,7 +350,7 @@ const Discussions = ({
           </div>
         )}
 
-        <div className="flex flex-row flex-wrap bg-gray-900/50 py-2 px-4 rounded-lg gap-4 justify-center mx-6 lg:mx-80">
+        <div className="flex flex-row flex-wrap bg-gray-900/50 py-2 px-4 rounded-lg gap-4 justify-center mx-6 lg:mx-64">
           <button
             onClick={() => handleAllPostsClick()}
             className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black shadow-md shadow-gray-600"
@@ -315,19 +375,25 @@ const Discussions = ({
           >
             Saved Posts
           </button>
+          <button
+            onClick={() => handleLikedPostsClick()}
+            className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-green-600 focus:text-black shadow-md shadow-gray-600"
+          >
+            Liked Posts
+          </button>
         </div>
 
-        <div className="mt-10 mb-16 grid grid-cols-1 gap-x-4 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-x-2 gap-y-8 md:grid-cols-2 xl:grid-cols-3">
           {allPosts.map((post, index) => (
-            <div key={index} className="mb-4 sm:break-inside-avoid">
+            <div key={index}>
               <blockquote
                 className={
                   post.createrType === "User"
-                    ? "rounded-lg bg-gray-200/70 hover:bg-gray-300/70 hover:shadow-xl hover:shadow-gray-100/40 hover:border-transparent transition-colors duration-300 transform sm:p-8"
-                    : "rounded-lg bg-red-100/70 hover:bg-red-200/70 hover:shadow-xl hover:shadow-gray-100/40 hover:border-transparent transition-colors duration-300 transform sm:p-8"
+                    ? "rounded-lg bg-gray-200/70 hover:bg-gray-300/70 hover:shadow-xl hover:shadow-gray-100/40 hover:border-transparent transition-colors duration-300 transform px-4  "
+                    : "rounded-lg bg-red-100/70 hover:bg-red-200/70 hover:shadow-xl hover:shadow-gray-100/40 hover:border-transparent transition-colors duration-300 transform px-4"
                 }
               >
-                <div className="flex flex-row items-center gap-4 -mt-2 relative">
+                <div className="flex flex-row items-center gap-4 -mt-2 pt-4 relative">
                   <img
                     alt=""
                     src={post.creator.avatar}
@@ -373,25 +439,19 @@ const Discussions = ({
                   {post.content}
                 </p>
                 <hr className="border-black mt-4" />
-                <div className="flex flex-row gap-4 mt-2 -mb-4 relative">
+                <div className="flex flex-row gap-4 mt-2 pb-2 -mb-4 relative">
                   <div className="flex flex-row">
-                    <p className="mr-2">2</p>
-                    <button>
-                      <FaRegCommentDots />
-                    </button>
-                  </div>
-                  <div className="flex flex-row">
-                    <p className="mr-2">2</p>
-                    {isLiked ? (
-                      <button>
+                    {currentUser.likedPosts.includes(post._id) ? (
+                      <button onClick={() => handleUnlikePostButton(post._id)}>
                         {" "}
-                        <AiTwotoneLike />
+                        <AiTwotoneLike className=" text-lg mb-1 bg-blue-600 rounded-md" />
                       </button>
                     ) : (
-                      <button>
-                        <AiOutlineLike />
+                      <button onClick={() => handleLikePostButton(post._id)}>
+                        <AiOutlineLike className="mb-1" />
                       </button>
                     )}
+                    <p className="ml-2 text-sm">{post.likedBy.length} Likes</p>
                   </div>
                   <div className="text-sm">
                     <p>posted on - {post.postedOn.slice(0, 16)}</p>

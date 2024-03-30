@@ -120,7 +120,7 @@ const App = () => {
         },
         {
           path: "/findjobs",
-          element: <FindJobs />,
+          element: isLoggedIn ? <FindJobs /> : <Error />,
         },
       ],
     },

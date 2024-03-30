@@ -148,7 +148,8 @@ const Feedback = ({ setFeedbackUI, setIsFeedbackGiven, currentBookingId }) => {
         </label>
         <textarea
           id="comment"
-          name="input"
+          name="comment"
+          value={feedbackData.comment}
           rows="3"
           maxLength={120}
           placeholder="Leave a message for our expert (optional)"
