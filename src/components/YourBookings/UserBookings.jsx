@@ -169,25 +169,25 @@ const UserBookings = ({
       <div className="flex flex-row flex-wrap bg-gray-900/50 py-2 px-4 rounded-lg gap-4 my-8 justify-center mx-6 lg:mx-80">
         <button
           onClick={() => handleAllBookingsClick()}
-          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black"
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black shadow-md shadow-gray-600"
         >
           All Bookings
         </button>
         <button
           onClick={() => handlePendingSessionsClick()}
-          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black"
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black shadow-md shadow-gray-600"
         >
           Pending Sessions
         </button>
         <button
           onClick={() => handleCompletedSessionsClick()}
-          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black"
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black shadow-md shadow-gray-600"
         >
           Completed Sessions
         </button>
         <button
           onClick={() => handleCancelledSessionsClick()}
-          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black"
+          className="bg-gray-950 text-gray-100 px-4 py-1 rounded-lg hover:bg-gray-950/40 hover:text-green-500 focus:bg-yellow-400 focus:text-black shadow-md shadow-gray-600"
         >
           Cancelled Sessions
         </button>
@@ -197,7 +197,7 @@ const UserBookings = ({
         {bookingDetails.map((bookingData, index) => (
           <div
             key={index}
-            className=" border-2  border-yellow-400/80 rounded-2xl px-5 py-3 mb-5 hover:bg-gray-950/50"
+            className=" border-2  border-yellow-400/80 rounded-2xl px-5 py-3 mb-5 hover:bg-gray-950/50 hover:shadow-xl hover:shadow-gray-100/40"
           >
             <div className="flex items-center justify-between ">
               <p className="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-300 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-800">
