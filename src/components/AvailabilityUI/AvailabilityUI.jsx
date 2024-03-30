@@ -2,16 +2,13 @@ import DateTimePicker from "./DateTimePicker.jsx";
 import React, { useContext, useLayoutEffect, useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import { ToggleUIContext } from "../Context/ToggleUiProvider.jsx";
+import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
 
 const AvailabilityUI = () => {
   const { handleCrossAvailabilityButton } = useContext(ToggleUIContext);
-  const { initialPara } = useContext(ToggleUIContext);
-
+  const { currentUser } = useContext(CurrentUserContext);
   let [values, setValues] = useState([]);
-  const [paragraphContent, setParagraphContent] = useState("");
-  useLayoutEffect(() => {
-    setParagraphContent(initialPara);
-  }, []);
+ 
 
   return (
     <section className="bg-gray-600/90 fixed top-16 right-0 z-20 sm- rounded-xl border">
@@ -49,15 +46,20 @@ const AvailabilityUI = () => {
           )}
         </p>
 
-        {paragraphContent && (
-          <p className="text-green-400">{paragraphContent}</p>
+        {currentUser.availability.length ? (
+          <p className="text-green-400">
+            Your Availability is saved and will be shown to users
+          </p>
+        ) : (
+          <p className="text-green-400">
+            You have not saved any available dates yet
+          </p>
         )}
 
         <div className="flex flex-col mt-8 space-y-3 sm:space-y-0 sm:flex-row sm:justify-center sm:-mx-2">
           <DateTimePicker
             values={values}
             setValues={setValues}
-            setParagraphContent={setParagraphContent}
           />
         </div>
       </div>

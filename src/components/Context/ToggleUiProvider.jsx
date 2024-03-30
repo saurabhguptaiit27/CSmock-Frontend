@@ -9,9 +9,6 @@ export const ToggleUIContext = createContext();
 export const ToggleUIProvider = ({ children }) => {
   const { userType } = useContext(AuthContext);
   const [isAvailabilityUI, setIsAvailabilityUI] = useState(false);
-  const [initialPara, setInitialPara] = useState(
-    "You have not saved any available dates yet"
-  );
 
   const handleAddAvailabilityButton = async () => {
     setIsAvailabilityUI(true);
@@ -53,8 +50,6 @@ export const ToggleUIProvider = ({ children }) => {
         isAvailabilityUI,
         setIsAvailabilityUI,
         handleAddAvailabilityButton,
-        initialPara,
-        setInitialPara,
         handleCrossAvailabilityButton,
         toggleProfile,
         setToggleProfile,

@@ -4,18 +4,18 @@ import TimePicker from "react-multi-date-picker/plugins/time_picker";
 import DatePanel from "react-multi-date-picker/plugins/date_panel";
 import "react-multi-date-picker/styles/layouts/prime.css";
 import { AuthContext } from "../Context/AuthProvider.jsx";
+import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
 
 export default function DateTimePicker({
   values,
   setValues,
-  setParagraphContent,
 }) {
   const { userType } = useContext(AuthContext);
+  const {fetchCurrentUser} = useContext(CurrentUserContext)
 
   const handleClearButton = async () => {
     setValues([]);
     const appointmentDateTime = [];
-    console.log(".......on clear");
     const response = await fetch(
       userType === "Expert" && "/api/v1/experts/addavailability",
       {
@@ -29,9 +29,7 @@ export default function DateTimePicker({
         body: JSON.stringify(appointmentDateTime),
       }
     );
-    setTimeout(() => {
-      setParagraphContent("You have not saved any available dates yet");
-    }, 10);
+    fetchCurrentUser();
   };
 
   const handleAvailabilitySubmitButton = async () => {
@@ -52,17 +50,12 @@ export default function DateTimePicker({
           body: JSON.stringify(appointmentDateTime),
         }
       );
-      setTimeout(() => {
-        setParagraphContent(
-          "Your Availability is saved and will be shown to users"
-        );
-      }, 10);
+      fetchCurrentUser();
     } catch (error) {
       console.error("Error:", error); // Log any errors
     }
   };
 
-  //   console.log(values);
 
   return (
     <>

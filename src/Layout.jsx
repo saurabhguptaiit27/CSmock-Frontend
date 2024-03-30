@@ -19,7 +19,7 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <Toaster position="top-right" />
+      <Toaster position="top-center" />
       {toggleMenu && <Sidebar />}
       {toggleProfile && isLoggedIn && <User />}
       {isLoggedIn && userType === "Expert" && isAvailabilityUI && (

@@ -252,7 +252,7 @@ const Discussions = ({
       <div className="flex flex-col mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <TfiThought className="text-white text-9xl" />
         <h2 className="text-center text-4xl font-bold text-gray-500 sm:text-5xl mx-48 -mt-24">
-          Post Your <span className="text-yellow-400">Thoughts ...</span>
+          <span className="text-yellow-400">Thoughts ...</span>
         </h2>
 
         <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
