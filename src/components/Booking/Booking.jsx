@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useContext } from "react";
 import { AllExpertsContext } from "../Context/AllExpertsProvider";
 import { useNavigate } from "react-router-dom";
+import { FaRegStar } from "react-icons/fa";
 
 import { BookingConfirmationContext } from "../Context/BookingConfirmationProvider.jsx";
 
@@ -75,18 +76,41 @@ const Booking = () => {
                   </div>
                 </div>
 
-                <ul className="leading-loose text-gray-200 font-serif">
-                  <li>{`Prev Comp : ${e.previousCompanies}`}</li>
-                  <li>{`username : ${e.username}`}</li>
-                  <li>{`Expertise : ${e.expertise}`}</li>
+                <div className="flex flex-row flex-wrap gap-2 justify-center">
+                  {Array.from(e.previousCompanies).map((prevComp) => (
+                    <button className="bg-yellow-400 px-3 rounded-xl">
+                      {prevComp}
+                    </button>
+                  ))}
+                </div>
+
+                <ul className="mt-2 text-gray-200 font-serif">
+                  <li>{`Email : ${e.email}`}</li>
+                  <li>{`Phone : ${e.phone}`}</li>
+                  <li>{`Experience : ${e.experience} years`}</li>
                 </ul>
 
-                <button
-                  onClick={() => handleExpertBookClick(e)}
-                  className="mt-2 px-4 py-2 bg-blue-500/80 border-2 border-gray-600 rounded-lg active:bg-gray-400 transition-colors text-yellow-400 shadow-lg shadow-gray-400/30"
-                >
-                  Book @ &#8377; {e.fees}
-                </button>
+                <div className="my-3 flex flex-row flex-wrap gap-2 justify-center">
+                  {Array.from(e.expertise).map((prevComp) => (
+                    <button className="bg-yellow-200/70 px-3 rounded-md">
+                      {prevComp}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="flex flex-col text-sm  md:flex-row relative">
+                  <button
+                    onClick={() => handleExpertBookClick(e)}
+                    className="mt-2 px-4 py-2 bg-blue-500/80 border-2 border-gray-600 rounded-lg active:bg-gray-400 transition-colors text-yellow-400 shadow-lg shadow-gray-400/30"
+                  >
+                    Book @ &#8377; {e.fees}
+                  </button>
+                  <div className="flex flex-row mt-1 justify-center md:absolute md:right-0">
+                    <p className="mr-2 mt-3 text-white">Ratings :</p>
+                    <FaRegStar className="text-yellow-400 mt-4"/>
+                    <p className="ml-1 mt-3.5 text-white">5 / 5</p>
+                  </div>
+                </div>
               </div>
             ))}
         </section>

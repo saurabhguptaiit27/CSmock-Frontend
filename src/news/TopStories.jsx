@@ -80,7 +80,7 @@ const TopStories = () => {
 
   return (
     <section>
-      <div className="bottom-2 flex h-auto min-h-screen w-full flex-col border-black bg-gray-950/80 p-20 pt-24">
+      <div className="bottom-2 flex h-auto min-h-screen w-full flex-col border-black bg-gray-950/80 pt-24">
         <div className="my-2 flex h-1/4 w-full flex-col bg-transparent">
           <div className="m-2 min-h-32 bg-transparent">
             <h1 className="text-2xl font-semibold text-center text-gray-100 capitalize lg:text-3xl">

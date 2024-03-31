@@ -20,12 +20,8 @@ export const ToggleUIProvider = ({ children }) => {
       }
     );
     const data = await response.json();
-    if (data["data"]["availability"].length !== 0) {
-      setInitialPara("Your Availability is saved and will be shown to users");
-    } else {
-      setInitialPara("You have not saved any available dates yet");
-    }
   };
+
   const handleCrossAvailabilityButton = () => {
     setIsAvailabilityUI(false);
   };

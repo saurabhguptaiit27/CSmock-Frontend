@@ -137,7 +137,7 @@ const Header = () => {
           {isLoggedIn && userType === "Expert" && (
             <Link to="">
               <button
-                className="absolute top-3 right-24 block rounded-md bg-yellow-500 px-5 py-2.5 text-sm font-medium  hover:text-gray-100 text-black transition hover:bg-green-500/75"
+                className="absolute top-3 right-24 block rounded-md bg-yellow-500 px-3 py-2 text-sm font-medium  hover:text-gray-100 text-black transition hover:bg-green-500/75"
                 onClick={() => handleAddAvailabilityButton()}
               >
                 Add Availability
@@ -147,7 +147,7 @@ const Header = () => {
 
           {isLoggedIn && userType === "User" && (
             <Link to="/Booking">
-              <button className="absolute top-3 right-24 block rounded-md bg-yellow-500 px-5 py-2.5 text-sm font-medium  hover:text-gray-100 text-black transition hover:bg-green-500/75">
+              <button className="absolute top-3 right-24 block rounded-md bg-yellow-500 px-3 py-2 text-sm font-medium  hover:text-gray-100 text-black transition hover:bg-green-500/75">
                 Our Experts
               </button>
             </Link>

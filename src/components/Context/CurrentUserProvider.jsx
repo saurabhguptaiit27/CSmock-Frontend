@@ -26,10 +26,7 @@ export const CurrentUserProvider = ({ children }) => {
       const data = await response.json();
       setCurrentUser(data["data"]);
     } catch (error) {
-      console.error(
-        "Error while fetching current user in context ---->",
-        error
-      );
+      console.error("Error while fetching current user in context ", error);
     }
   };
 

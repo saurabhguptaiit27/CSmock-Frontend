@@ -325,7 +325,7 @@ const UserBookings = ({
                       }
                       className="ml-4 px-4 py-1 bg-green-500/80 text-black rounded-xl mt"
                     >
-                      See Report
+                      {seeReport ? "Close Report" : "See Report"}
                     </button>
                   )}
                 </div>
