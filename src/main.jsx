@@ -18,7 +18,6 @@ import { useContext } from "react";
 import { AuthContext } from "./components/Context/AuthProvider.jsx";
 import { SelectedButtonProvider } from "./components/Context/SelectedButtonProvider.jsx";
 import { CurrentUserProvider } from "./components/Context/CurrentUserProvider.jsx";
-import { BookingConfirmationProvider } from "./components/Context/BookingConfirmationProvider.jsx";
 import { ToggleUIProvider } from "./components/Context/ToggleUiProvider.jsx";
 import UserBookingsUI from "./components/YourBookings/UserBookingsUI.jsx";
 import ExpertBookingsUI from "./components/YourBookings/ExpertBookingsUI.jsx";
@@ -142,9 +141,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <CurrentUserProvider>
           <AllExpertsProvider>
             <SelectedButtonProvider>
-              <BookingConfirmationProvider>
-                <App />
-              </BookingConfirmationProvider>
+              <App />
             </SelectedButtonProvider>
           </AllExpertsProvider>
         </CurrentUserProvider>

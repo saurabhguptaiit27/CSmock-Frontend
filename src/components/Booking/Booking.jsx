@@ -4,40 +4,19 @@ import { AllExpertsContext } from "../Context/AllExpertsProvider";
 import { useNavigate } from "react-router-dom";
 import { FaRegStar } from "react-icons/fa";
 
-import { BookingConfirmationContext } from "../Context/BookingConfirmationProvider.jsx";
-
 const Booking = () => {
   const { allExperts } = useContext(AllExpertsContext);
 
-  const { currentExpertData, setCurrentExpertData } = useContext(
-    BookingConfirmationContext
-  );
 
   const navigate = useNavigate();
 
   const handleExpertBookClick = (e) => {
-    setCurrentExpertData(e);
+    localStorage.setItem("currentExpertId", JSON.stringify(e._id));
     setTimeout(function () {
       navigate("/Booking/confirmation");
     }, 10);
   };
 
-  useEffect(() => {
-    const saveStateToLocalStorage = () => {
-      try {
-        localStorage.setItem(
-          "currentExpertData",
-          JSON.stringify(currentExpertData)
-        );
-      } catch (error) {
-        console.error("Error saving state to local storage:", error);
-      }
-    };
-    saveStateToLocalStorage();
-  }, [currentExpertData]);
-
-  // "bg-gradient-to-b from-yellow-400/70 to-yellow-400/70 via-gray-500 mt-10 min-h-screen"
-  //"bg-gradient-to-r from-amber-200/90 to-yellow-300/90 mt-10 min-h-screen"
 
   return (
     <section className="bg-gradient-to-b from-yellow-400/70 to-yellow-400/70 via-gray-500 mt-10 min-h-screen">
@@ -107,7 +86,7 @@ const Booking = () => {
                   </button>
                   <div className="flex flex-row mt-1 justify-center md:absolute md:right-0">
                     <p className="mr-2 mt-3 text-white">Ratings :</p>
-                    <FaRegStar className="text-yellow-400 mt-4"/>
+                    <FaRegStar className="text-yellow-400 mt-4" />
                     <p className="ml-1 mt-3.5 text-white">5 / 5</p>
                   </div>
                 </div>

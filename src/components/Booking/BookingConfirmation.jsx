@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../Context/CurrentUserProvider";
 
 const BookingConfirmation = () => {
-  const [currentUserS, setCurrentUserS] = useState([]);
-  const [currentExpertDataS, setCurrentExpertDataS] = useState([]);
+  const [currentExpertData, setCurrentExpertData] = useState([]);
+  const { currentUser } = useContext(CurrentUserContext);
+  const currentExpertIdS = localStorage.getItem("currentExpertId");
   const [formData, setFormData] = useState({
     userId: "",
     expertId: "",
@@ -14,23 +15,40 @@ const BookingConfirmation = () => {
   });
 
   useEffect(() => {
-    const storedCurrentExpertData = JSON.parse(
-      localStorage.getItem("currentExpertData")
-    );
-    const storedCurrentUser = JSON.parse(localStorage.getItem("currentUser"));
-    setCurrentUserS(storedCurrentUser);
-    setCurrentExpertDataS(storedCurrentExpertData);
+    const fetchCurrrentExpertById = async (expertId) => {
+      try {
+        const response = await fetch(
+          `/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
+            expertId
+          )}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "text/plain",
+            },
+          }
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch current expert for booking");
+        }
+        const responseData = await response.json();
+        setCurrentExpertData(responseData["data"]);
+      } catch (error) {
+        console.error("Failed to fetch current expert for booking", error);
+      }
+    };
+    fetchCurrrentExpertById(JSON.parse(currentExpertIdS));
   }, []);
 
   useEffect(() => {
     setTimeout(() => {
       setFormData({
         ...formData,
-        userId: currentUserS._id,
-        expertId: currentExpertDataS._id,
+        userId: currentUser._id,
+        expertId: currentExpertData._id,
       });
     }, 10);
-  }, [currentExpertDataS, currentUserS]);
+  }, [currentExpertData, currentUser]);
 
   const handleDateSelection = (date) => {
     setFormData({ ...formData, appointmentDateTime: date });
@@ -75,32 +93,32 @@ const BookingConfirmation = () => {
   return (
     <div>
       <div className="flex h-auto items-center justify-center bg-gray-900 p-5 mt-16">
-        <div className="grid md:grid-cols-2 grid-cols-1 items-center gap-10 md:px-10 shadow-2xl shadow-lime-500/40 border border-green-500 p-10">
+        <div className="grid md:grid-cols-2 grid-cols-1 items-center gap-10 md:px-10 shadow-2xl shadow-lime-500/40 border border-green-500 p-10 hover:bg-gray-950/50 hover:shadow-xl hover:border-transparent hover:shadow-gray-100/40 transition-colors duration-300 transform">
           <div>
             <h1 className="mb-2 text-3xl font-bold text-white">
               <span className="text-gray-100">Hi, </span> I am{" "}
               <span className="text-yellow-400">
-                {currentExpertDataS.fullname}{" "}
+                {currentExpertData.fullname}{" "}
               </span>
               <span className="font-light text-lg">
-                ({currentExpertDataS.currentPosition})
+                ({currentExpertData.currentPosition})
               </span>
             </h1>
             <p className="mb-6 text-gray-400 font-bold font-serif">
-              Fullname : {currentExpertDataS.fullname} <br />
-              Email : {currentExpertDataS.email}
+              Fullname : {currentExpertData.fullname} <br />
+              Email : {currentExpertData.email}
               <br />
-              Gender : {currentExpertDataS.gender}
+              Gender : {currentExpertData.gender}
               <br />
-              Contact No. : {currentExpertDataS.phone}
+              Contact No. : {currentExpertData.phone}
               <br />
-              {`Worked In : ${currentExpertDataS.previousCompanies}`}
+              {`Worked In : ${currentExpertData.previousCompanies}`}
               <br />
-              Total Experience : {currentExpertDataS.experience} years
+              Total Experience : {currentExpertData.experience} years
               <br />
-              {`Expertise In : ${currentExpertDataS.expertise}`}
+              {`Expertise In : ${currentExpertData.expertise}`}
               <br />
-              Fees : &#8377; {currentExpertDataS.fees}
+              Fees : &#8377; {currentExpertData.fees}
             </p>
 
             <form onSubmit={handleSubmit} className="md:w-full">
@@ -108,8 +126,8 @@ const BookingConfirmation = () => {
                 <label for="selectedDate" className="text-yellow-400">
                   Select One of the Available Slots :
                 </label>
-                {currentExpertDataS.availability &&
-                  currentExpertDataS.availability.map((date, index) => (
+                {currentExpertData.availability &&
+                  currentExpertData.availability.map((date, index) => (
                     <div className="flex items-center mb-2" key={index}>
                       <input
                         type="radio"
@@ -156,7 +174,7 @@ const BookingConfirmation = () => {
           </div>
           <div className="flex justify-center  align-middle ">
             <img
-              src={currentExpertDataS.avatar}
+              src={currentExpertData.avatar}
               alt=""
               className="size-64 rounded-xl"
             />

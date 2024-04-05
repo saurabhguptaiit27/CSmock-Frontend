@@ -2,7 +2,6 @@ import React from "react";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import { MdDeleteForever } from "react-icons/md";
-import { FaRegCommentDots } from "react-icons/fa6";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiTwotoneLike } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
