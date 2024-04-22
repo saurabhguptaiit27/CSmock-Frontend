@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import io from "socket.io-client";
 import { CurrentUserContext } from "../components/Context/CurrentUserProvider";
-const socket = io("http://localhost:5000");
+const socket = io("https://chatsupport-socket-io-expressjs.onrender.com");
 import { FcCustomerSupport } from "react-icons/fc";
 
 const ChatSupportUI = () => {
