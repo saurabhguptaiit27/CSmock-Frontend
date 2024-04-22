@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://csmock-backend.onrender.com/",
+        target: "https://csmock-backend.onrender.com",
         changeOrigin: true,
       },
     },
