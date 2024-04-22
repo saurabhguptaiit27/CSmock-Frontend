@@ -129,7 +129,7 @@ const App = () => {
 
   return (
     <React.StrictMode>
-      <RouterProvider router={router} path="*" />
+      <RouterProvider router={router} />
     </React.StrictMode>
   );
 };
