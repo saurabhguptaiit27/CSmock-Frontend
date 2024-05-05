@@ -28,16 +28,13 @@ import TopStories from "./news/TopStories.jsx";
 import PostAJob from "./job/PostAJob.jsx";
 import FindJobs from "./job/FindJobs.jsx";
 
-const Loader = <div>loading...</div>;
-
 const App = () => {
   const { isLoggedIn, userType } = useContext(AuthContext);
   // Define routes based on authentication status
   const routes = [
     {
       path: "/",
-      element: <Layout />,
-      loader: Loader,
+      element: <Home />,
       children: [
         { path: "", element: <Home /> },
         { path: "Ourexperts", element: <OurExperts /> },
