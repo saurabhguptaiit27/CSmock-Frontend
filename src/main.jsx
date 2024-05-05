@@ -28,19 +28,24 @@ import TopStories from "./news/TopStories.jsx";
 import PostAJob from "./job/PostAJob.jsx";
 import FindJobs from "./job/FindJobs.jsx";
 
-const LayoutHOC = (comp) => <Layout>{comp}</Layout>;
-
 const App = () => {
   const { isLoggedIn, userType } = useContext(AuthContext);
   // Define routes based on authentication status
   const routes = [
     {
       path: "/",
-      element: (
-        <Layout>
-          <Home />
-        </Layout>
-      ),
+      element: <Home />,
+    },
+    {
+      path: "/about",
+      element: <About />,
+    },
+  ];
+
+  const old_routes = [
+    {
+      path: "/",
+      element: <Layout />,
       children: [
         { path: "", element: <Home /> },
         { path: "Ourexperts", element: <OurExperts /> },
