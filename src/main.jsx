@@ -34,7 +34,7 @@ const App = () => {
   const routes = [
     {
       path: "/",
-      element: <Layout />,
+      element: <Home />,
       children: [
         { path: "", element: <Home /> },
         { path: "Ourexperts", element: <OurExperts /> },
@@ -128,9 +128,9 @@ const App = () => {
   const router = createBrowserRouter(routes);
 
   return (
-    // <React.StrictMode>
-    <RouterProvider router={router} />
-    // </React.StrictMode>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
   );
 };
 
