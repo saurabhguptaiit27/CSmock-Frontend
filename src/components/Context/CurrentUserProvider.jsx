@@ -10,21 +10,22 @@ export const CurrentUserProvider = ({ children }) => {
 
   const fetchCurrentUser = async () => {
     try {
-      const response = await fetch(
-        isLoggedIn &&
-          (userType === "User"
+      if (isLoggedIn) {
+        const response = await fetch(
+          userType === "User"
             ? "/api/v1/users/current-user"
-            : "/api/v1/experts/current-expert"),
-        {
-          method: "GET",
-          credentials: "include",
+            : "/api/v1/experts/current-expert",
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch current user");
         }
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch current user");
+        const data = await response.json();
+        setCurrentUser(data["data"]);
       }
-      const data = await response.json();
-      setCurrentUser(data["data"]);
     } catch (error) {
       console.error("Error while fetching current user in context ", error);
     }
