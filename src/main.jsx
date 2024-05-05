@@ -39,7 +39,7 @@ const App = () => {
       element: <Layout />,
       loader: Loader,
       children: [
-        { path: "", element: <Home />, loader: Loader },
+        { path: "", element: <Home /> },
         { path: "Ourexperts", element: <OurExperts /> },
         { path: "About", element: <About /> },
         { path: "TopStories", element: <TopStories /> },
