@@ -36,7 +36,13 @@ const App = () => {
       path: "/",
       element: <Layout />,
       children: [
-        { path: "", element: <Home /> },
+        {
+          path: "",
+          element: () => {
+            debugger;
+            return <Home />;
+          },
+        },
         { path: "Ourexperts", element: <OurExperts /> },
         { path: "About", element: <About /> },
         { path: "TopStories", element: <TopStories /> },
