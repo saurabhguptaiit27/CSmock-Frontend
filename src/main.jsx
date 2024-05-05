@@ -37,9 +37,9 @@ const App = () => {
     {
       path: "/",
       element: <Layout />,
-      loader: async () => Loader,
+      loader: Loader,
       children: [
-        { path: "", element: <Home /> },
+        { path: "", element: <Home />, loader: Loader },
         { path: "Ourexperts", element: <OurExperts /> },
         { path: "About", element: <About /> },
         { path: "TopStories", element: <TopStories /> },
