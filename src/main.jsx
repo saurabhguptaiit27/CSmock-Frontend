@@ -34,11 +34,21 @@ const App = () => {
   const routes = [
     {
       path: "/",
-      element: <Home />,
+      element: (
+        <>
+          <Home />
+          <Layout />
+        </>
+      ),
     },
     {
       path: "/about",
-      element: <About />,
+      element: (
+        <>
+          <About />
+          <Layout />
+        </>
+      ),
     },
   ];
 
