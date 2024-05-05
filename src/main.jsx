@@ -36,7 +36,11 @@ const App = () => {
   const routes = [
     {
       path: "/",
-      element: LayoutHOC(Home),
+      element: (
+        <Layout>
+          <Home />
+        </Layout>
+      ),
       children: [
         { path: "", element: <Home /> },
         { path: "Ourexperts", element: <OurExperts /> },
