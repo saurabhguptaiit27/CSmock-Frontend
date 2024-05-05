@@ -9,10 +9,13 @@ export const AllExpertsProvider = ({ children }) => {
 
   const fetchAllExperts = async () => {
     try {
-      const response = await fetch("/api/v1/experts/allexperts", {
-        method: "GET",
-        credentials: "include",
-      });
+      const response = await fetch(
+        "https://csmock-backend.onrender.com/api/v1/experts/allexperts",
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch experts");
       }
