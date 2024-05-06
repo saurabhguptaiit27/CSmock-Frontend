@@ -113,6 +113,110 @@ const App = () => {
         </>
       ),
     },
+    {
+      path: "/Discussions",
+      element: (
+        <>
+          {isLoggedIn ? <DiscussionsUI /> : <Error />}
+          <Layout />
+        </>
+      ),
+    },
+    {
+      path: "/Booking",
+      element: (
+        <>
+          {isLoggedIn ? (
+            userType === "User" ? (
+              <Booking />
+            ) : (
+              <Error />
+            )
+          ) : (
+            <Login />
+          )}
+          <Layout />
+        </>
+      ),
+    },
+    {
+      path: "/Booking/confirmation",
+      element: (
+        <>
+          {isLoggedIn ? (
+            userType === "User" ? (
+              <BookingConfirmation />
+            ) : (
+              <Error />
+            )
+          ) : (
+            <Error />
+          )}
+          <Layout />
+        </>
+      ),
+    },
+    {
+      path: "/yourbookings",
+      element: (
+        <>
+          {isLoggedIn ? (
+            userType === "User" ? (
+              <UserBookingsUI />
+            ) : (
+              <ExpertBookingsUI />
+            )
+          ) : (
+            <Error />
+          )}
+          <Layout />
+        </>
+      ),
+    },
+    {
+      path: "/postajob",
+      element: (
+        <>
+          {isLoggedIn ? (
+            userType === "Expert" ? (
+              <PostAJob />
+            ) : (
+              <Error />
+            )
+          ) : (
+            <Error />
+          )}
+          <Layout />
+        </>
+      ),
+    },
+    {
+      path: "/findjobs",
+      element: (
+        <>
+          {isLoggedIn ? <FindJobs /> : <Error />}
+          <Layout />
+        </>
+      ),
+    },
+    {
+      path: "/contactus",
+      element: (
+        <>
+          <ContactUs />
+          <Layout />
+        </>
+      ),
+    },
+    {
+      path: "*",
+      element: (
+        <>
+          <Error />
+          <Layout />
+        </>
+      ),
+    },
   ];
 
   const old_routes = [
