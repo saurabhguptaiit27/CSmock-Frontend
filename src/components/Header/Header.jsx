@@ -44,7 +44,7 @@ const Header = () => {
                       isActive ? "text-yellow-300" : "text-gray-300"
                     } transition text-base hover:text-green-300/75`
                   }
-                  to=""
+                  to="/"
                 >
                   Home
                 </NavLink>
@@ -58,7 +58,7 @@ const Header = () => {
                         isActive ? "text-yellow-300" : "text-gray-300"
                       } transition text-base hover:text-green-300/75`
                     }
-                    to="Ourexperts"
+                    to="/Ourexperts"
                   >
                     Our Experts
                   </NavLink>
@@ -100,7 +100,7 @@ const Header = () => {
                       isActive ? "text-yellow-300" : "text-gray-300"
                     } transition text-base hover:text-green-300/75`
                   }
-                  to="Discussions"
+                  to="/Discussions"
                 >
                   Discussions
                 </NavLink>
@@ -113,7 +113,7 @@ const Header = () => {
                       isActive ? "text-yellow-300" : "text-gray-300"
                     } transition text-base hover:text-green-300/75`
                   }
-                  to="TopStories"
+                  to="/TopStories"
                 >
                   Top Stories
                 </NavLink>
@@ -126,7 +126,7 @@ const Header = () => {
                       isActive ? "text-yellow-300" : "text-gray-300"
                     } transition text-base hover:text-green-300/75`
                   }
-                  to="About"
+                  to="/About"
                 >
                   About
                 </NavLink>
@@ -176,7 +176,7 @@ const Header = () => {
           ) : (
             <div className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
-                <Link to="Login/User">
+                <Link to="/Login/User">
                   <button
                     className="block rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium  hover:text-teal-100/75 text-white transition hover:bg-blue-600/75"
                     onClick={() => handleButtonClick("User")}
@@ -187,7 +187,7 @@ const Header = () => {
 
                 <Link
                   className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-blue-600 transition hover:text-teal-600/75 sm:block"
-                  to="Register/User"
+                  to="/Register/User"
                   onClick={() => handleButtonClick("User")}
                 >
                   Register

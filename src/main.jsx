@@ -77,6 +77,42 @@ const App = () => {
         </>
       ),
     },
+    {
+      path: "/Login/User",
+      element: (
+        <>
+          {!isLoggedIn ? <Login /> : <Error />}
+          <Layout />
+        </>
+      ),
+    },
+    {
+      path: "/Login/Expert",
+      element: (
+        <>
+          {!isLoggedIn ? <Login /> : <Error />}
+          <Layout />
+        </>
+      ),
+    },
+    {
+      path: "/Register/User",
+      element: (
+        <>
+          {!isLoggedIn ? <Register /> : <Error />}
+          <Layout />
+        </>
+      ),
+    },
+    {
+      path: "/Register/Expert",
+      element: (
+        <>
+          {!isLoggedIn ? <RegisterExpert /> : <Error />}
+          <Layout />
+        </>
+      ),
+    },
   ];
 
   const old_routes = [
