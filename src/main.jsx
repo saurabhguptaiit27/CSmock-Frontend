@@ -50,6 +50,33 @@ const App = () => {
         </>
       ),
     },
+    {
+      path: "/Ourexperts",
+      element: (
+        <>
+          <OurExperts />
+          <Layout />
+        </>
+      ),
+    },
+    {
+      path: "/TopStories",
+      element: (
+        <>
+          <TopStories />
+          <Layout />
+        </>
+      ),
+    },
+    {
+      path: "/Faqs",
+      element: (
+        <>
+          <Faqs />
+          <Layout />
+        </>
+      ),
+    },
   ];
 
   const old_routes = [
