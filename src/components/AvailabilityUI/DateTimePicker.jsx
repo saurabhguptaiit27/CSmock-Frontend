@@ -6,18 +6,16 @@ import "react-multi-date-picker/styles/layouts/prime.css";
 import { AuthContext } from "../Context/AuthProvider.jsx";
 import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
 
-export default function DateTimePicker({
-  values,
-  setValues,
-}) {
+export default function DateTimePicker({ values, setValues }) {
   const { userType } = useContext(AuthContext);
-  const {fetchCurrentUser} = useContext(CurrentUserContext)
+  const { fetchCurrentUser } = useContext(CurrentUserContext);
 
   const handleClearButton = async () => {
     setValues([]);
     const appointmentDateTime = [];
     const response = await fetch(
-      userType === "Expert" && "/api/v1/experts/addavailability",
+      userType === "Expert" &&
+        "https://csmock-backend.onrender.com/api/v1/experts/addavailability",
       {
         method: "POST",
         credentials: "include",
@@ -38,7 +36,8 @@ export default function DateTimePicker({
         (e) => (e = `${e.day}/${e.month.name}/${e.year} ${e.hour}:${e.minute}`)
       );
       const response = await fetch(
-        userType === "Expert" && "/api/v1/experts/addavailability",
+        userType === "Expert" &&
+          "https://csmock-backend.onrender.com/api/v1/experts/addavailability",
         {
           method: "POST",
           credentials: "include",
@@ -55,7 +54,6 @@ export default function DateTimePicker({
       console.error("Error:", error); // Log any errors
     }
   };
-
 
   return (
     <>

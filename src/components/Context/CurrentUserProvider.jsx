@@ -13,8 +13,8 @@ export const CurrentUserProvider = ({ children }) => {
       if (isLoggedIn) {
         const response = await fetch(
           userType === "User"
-            ? "/api/v1/users/current-user"
-            : "/api/v1/experts/current-expert",
+            ? "https://csmock-backend.onrender.com/api/v1/users/current-user"
+            : "https://csmock-backend.onrender.com/api/v1/experts/current-expert",
           {
             method: "GET",
             credentials: "include",

@@ -85,10 +85,13 @@ const Register = () => {
         }
       });
 
-      const response = await fetch("/api/v1/users/register", {
-        method: "POST",
-        body: formDataToSend,
-      });
+      const response = await fetch(
+        "https://csmock-backend.onrender.com/api/v1/users/register",
+        {
+          method: "POST",
+          body: formDataToSend,
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to Register the User");

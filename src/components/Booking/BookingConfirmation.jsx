@@ -18,7 +18,7 @@ const BookingConfirmation = () => {
     const fetchCurrrentExpertById = async (expertId) => {
       try {
         const response = await fetch(
-          `/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
+          `https://csmock-backend.onrender.com/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
             expertId
           )}`,
           {
@@ -68,15 +68,18 @@ const BookingConfirmation = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("/api/v1/users-experts/appointmentbooking", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://csmock-backend.onrender.com/api/v1/users-experts/appointmentbooking",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to book appointment");
       }

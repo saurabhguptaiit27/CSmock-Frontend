@@ -53,15 +53,18 @@ const PostAJob = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("/api/v1/creaters/createjob", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://csmock-backend.onrender.com/api/v1/creaters/createjob",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to create job post");

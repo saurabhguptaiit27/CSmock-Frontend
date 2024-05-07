@@ -16,7 +16,7 @@ const ExpertBookings = ({
   // Fetch a single booking by ID
   const fetchBookingById = async (bookingId) => {
     const response = await fetch(
-      `/api/v1/users-experts/getbookingbyid?string=${encodeURIComponent(
+      `https://csmock-backend.onrender.com/api/v1/users-experts/getbookingbyid?string=${encodeURIComponent(
         bookingId
       )}`,
       {
@@ -37,7 +37,9 @@ const ExpertBookings = ({
   // Fetch a single user by ID
   const fetchUserById = async (userId) => {
     const response = await fetch(
-      `/api/v1/users/getuserbyid?string=${encodeURIComponent(userId)}`,
+      `https://csmock-backend.onrender.com/api/v1/users/getuserbyid?string=${encodeURIComponent(
+        userId
+      )}`,
       {
         method: "POST",
         headers: {
@@ -55,7 +57,9 @@ const ExpertBookings = ({
   // Fetch a single expert by ID
   const fetchExpertById = async (expertId) => {
     const response = await fetch(
-      `/api/v1/experts/getexpertbyid?string=${encodeURIComponent(expertId)}`,
+      `https://csmock-backend.onrender.com/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
+        expertId
+      )}`,
       {
         method: "POST",
         headers: {
@@ -99,7 +103,7 @@ const ExpertBookings = ({
   ////////////////////////////////////////////
   const handleConcludeClick = async (bookingId) => {
     const response = await fetch(
-      `/api/v1/users-experts/concludebooking?string=${encodeURIComponent(
+      `https://csmock-backend.onrender.com/api/v1/users-experts/concludebooking?string=${encodeURIComponent(
         bookingId
       )}`,
       {

@@ -18,7 +18,9 @@ const FindJobs = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("/api/v1/creaters/getalljobs");
+      const response = await fetch(
+        "https://csmock-backend.onrender.com/api/v1/creaters/getalljobs"
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch all jobs");
       }
@@ -38,7 +40,9 @@ const FindJobs = () => {
   const fetchCreator = async (createrId) => {
     try {
       const response = await fetch(
-        `/api/v1/experts/getexpertbyid?string=${encodeURIComponent(createrId)}`,
+        `https://csmock-backend.onrender.com/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
+          createrId
+        )}`,
         {
           method: "POST",
           headers: {
@@ -60,7 +64,7 @@ const FindJobs = () => {
   const handleJobApplyButtonClick = async (jobId) => {
     try {
       const response = await fetch(
-        `/api/v1/creaters/applyjob?jobId=${encodeURIComponent(
+        `https://csmock-backend.onrender.com/api/v1/creaters/applyjob?jobId=${encodeURIComponent(
           jobId
         )}&createrId=${encodeURIComponent(
           currentUser._id
@@ -87,7 +91,7 @@ const FindJobs = () => {
   const handleJobDeleteButtonClick = async (jobId) => {
     try {
       const response = await fetch(
-        `/api/v1/creaters/deletejob?jobId=${encodeURIComponent(
+        `https://csmock-backend.onrender.com/api/v1/creaters/deletejob?jobId=${encodeURIComponent(
           jobId
         )}&createrId=${encodeURIComponent(
           currentUser._id
@@ -113,7 +117,7 @@ const FindJobs = () => {
   const handleUnsaveJobButton = async (jobId) => {
     try {
       const response = await fetch(
-        `/api/v1/creaters/unsavejob?jobId=${encodeURIComponent(
+        `https://csmock-backend.onrender.com/api/v1/creaters/unsavejob?jobId=${encodeURIComponent(
           jobId
         )}&createrId=${encodeURIComponent(
           currentUser._id
@@ -139,7 +143,7 @@ const FindJobs = () => {
   const handleSaveJobButton = async (jobId) => {
     try {
       const response = await fetch(
-        `/api/v1/creaters/savejob?jobId=${encodeURIComponent(
+        `https://csmock-backend.onrender.com/api/v1/creaters/savejob?jobId=${encodeURIComponent(
           jobId
         )}&createrId=${encodeURIComponent(
           currentUser._id

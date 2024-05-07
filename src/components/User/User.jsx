@@ -22,7 +22,9 @@ const User = () => {
   const handleLogoutButton = async () => {
     try {
       const response = await fetch(
-        userType === "User" ? "/api/v1/users/logout" : "/api/v1/experts/logout",
+        userType === "User"
+          ? "https://csmock-backend.onrender.com/api/v1/users/logout"
+          : "https://csmock-backend.onrender.com/api/v1/experts/logout",
         {
           method: "POST",
           credentials: "include",

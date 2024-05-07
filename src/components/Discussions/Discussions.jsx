@@ -58,15 +58,18 @@ const Discussions = ({
     event.preventDefault();
 
     try {
-      const response = await fetch("/api/v1/creaters/createpost", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://csmock-backend.onrender.com/api/v1/creaters/createpost",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to create post");
@@ -88,7 +91,8 @@ const Discussions = ({
   const fetchData = async () => {
     try {
       const response = await fetch(
-        isLoggedIn && "/api/v1/creaters/getallposts"
+        isLoggedIn &&
+          "https://csmock-backend.onrender.com/api/v1/creaters/getallposts"
       );
       if (!response.ok) {
         throw new Error("Failed to fetch all posts");
@@ -110,8 +114,10 @@ const Discussions = ({
     try {
       const response = await fetch(
         createrType === "User"
-          ? `/api/v1/users/getuserbyid?string=${encodeURIComponent(createrId)}`
-          : `/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
+          ? `https://csmock-backend.onrender.com/api/v1/users/getuserbyid?string=${encodeURIComponent(
+              createrId
+            )}`
+          : `https://csmock-backend.onrender.com/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
               createrId
             )}`,
         {
@@ -135,7 +141,7 @@ const Discussions = ({
   const handleDeleteButton = async (postId, createrId, createrType) => {
     try {
       const response = await fetch(
-        `/api/v1/creaters/deletepost?postId=${encodeURIComponent(
+        `https://csmock-backend.onrender.com/api/v1/creaters/deletepost?postId=${encodeURIComponent(
           postId
         )}&createrId=${encodeURIComponent(
           createrId
@@ -167,7 +173,7 @@ const Discussions = ({
   const handleUnsavePostButton = async (postId) => {
     try {
       const response = await fetch(
-        `/api/v1/creaters/unsavepost?postId=${encodeURIComponent(
+        `https://csmock-backend.onrender.com/api/v1/creaters/unsavepost?postId=${encodeURIComponent(
           postId
         )}&createrId=${encodeURIComponent(
           currentUser._id
@@ -193,7 +199,7 @@ const Discussions = ({
   const handleSavePostButton = async (postId) => {
     try {
       const response = await fetch(
-        `/api/v1/creaters/savepost?postId=${encodeURIComponent(
+        `https://csmock-backend.onrender.com/api/v1/creaters/savepost?postId=${encodeURIComponent(
           postId
         )}&createrId=${encodeURIComponent(
           currentUser._id
@@ -219,7 +225,7 @@ const Discussions = ({
   const handleUnlikePostButton = async (postId) => {
     try {
       const response = await fetch(
-        `/api/v1/creaters/unlikepost?postId=${encodeURIComponent(
+        `https://csmock-backend.onrender.com/api/v1/creaters/unlikepost?postId=${encodeURIComponent(
           postId
         )}&createrId=${encodeURIComponent(
           currentUser._id
@@ -246,7 +252,7 @@ const Discussions = ({
   const handleLikePostButton = async (postId) => {
     try {
       const response = await fetch(
-        `/api/v1/creaters/likepost?postId=${encodeURIComponent(
+        `https://csmock-backend.onrender.com/api/v1/creaters/likepost?postId=${encodeURIComponent(
           postId
         )}&createrId=${encodeURIComponent(
           currentUser._id

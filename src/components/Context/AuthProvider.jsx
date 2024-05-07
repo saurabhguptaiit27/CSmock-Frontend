@@ -24,8 +24,8 @@ export const AuthProvider = ({ children }) => {
       } else if (!accessTokenCookie && refreshTokenCookie) {
         await fetch(
           userType === "User"
-            ? "/api/v1/users/refresh-token"
-            : "/api/v1/experts/refresh-token",
+            ? "https://csmock-backend.onrender.com/api/v1/users/refresh-token"
+            : "https://csmock-backend.onrender.com/api/v1/experts/refresh-token",
           {
             method: "POST",
             credentials: "include",

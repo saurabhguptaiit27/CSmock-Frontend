@@ -13,7 +13,8 @@ export const ToggleUIProvider = ({ children }) => {
   const handleAddAvailabilityButton = async () => {
     setIsAvailabilityUI(true);
     const response = await fetch(
-      userType === "Expert" && "/api/v1/experts/current-expert",
+      userType === "Expert" &&
+        "https://csmock-backend.onrender.com/api/v1/experts/current-expert",
       {
         method: "GET",
         credentials: "include",

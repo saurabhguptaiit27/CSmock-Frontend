@@ -29,7 +29,7 @@ const Report = ({ setReportUI, setIsReportSubmitted, currentBookingId }) => {
       const response = await fetch(
         userType === "Expert" &&
           isLoggedIn &&
-          "/api/v1/users-experts/givereport",
+          "https://csmock-backend.onrender.com/api/v1/users-experts/givereport",
         {
           method: "POST",
           headers: {

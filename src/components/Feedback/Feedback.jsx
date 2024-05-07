@@ -24,7 +24,7 @@ const Feedback = ({ setFeedbackUI, setIsFeedbackGiven, currentBookingId }) => {
       const response = await fetch(
         userType === "User" &&
           isLoggedIn &&
-          "/api/v1/users-experts/givefeedback",
+          "https://csmock-backend.onrender.com/api/v1/users-experts/givefeedback",
         {
           method: "POST",
           headers: {
