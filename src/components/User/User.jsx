@@ -34,16 +34,10 @@ const User = () => {
     try {
       const response = await fetch(
         userType === "User"
-          ? // ? `https://csmock-backend.onrender.com/api/v1/users/logout?accessToken=${getCookie(
-            //     "accessToken"
-            //   )}`
-            // : `https://csmock-backend.onrender.com/api/v1/experts/logout?accessToken=${getCookie(
-            //     "accessToken"
-            //   )}`,
-            `http://localhost:8000/api/v1/users/logout?encryptionsecret=${getCookie(
+          ? `https://csmock-backend.onrender.com/api/v1/users/logout?encryptionsecret=${getCookie(
               "accessToken"
             )}`
-          : `http://localhost:8000/api/v1/experts/logout?encryptionsecret=${getCookie(
+          : `https://csmock-backend.onrender.com/api/v1/experts/logout?encryptionsecret=${getCookie(
               "accessToken"
             )}`,
         {
