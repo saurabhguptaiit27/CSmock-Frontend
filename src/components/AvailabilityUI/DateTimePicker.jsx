@@ -10,12 +10,22 @@ export default function DateTimePicker({ values, setValues }) {
   const { userType } = useContext(AuthContext);
   const { fetchCurrentUser } = useContext(CurrentUserContext);
 
+  const getCookie = (name) => {
+    const cookies = document.cookie.split("; ");
+
+    const cookie = cookies.find((cookie) => cookie.startsWith(name + "="));
+
+    return cookie ? cookie.split("=")[1] : null;
+  };
+
   const handleClearButton = async () => {
     setValues([]);
     const appointmentDateTime = [];
     const response = await fetch(
       userType === "Expert" &&
-        "https://csmock-backend.onrender.com/api/v1/experts/addavailability",
+        `https://csmock-backend.onrender.com/api/v1/experts/addavailability?encryptionsecret=${getCookie(
+          "accessToken"
+        )}`,
       {
         method: "POST",
         credentials: "include",
@@ -37,7 +47,9 @@ export default function DateTimePicker({ values, setValues }) {
       );
       const response = await fetch(
         userType === "Expert" &&
-          "https://csmock-backend.onrender.com/api/v1/experts/addavailability",
+          `https://csmock-backend.onrender.com/api/v1/experts/addavailability?encryptionsecret=${getCookie(
+            "accessToken"
+          )}`,
         {
           method: "POST",
           credentials: "include",
