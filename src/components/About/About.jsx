@@ -26,54 +26,15 @@ export default function About() {
             <div>
               <span className="mb-5 inline-block rounded-full bg-gray-400 p-2 shadow-lg bg-gray-500/75 shadow-gray-500">
                 <img
-                  src="https://cdn.tailkit.com/media/placeholders/avatar-bY4GXQKfZrA-320x320.jpg"
+                  src="/saurabhgupta.jpg"
                   alt="User Avatar"
                   className="inline-block size-28 rounded-full"
                 />
               </span>
               <h4 className="mb-0.5 text-xl font-bold text-red-600">
-                Irma Norton
+                Saurabh Gupta
               </h4>
-              <p className="font-medium text-gray-400">Founder &amp; CEO</p>
-            </div>
-            <div>
-              <span className="mb-5 inline-block rounded-full bg-gray-400 p-2 shadow-lg bg-gray-500/75 shadow-gray-500">
-                <img
-                  src="https://cdn.tailkit.com/media/placeholders/avatar-bY4GXQKfZrA-320x320.jpg"
-                  alt="User Avatar"
-                  className="inline-block size-28 rounded-full"
-                />
-              </span>
-              <h4 className="mb-0.5 text-xl font-bold text-red-600">
-                Irma Norton
-              </h4>
-              <p className="font-medium text-gray-400">Founder &amp; CEO</p>
-            </div>
-            <div>
-              <span className="mb-5 inline-block rounded-full bg-gray-400 p-2 shadow-lg bg-gray-500/75 shadow-gray-500">
-                <img
-                  src="https://cdn.tailkit.com/media/placeholders/avatar-bY4GXQKfZrA-320x320.jpg"
-                  alt="User Avatar"
-                  className="inline-block size-28 rounded-full"
-                />
-              </span>
-              <h4 className="mb-0.5 text-xl font-bold text-red-600">
-                Irma Norton
-              </h4>
-              <p className="font-medium text-gray-400">Founder &amp; CEO</p>
-            </div>
-            <div>
-              <span className="mb-5 inline-block rounded-full bg-gray-400 p-2 shadow-lg bg-gray-500/75 shadow-gray-500">
-                <img
-                  src="https://cdn.tailkit.com/media/placeholders/avatar-bY4GXQKfZrA-320x320.jpg"
-                  alt="User Avatar"
-                  className="inline-block size-28 rounded-full"
-                />
-              </span>
-              <h4 className="mb-0.5 text-xl font-bold text-red-600">
-                Irma Norton
-              </h4>
-              <p className="font-medium text-gray-400">Founder &amp; CEO</p>
+              <p className="font-medium text-gray-400">Software Developer</p>
             </div>
           </div>
           {/* END Team */}
