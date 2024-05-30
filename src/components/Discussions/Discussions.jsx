@@ -27,6 +27,14 @@ const Discussions = ({
     fetchData();
   }, []);
 
+  const getCookie = (name) => {
+    const cookies = document.cookie.split("; ");
+
+    const cookie = cookies.find((cookie) => cookie.startsWith(name + "="));
+
+    return cookie ? cookie.split("=")[1] : null;
+  };
+
   const [formData, setFormData] = useState({
     createrId: "",
     createrType: "",
@@ -59,7 +67,9 @@ const Discussions = ({
 
     try {
       const response = await fetch(
-        "https://csmock-backend.onrender.com/api/v1/creaters/createpost",
+        `https://csmock-backend.onrender.com/api/v1/creaters/createpost?encryptionsecret=${getCookie(
+          "accessToken"
+        )}`,
         {
           method: "POST",
           credentials: "include",
@@ -116,10 +126,10 @@ const Discussions = ({
         createrType === "User"
           ? `https://csmock-backend.onrender.com/api/v1/users/getuserbyid?string=${encodeURIComponent(
               createrId
-            )}`
+            )}&encryptionsecret=${getCookie("accessToken")}`
           : `https://csmock-backend.onrender.com/api/v1/experts/getexpertbyid?string=${encodeURIComponent(
               createrId
-            )}`,
+            )}&encryptionsecret=${getCookie("accessToken")}`,
         {
           method: "POST",
           headers: {
@@ -145,7 +155,9 @@ const Discussions = ({
           postId
         )}&createrId=${encodeURIComponent(
           createrId
-        )}&createrType=${encodeURIComponent(createrType)}`,
+        )}&createrType=${encodeURIComponent(
+          createrType
+        )}&encryptionsecret=${getCookie("accessToken")}`,
         {
           method: "POST",
           headers: {
@@ -177,7 +189,9 @@ const Discussions = ({
           postId
         )}&createrId=${encodeURIComponent(
           currentUser._id
-        )}&createrType=${encodeURIComponent(currentUser.userType)}`,
+        )}&createrType=${encodeURIComponent(
+          currentUser.userType
+        )}&encryptionsecret=${getCookie("accessToken")}`,
         {
           method: "POST",
           headers: {
@@ -205,7 +219,9 @@ const Discussions = ({
           currentUser._id
         )}&createrType=${encodeURIComponent(
           currentUser.userType
-        )}&encryptionsecret=${encodeURIComponent(currentUser.userType)}`,
+        )}&encryptionsecret=${encodeURIComponent(
+          currentUser.userType
+        )}&encryptionsecret=${getCookie("accessToken")}`,
         {
           method: "POST",
           headers: {
@@ -231,7 +247,9 @@ const Discussions = ({
           postId
         )}&createrId=${encodeURIComponent(
           currentUser._id
-        )}&createrType=${encodeURIComponent(currentUser.userType)}`,
+        )}&createrType=${encodeURIComponent(
+          currentUser.userType
+        )}&encryptionsecret=${getCookie("accessToken")}`,
         {
           method: "POST",
           headers: {
@@ -258,7 +276,9 @@ const Discussions = ({
           postId
         )}&createrId=${encodeURIComponent(
           currentUser._id
-        )}&createrType=${encodeURIComponent(currentUser.userType)}`,
+        )}&createrType=${encodeURIComponent(
+          currentUser.userType
+        )}&encryptionsecret=${getCookie("accessToken")}`,
         {
           method: "POST",
           headers: {
