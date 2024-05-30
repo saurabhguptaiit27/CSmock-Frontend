@@ -28,8 +28,8 @@ const Login = () => {
   }, [location]);
 
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: "user@gmail.com",
+    password: "1234",
   });
 
   const handleSubmit = async (event) => {
