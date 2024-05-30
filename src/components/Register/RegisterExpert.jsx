@@ -6,7 +6,7 @@ import { IoBodyOutline } from "react-icons/io5";
 import { GrDocumentUser } from "react-icons/gr";
 import { CgOrganisation } from "react-icons/cg";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { SelectedButtonContext } from "../Context/SelectedButtonProvider.jsx";
@@ -28,6 +28,8 @@ const RegisterExpert = () => {
         : setSelectedButton("Expert");
     }
   }, [location]);
+
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     username: "",
