@@ -219,8 +219,6 @@ const Discussions = ({
           currentUser._id
         )}&createrType=${encodeURIComponent(
           currentUser.userType
-        )}&encryptionsecret=${encodeURIComponent(
-          currentUser.userType
         )}&encryptionsecret=${getCookie("accessToken")}`,
         {
           method: "POST",
