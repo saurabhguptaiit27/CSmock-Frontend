@@ -10,6 +10,7 @@ import { HiOutlineUserCircle } from "react-icons/hi2";
 import { CurrentUserContext } from "../Context/CurrentUserProvider.jsx";
 import { ToggleUIContext } from "../Context/ToggleUiProvider.jsx";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 
 const User = () => {
   const { setIsLoggedIn, userType, setUserType } = useContext(AuthContext);
@@ -54,6 +55,10 @@ const User = () => {
       setUserType("User");
       setCurrentUser([]);
       setToggleProfile(false);
+      // Optionally, delete all cookies
+      Object.keys(Cookies.get()).forEach((cookieName) => {
+        Cookies.remove(cookieName);
+      });
       localStorage.removeItem("currentExpertData"); // Remove items from localStorage
       localStorage.removeItem("currentUser");
       navigate("/");
