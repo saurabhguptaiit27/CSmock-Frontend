@@ -23,6 +23,17 @@ const PostAJob = () => {
     postedOn: "",
   });
 
+  const getCookie = (name) => {
+    // Split document.cookie on '; ' to get individual cookie strings
+    const cookies = document.cookie.split("; ");
+
+    // Find the cookie that starts with the specified name followed by '='
+    const cookie = cookies.find((cookie) => cookie.startsWith(name + "="));
+
+    // If the cookie is found, split on '=' to get the value, otherwise return null
+    return cookie ? cookie.split("=")[1] : null;
+  };
+
   useEffect(() => {
     setTimeout(() => {
       setFormData({
@@ -54,7 +65,9 @@ const PostAJob = () => {
 
     try {
       const response = await fetch(
-        "https://csmock-backend.onrender.com/api/v1/creaters/createjob",
+        `https://csmock-backend.onrender.com/api/v1/creaters/createjob?encryptionsecret=${getCookie(
+          "accessToken"
+        )}`,
         {
           method: "POST",
           credentials: "include",

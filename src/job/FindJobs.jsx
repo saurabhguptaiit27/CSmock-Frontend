@@ -16,6 +16,17 @@ const FindJobs = () => {
     fetchData();
   }, []);
 
+  const getCookie = (name) => {
+    // Split document.cookie on '; ' to get individual cookie strings
+    const cookies = document.cookie.split("; ");
+
+    // Find the cookie that starts with the specified name followed by '='
+    const cookie = cookies.find((cookie) => cookie.startsWith(name + "="));
+
+    // If the cookie is found, split on '=' to get the value, otherwise return null
+    return cookie ? cookie.split("=")[1] : null;
+  };
+
   const fetchData = async () => {
     try {
       const response = await fetch(
@@ -68,7 +79,9 @@ const FindJobs = () => {
           jobId
         )}&createrId=${encodeURIComponent(
           currentUser._id
-        )}&createrType=${encodeURIComponent(currentUser.userType)}`,
+        )}&createrType=${encodeURIComponent(
+          currentUser.userType
+        )}&encryptionsecret=${getCookie("accessToken")}`,
         {
           method: "POST",
           headers: {
@@ -95,7 +108,9 @@ const FindJobs = () => {
           jobId
         )}&createrId=${encodeURIComponent(
           currentUser._id
-        )}&createrType=${encodeURIComponent(currentUser.userType)}`,
+        )}&createrType=${encodeURIComponent(
+          currentUser.userType
+        )}&encryptionsecret=${getCookie("accessToken")}`,
         {
           method: "POST",
           headers: {
@@ -121,7 +136,9 @@ const FindJobs = () => {
           jobId
         )}&createrId=${encodeURIComponent(
           currentUser._id
-        )}&createrType=${encodeURIComponent(currentUser.userType)}`,
+        )}&createrType=${encodeURIComponent(
+          currentUser.userType
+        )}&encryptionsecret=${getCookie("accessToken")}`,
         {
           method: "POST",
           headers: {
@@ -147,7 +164,9 @@ const FindJobs = () => {
           jobId
         )}&createrId=${encodeURIComponent(
           currentUser._id
-        )}&createrType=${encodeURIComponent(currentUser.userType)}`,
+        )}&createrType=${encodeURIComponent(
+          currentUser.userType
+        )}&encryptionsecret=${getCookie("accessToken")}`,
         {
           method: "POST",
           headers: {
