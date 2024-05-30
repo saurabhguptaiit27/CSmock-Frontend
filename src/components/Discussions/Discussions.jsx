@@ -203,7 +203,9 @@ const Discussions = ({
           postId
         )}&createrId=${encodeURIComponent(
           currentUser._id
-        )}&createrType=${encodeURIComponent(currentUser.userType)}`,
+        )}&createrType=${encodeURIComponent(
+          currentUser.userType
+        )}&encryptionsecret=${encodeURIComponent(currentUser.userType)}`,
         {
           method: "POST",
           headers: {

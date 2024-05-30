@@ -8,13 +8,28 @@ export const CurrentUserProvider = ({ children }) => {
   const { isLoggedIn, userType } = useContext(AuthContext);
   const [currentUser, setCurrentUser] = useState([]);
 
+  const getCookie = (name) => {
+    // Split document.cookie on '; ' to get individual cookie strings
+    const cookies = document.cookie.split("; ");
+
+    // Find the cookie that starts with the specified name followed by '='
+    const cookie = cookies.find((cookie) => cookie.startsWith(name + "="));
+
+    // If the cookie is found, split on '=' to get the value, otherwise return null
+    return cookie ? cookie.split("=")[1] : null;
+  };
+
   const fetchCurrentUser = async () => {
     try {
       if (isLoggedIn) {
         const response = await fetch(
           userType === "User"
-            ? "https://csmock-backend.onrender.com/api/v1/users/current-user"
-            : "https://csmock-backend.onrender.com/api/v1/experts/current-expert",
+            ? `https://csmock-backend.onrender.com/api/v1/users/current-user?encryptionsecret=${getCookie(
+                "accessToken"
+              )}`
+            : `https://csmock-backend.onrender.com/api/v1/experts/current-expert?encryptionsecret=${getCookie(
+                "accessToken"
+              )}`,
           {
             method: "GET",
             credentials: "include",
