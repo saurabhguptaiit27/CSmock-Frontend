@@ -11,6 +11,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { SelectedButtonContext } from "../Context/SelectedButtonProvider.jsx";
 import { RiProfileLine } from "react-icons/ri";
+import toast from "react-hot-toast";
 
 const RegisterExpert = () => {
   const location = useLocation();
@@ -103,6 +104,7 @@ const RegisterExpert = () => {
       );
 
       if (!response.ok) {
+        toast.error("Failed to Register");
         throw new Error("Failed to Register the Expert");
       }
 
@@ -110,7 +112,8 @@ const RegisterExpert = () => {
       const data = await response.json();
 
       // Navigate to the Login route
-      // navigate("/Login/Expert");
+      navigate("/Login/Expert");
+      toast.success("Successfully Registered");
 
       // Clear form after successful register
       setFormData({

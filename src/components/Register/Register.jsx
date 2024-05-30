@@ -10,6 +10,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { SelectedButtonContext } from "../Context/SelectedButtonProvider.jsx";
 import { RiProfileLine } from "react-icons/ri";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const location = useLocation();
@@ -94,6 +95,7 @@ const Register = () => {
       );
 
       if (!response.ok) {
+        toast.error("Failed to Register");
         throw new Error("Failed to Register the User");
       }
 
@@ -102,6 +104,7 @@ const Register = () => {
 
       // Navigate to the Login route
       navigate("/Login/User");
+      toast.success("Successfully Registered");
 
       // Clear form after successful register
       setFormData({
