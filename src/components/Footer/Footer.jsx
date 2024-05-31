@@ -12,7 +12,7 @@ const Footer = () => {
 
           <div className="flex flex-wrap justify-center mt-6 -mx-4">
             <Link
-              to=""
+              to="/"
               className="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500  "
               aria-label="Reddit"
             >
@@ -30,7 +30,7 @@ const Footer = () => {
             </Link>
 
             <Link
-              to="Faqs"
+              to="/Faqs"
               className="mx-4 text-sm text-yellow-500 transition-colors duration-300 hover:text-green-500 "
               aria-label="Reddit"
             >
