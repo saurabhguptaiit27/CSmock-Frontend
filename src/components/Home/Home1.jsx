@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import { MdOutlineCreateNewFolder } from "react-icons/md";
+import { ToggleUIContext } from "../Context/ToggleUiProvider";
 
 const Home1 = () => {
-  const { userType, handleAddAvailabilityButton } = useContext(AuthContext);
+  const { userType } = useContext(AuthContext);
+  const { handleAddAvailabilityButton } = useContext(ToggleUIContext);
 
   return userType === "User" ? (
     <section className="bg-gradient-to-b from-yellow-400/30 to-gray-900/95 via-gray-900 text-white">

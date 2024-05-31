@@ -10,11 +10,21 @@ export const ToggleUIProvider = ({ children }) => {
   const { userType } = useContext(AuthContext);
   const [isAvailabilityUI, setIsAvailabilityUI] = useState(false);
 
+  const getCookie = (name) => {
+    const cookies = document.cookie.split("; ");
+
+    const cookie = cookies.find((cookie) => cookie.startsWith(name + "="));
+
+    return cookie ? cookie.split("=")[1] : null;
+  };
+
   const handleAddAvailabilityButton = async () => {
     setIsAvailabilityUI(true);
     const response = await fetch(
       userType === "Expert" &&
-        "https://csmock-backend.onrender.com/api/v1/experts/current-expert",
+        `https://csmock-backend.onrender.com/api/v1/experts/current-expert?encryptionsecret=${getCookie(
+          "accessToken"
+        )}`,
       {
         method: "GET",
         credentials: "include",
