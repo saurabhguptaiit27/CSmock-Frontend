@@ -2,7 +2,7 @@ import React from "react";
 
 const Home3 = () => {
   const handleClick = () => {
-    alert("Fist LOGOUT and then log in again as an Expert");
+    alert("First LOGOUT and then LOGIN again as an Expert");
   };
 
   return (
