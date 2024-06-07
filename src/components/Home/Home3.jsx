@@ -2,7 +2,7 @@ import React from "react";
 
 const Home3 = () => {
   const handleClick = () => {
-    alert("First LOGOUT and then LOGIN again as an Expert");
+    alert("LOGIN as an Expert");
   };
 
   return (
@@ -104,7 +104,9 @@ const Home3 = () => {
               />
             </svg>
 
-            <h2 className="mt-2 text-lg font-bold text-white">CSmock Experts</h2>
+            <h2 className="mt-2 text-lg font-bold text-white">
+              CSmock Experts
+            </h2>
 
             <p className="mt-1 text-sm text-gray-300">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo
