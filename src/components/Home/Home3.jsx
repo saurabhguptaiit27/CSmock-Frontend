@@ -42,7 +42,7 @@ const Home3 = () => {
               />
             </svg>
 
-            <h2 className="mt-4 text-xl font-bold text-white">
+            <h2 className="mt-2 text-lg font-bold text-white">
               CSmock Experts
             </h2>
 
@@ -73,7 +73,7 @@ const Home3 = () => {
               />
             </svg>
 
-            <h2 className="mt-4 text-xl font-bold text-white">
+            <h2 className="mt-2 text-lg font-bold text-white">
               CSmock Experts
             </h2>
 
@@ -104,9 +104,7 @@ const Home3 = () => {
               />
             </svg>
 
-            <h2 className="mt-4 text-xl font-bold text-white">
-              CSmock Experts
-            </h2>
+            <h2 className="mt-2 text-lg font-bold text-white">CSmock Experts</h2>
 
             <p className="mt-1 text-sm text-gray-300">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo
