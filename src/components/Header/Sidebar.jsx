@@ -82,7 +82,7 @@ const Sidebar = () => {
           </nav>
           <hr className="my-4 w-auto border-green-400" />
 
-          <a href="#" className="flex items-center px-4 -mx-2">
+          {isLoggedIn && <div href="#" className="flex items-center px-4 -mx-2">
             <img
               className="object-cover w-7 h-7 rounded-full ring ring-gray-300"
               src={currentUser.avatar}
@@ -91,7 +91,8 @@ const Sidebar = () => {
             <span className="mx-2 font-medium text-gray-800 dark:text-gray-200">
               {currentUser.fullname}
             </span>
-          </a>
+          </div>}
+
         </div>
       </div>
     </aside>
