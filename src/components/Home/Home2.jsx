@@ -39,7 +39,7 @@ const Home2 = () => {
               </span>
 
               <h1 className="text-xl font-semibold text-yellow-400 capitalize ">
-                New Components
+                Quality Experts
               </h1>
 
               <p className="text-gray-400 text-justify">
@@ -74,7 +74,7 @@ const Home2 = () => {
               </span>
 
               <h1 className="text-xl font-semibold text-yellow-400 capitalize ">
-                elegant Dark Mode
+                One platform for many
               </h1>
 
               <p className="text-gray-400 text-justify">
@@ -103,7 +103,7 @@ const Home2 = () => {
               </span>
 
               <h1 className="text-xl font-semibold text-yellow-400 capitalize ">
-                Easy to customiztions
+                Easy to schedule meeting
               </h1>
 
               <p className="text-gray-400 text-justify">
@@ -132,7 +132,7 @@ const Home2 = () => {
               </span>
 
               <h1 className="text-xl font-semibold text-yellow-400 capitalize ">
-                Simple & clean designs
+                Customer Support
               </h1>
 
               <p className="text-gray-400 text-justify">

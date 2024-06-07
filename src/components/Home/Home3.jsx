@@ -1,6 +1,10 @@
 import React from "react";
 
 const Home3 = () => {
+  const handleClick = () => {
+    alert("Fist LOGOUT and then log in again as an Expert");
+  };
+
   return (
     <section className="bg-gradient-to-b from-gray-950/90 to-gray-950/80 via-gray-900  text-white">
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
@@ -39,7 +43,7 @@ const Home3 = () => {
             </svg>
 
             <h2 className="mt-4 text-xl font-bold text-white">
-              Digital campaigns
+              CSmock Experts
             </h2>
 
             <p className="mt-1 text-sm text-gray-300">
@@ -70,7 +74,7 @@ const Home3 = () => {
             </svg>
 
             <h2 className="mt-4 text-xl font-bold text-white">
-              Digital campaigns
+              CSmock Experts
             </h2>
 
             <p className="mt-1 text-sm text-gray-300">
@@ -101,7 +105,7 @@ const Home3 = () => {
             </svg>
 
             <h2 className="mt-4 text-xl font-bold text-white">
-              Digital campaigns
+              CSmock Experts
             </h2>
 
             <p className="mt-1 text-sm text-gray-300">
@@ -113,12 +117,12 @@ const Home3 = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <a
-            href="#"
+          <button
+            onClick={handleClick}
             className="inline-block rounded bg-yellow-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-green-700 focus:outline-none focus:ring focus:ring-yellow-200"
           >
             Start Mentoring
-          </a>
+          </button>
         </div>
       </div>
     </section>
