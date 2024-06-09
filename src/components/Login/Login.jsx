@@ -111,7 +111,7 @@ const Login = () => {
   };
 
   return (
-    <div className="mx-auto max-screen-xl px-4 pt-20 pb-12 mt-5 sm:px-6 lg:px-8 bg-gray-950">
+    <div className="mx-auto max-screen-xl px-4 pt-20 pb-12 mt-5 sm:px-6 lg:px-8 bg-gray-950 min-h-screen">
       <div className="mx-auto max-w-lg">
         <h1 className="text-center text-2xl font-bold text-yellow-400 sm:text-3xl">
           Hey, Welcome Back !

@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthProvider";
 
 const Error = () => {
+  const { isLoggedIn } = useContext(AuthContext);
   return (
     <section className="bg-gray-950/90 ">
       <div className="container min-h-screen px-6 py-12 mx-auto lg:flex lg:items-center lg:gap-12">
@@ -38,12 +41,14 @@ const Error = () => {
               <span>Take me home</span>
             </Link>
 
-            <Link
-              to="/Login/User"
-              className="w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto hover:bg-blue-600 "
-            >
-              Login
-            </Link>
+            {!isLoggedIn && (
+              <Link
+                to="/Login/User"
+                className="w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto hover:bg-blue-600 "
+              >
+                Login
+              </Link>
+            )}
           </div>
         </div>
 
